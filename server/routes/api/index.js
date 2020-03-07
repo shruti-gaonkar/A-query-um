@@ -4,9 +4,15 @@ const express = require('express'),
 const router = express.Router();
 
 router.route('/')
-    .get(controller.getMain);
+    .get(controller.findAll)
+    .post(controller.createFishRecord);
 
-router.route('api/all')
-    .get(controller.getAll);
+router.route('/test')
+    .get(controller.getTest);
+
+router.route("/:id")
+    .get(controller.findFishById)
+// .put(controller.updateFishRecord)
+// .delete(controller.removeFishRecord);
 
 module.exports = router;

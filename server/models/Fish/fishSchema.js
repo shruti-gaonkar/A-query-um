@@ -1,6 +1,5 @@
 // Require mongoose
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const FishSchema = new Schema({
@@ -10,12 +9,14 @@ const FishSchema = new Schema({
         trim: true,
         required: true
     },
-    aliases: [
-        {
-            type: String,
-            trim: true
-        }
-    ],
+    aliases: {
+        type: Array,
+        required: true
+    },
+    images: {
+        type: Array,
+        required: true
+    },
     description: {
         type: String,
         trim: true,
@@ -26,8 +27,8 @@ const FishSchema = new Schema({
         trim: true,
         required: true
     },
-    maxSize: {
-        type: String,
+    maxSizeCM: {
+        type: Number,
         trim: true,
         required: true
     },
@@ -41,21 +42,18 @@ const FishSchema = new Schema({
         trim: true,
         required: true
     },
-    minTankSize: {
+    minTankSizeL: {
+        type: Number,
+        trim: true,
+        required: true
+    },
+    tempRangeC: {
         type: String,
         trim: true,
         required: true
     },
-    tempRange: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    image: {
-        type: String,
-        trim: true,
-        required: true
-    }
+    communityFish: Boolean,
+    reefSafe: Boolean
 });
 
 const Fish = mongoose.model("Fish", FishSchema);

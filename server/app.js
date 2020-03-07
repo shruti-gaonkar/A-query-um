@@ -20,6 +20,13 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/aqueryumDB";
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const connection = mongoose.connection;
+
+connection.once('open', function () {
+    console.log(
+        "MongoDB database connection established successfully."
+    );
+})
 
 // Import the routing setup from our Router 
 app.use('/', router);
