@@ -3,9 +3,9 @@ import { Navbar, Icon, NavItem } from 'react-materialize';
 
 function Nav() {
     return (
-        <Navbar className="white"
+        <Navbar className="amber lighten-1"
             alignLinks="right"
-            brand={<a className="brand-logo" href="#">A-Query-Um</a>}
+            brand={<a className="brand-logo" href="#"><img src="./images/logo.png" /></a>}
             menuIcon={<Icon>menu</Icon>}
             centerChildren="1"
             options={{

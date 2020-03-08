@@ -59,10 +59,10 @@ footer.page-footer {
  	color: black;
  }
  @media only screen and (max-width : 600px) {
-  .parallax-container
+  /*.parallax-container
  {
  	color: white;
- }
+ }*/
 }
  nav a.button-collapse
  {
