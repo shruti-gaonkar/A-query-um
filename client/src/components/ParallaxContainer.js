@@ -20,10 +20,19 @@ function ParallaxContainer() {
         transform: "translate(-50%,-50%)"
     };
 
+    const parallaxImages = [
+        "./images/textures/aqua_orange_fish.png",
+        "./images/textures/aqua_orange_fish_2.png",
+        "./images/textures/aquarium_reef_tank.jpg",
+        "./images/textures/aquarium_reef_tank_2.png"
+    ]
+
+    const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
+
     return (
         <div id="index-banner" className="parallax-container">
             <Parallax
-                bgImage={'./images/textures/aqua_orange_fish.png'}
+                bgImage={randomImg}
                 bgImageAlt="the cat"
                 strength={600}
             >
@@ -35,7 +44,7 @@ function ParallaxContainer() {
                 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate consequatur reprehenderit perferendis hic non inventore error sint distinctio neque repudiandae. Aspernatur est accusantium quae possimus pariatur quasi delectus voluptatibus odit.</span>
                 <span>Voluptatem earum nemo omnis alias consequatur dignissimos autem laboriosam in, odio totam amet magnam ratione praesentium molestias non itaque error impedit debitis! Qui consequatur fuga quia neque mollitia eius aspernatur.</span>
             </p>
-        </div>
+        </div >
     );
 }
 
