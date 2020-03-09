@@ -3,7 +3,7 @@ import { Navbar, Icon, NavItem } from 'react-materialize';
 
 function Nav() {
     return (
-        <Navbar className="amber lighten-1"
+        <Navbar className="light-blue accent-4"
             alignLinks="right"
             brand={<a className="brand-logo" href="#"><img src="./images/logo.png" /></a>}
             menuIcon={<Icon>menu</Icon>}
