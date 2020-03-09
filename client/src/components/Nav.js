@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Icon, NavItem } from 'react-materialize';
+import Login from './Login';
 
 function Nav() {
     return (
@@ -20,7 +21,7 @@ function Nav() {
                 preventScrolling: true
             }}>
             <NavItem href="/">
-                Login
+                <Login />
             </NavItem>
             <NavItem href="/saved">
                 Sign Up
