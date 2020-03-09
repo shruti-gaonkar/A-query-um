@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navbar, Icon, NavItem } from 'react-materialize';
-import Login from './Login';
+import LoginModal from './LoginModal';
 
-function Nav() {
+function Nav(props) {
     return (
         <Navbar className="light-blue accent-4"
             alignLinks="right"
@@ -21,7 +21,7 @@ function Nav() {
                 preventScrolling: true
             }}>
             <NavItem href="/">
-                <Login />
+                <LoginModal register={props.register} errors={props.errors} handleSubmit={props.handleSubmit} onSubmit={props.onSubmit} />
             </NavItem>
             <NavItem href="/saved">
                 Sign Up

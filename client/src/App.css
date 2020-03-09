@@ -21,6 +21,13 @@ p {
     width: 100%;
   }
 
+  .input-field{
+    margin-bottom:0px;
+  }
+.error-msg{
+  color:red;
+}  
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
@@ -45,9 +52,6 @@ p {
 footer.page-footer {
   margin: 0;
 }
-
-
-
 
  .parallax img 
  {

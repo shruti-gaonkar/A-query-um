@@ -1,7 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'react-materialize';
+import LoginForm from './LoginForm';
 
-function Login() {
+function Login(props) {
     return (
         <Modal
             actions={[
@@ -26,7 +27,7 @@ function Login() {
             }}
             trigger={<Button className="orange" node="button">Login</Button>}
         >
-            form
+            <LoginForm register={props.register} errors={props.errors} handleSubmit={props.handleSubmit} onSubmit={props.onSubmit} />
         </Modal>
     );
 }
