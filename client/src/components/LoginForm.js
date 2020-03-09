@@ -2,10 +2,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form'
 import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
+import API from "../utils/API";
 
 function LoginForm() {
     const { register, handleSubmit, watch, errors } = useForm()
-    const onSubmit = data => { console.log(data) }
+    const onSubmit = data => {
+        API.login();
+        console.log(data)
+    }
 
     return (
         <>
