@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
