@@ -52,6 +52,7 @@ const FishSchema = new Schema({
         trim: true,
         required: true
     },
+    aggroLevel: String,
     communityFish: Boolean,
     reefSafe: Boolean
 });
