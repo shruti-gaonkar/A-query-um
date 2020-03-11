@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Nav register={register} errors={errors} handleSubmit={handleSubmit} onSubmit={onSubmit} />
+      <Nav />
       <ParallaxContainer />
       <ScrapeContainer />
       <PageFooter />

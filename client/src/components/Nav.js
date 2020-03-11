@@ -21,7 +21,7 @@ function Nav(props) {
                 preventScrolling: true
             }}>
             <NavItem href="/">
-                <LoginModal register={props.register} errors={props.errors} handleSubmit={props.handleSubmit} onSubmit={props.onSubmit} />
+                <LoginModal />
             </NavItem>
             <NavItem href="/saved">
                 Sign Up
