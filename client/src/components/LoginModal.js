@@ -27,7 +27,7 @@ function Login(props) {
             }}
             trigger={<Button className="orange" node="button">Login</Button>}
         >
-            <LoginForm register={props.register} errors={props.errors} handleSubmit={props.handleSubmit} onSubmit={props.onSubmit} />
+            <LoginForm />
         </Modal>
     );
 }

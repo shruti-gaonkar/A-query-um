@@ -3,12 +3,6 @@ import { Parallax } from 'react-parallax';
 import Search from "./Search";
 
 function ParallaxContainer() {
-
-    //useEffect(() => {
-    //document.querySelector(".parallax");
-    //var instances = Parallax.init();
-    //});
-
     const insideStyles = {
         background: "black",
         opacity: "0.8",

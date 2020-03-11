@@ -11,10 +11,6 @@ function Search() {
         console.log(data)
     }
 
-    const insideStyles = {
-        color: ""
-    };
-
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
