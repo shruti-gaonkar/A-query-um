@@ -17,6 +17,17 @@ module.exports = {
                 res.json(err);
             });
     },
+    findBy: (req, res) => {
+        const searchQuery = `'/${req.body}/i'`;
+        db.Fish.find({ aliases: searchQuery })
+            .then(function (dbFish) {
+                res.json(dbFish);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    },
     createFishRecord: (req, res) => {
 
         // const data = {
