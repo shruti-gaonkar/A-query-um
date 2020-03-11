@@ -3,8 +3,10 @@ const express = require('express'),
 
 const router = express.Router();
 
-router.route('/')
-    .get(controller.findAll)
+router.route('/list')
+    .get(controller.findAll);
+
+router.route('/create')
     .post(controller.createFishRecord);
 
 router.route('/test')
