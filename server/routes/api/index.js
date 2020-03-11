@@ -6,7 +6,7 @@ const router = express.Router();
 router.route('/list')
     .get(controller.findAll);
 
-router.route('/search')
+router.route('/search?q=:query')
     .get(controller.findBy);
 
 router.route('/create')

@@ -18,7 +18,7 @@ module.exports = {
             });
     },
     findBy: (req, res) => {
-        const searchQuery = `'/${req.body}/i'`;
+        const searchQuery = `'/${req.params.query}/i'`;
         db.Fish.find({ aliases: searchQuery })
             .then(function (dbFish) {
                 res.json(dbFish);
