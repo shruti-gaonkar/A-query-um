@@ -5,7 +5,7 @@ export default {
         return axios.post("/api/login", data);
     },
 
-    listAll: function (data) {
-        return axios.post("/api/", data);
+    list: function (data) {
+        return axios.post("/api/list", data);
     }
 };
