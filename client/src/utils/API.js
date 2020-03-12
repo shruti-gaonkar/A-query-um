@@ -6,6 +6,6 @@ export default {
     },
 
     list: function (data) {
-        return axios.post("/api/list", data);
+        return axios.get("/api/list", data);
     }
 };
