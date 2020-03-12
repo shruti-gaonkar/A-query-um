@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import API from "../utils/API";
 
-function ListContainer() {
+function ListContainer(props) {
     useEffect(() => {
+        alert(props.query);
         loadResults();
     });
 
