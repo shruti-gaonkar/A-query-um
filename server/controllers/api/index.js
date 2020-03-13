@@ -1,4 +1,5 @@
 const db = require('../../models');
+const fishData = require('../../data/fishObjects.json');
 
 module.exports = {
     getMain: (req, res) => {
@@ -19,7 +20,7 @@ module.exports = {
     },
     findBy: (req, res) => {
         const searchQuery = req.params.query;
-        console.log("Controller=======" + searchQuery);
+        console.log(searchQuery);
         db.Fish.find({ aliases: new RegExp(searchQuery, 'i') })
             .then(function (dbFish) {
                 res.json(dbFish);
@@ -34,6 +35,20 @@ module.exports = {
         db.Fish.create(req)
             .then(function (dbFish) {
                 res.json(dbFish);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    },
+    insertFishRecord: (req, res) => {
+        const arrObj = fishData;
+
+        db.Fish.insertMany(arrObj, function (err) {
+            if (err) return handleError(err);
+        })
+            .then(function (dbFish) {
+                res.json(dbFish)
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client
