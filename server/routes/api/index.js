@@ -6,6 +6,9 @@ const router = express.Router();
 router.route('/list')
     .get(controller.findAll);
 
+router.route('/listBy')
+    .get(controller.findBy);
+
 router.route('/create')
     .post(controller.createFishRecord);
 
