@@ -16,11 +16,15 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // Provides great rout logging in our console for debugging
 app.use(morgan('dev'));
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/aqueryumDB";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_Omhvm21t:f1shyth1ngs@ds245615.mlab.com:45615/heroku_0mhvm21t";
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
+
+if (process.emitWarning.NODE_ENV === "production") {
+    app.use(express.static("client/build"))
+};
 
 connection.once('open', function () {
     console.log(
