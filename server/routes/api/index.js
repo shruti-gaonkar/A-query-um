@@ -9,6 +9,9 @@ router.route('/list')
 router.route('/create')
     .post(controller.createFishRecord);
 
+router.route('/search/:query')
+    .get(controller.findBy);
+
 router.route('/test')
     .get(controller.getTest);
 
