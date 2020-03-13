@@ -13,16 +13,12 @@ function SearchContainer(props) {
     });
 
     const loadResults = () => {
-        API.listBy(props.query)
+        API.search(props.query)
             .then(res => { console.log(res) })
+            .catch(err => console.log(err))
     }
 
-    /*const loadResults = () => {
-        API.list()
-            .then(res => { res.json(); console.log(res) })
-            .then(res => setResults(res))
-            .catch(err => setErrors(err));
-    }*/
+
 
     return (
         <Container>
