@@ -14,23 +14,10 @@ function LoginForm() {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input label="Email Address" name="email_address" inputRef={register({
-                    required: true,
-                    pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: "Invalid email address"
-                    }
+                <Input label="Username" name="username" inputRef={register({
+                    required: true
                 })} />
-                {(errors.email_address && errors.email_address.message)
-                    ?
-                    <span className="error-msg">
-                        {errors.email_address.message}
-                    </span>
-                    :
-                    (errors.email_address) ?
-                        <span className="error-msg">This field is required</span>
-                        : ""
-                }
+                {errors.username && <span className="error-msg">This field is required</span>}
                 <Input label="Password" name="password" type="password" inputRef={register({ required: true })} />
                 {errors.password && <span className="error-msg">This field is required</span>}
                 <br />
