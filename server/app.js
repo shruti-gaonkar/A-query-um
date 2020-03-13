@@ -3,6 +3,13 @@ const express = require('express'),
     path = require('path'),
     router = require('./routes'),
     mongoose = require('mongoose');
+    //need to integrate user route into other routes
+    route = require('./routes/auth');
+    //Required for authentication 
+    session = require('express-session'),
+    dbConnection = require('./db'), //if we put mongo connection in a separate file
+    MongoStore = require('connect-mongo')(session),
+    passport = require('./passport');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +24,24 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(morgan('dev'));
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/aqueryumDB";
+
+//Passport ----------------------
+//Use Session and session storage
+app.use(
+    session({
+        secret: 'secret-key',
+        store: new MongoStore({ mongooseConnection: dbConnection }),
+        resave: false, //required
+        saveUninitialized: false //required
+    })
+)
+
+//Passport Middleware 
+app.use(passport.initialize()) //Serialize user
+app.use(passport.session()) // Deserialize User
+//--------------------------------
+//Passport user model route
+app.use('/user', route);
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });

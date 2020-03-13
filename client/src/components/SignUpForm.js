@@ -4,11 +4,27 @@ import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
-function LoginForm() {
+function SignUpForm() {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
-        API.signup();
-        console.log(data)
+        const {fullname, username, email_address, password} = data;
+         API.post('/api/user', {
+			username: username,
+			password: password
+		})
+			.then(response => {
+				console.log(response)
+				if (!response.data.errmsg) {
+					console.log('successful signup')
+					window.location.href('/')
+				} else {
+					console.log('username already taken')
+				}
+			}).catch(error => {
+				console.log('signup error: ')
+				console.log(error)
+
+			})
     }
 
     return (
@@ -55,4 +71,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default SignUpForm;
