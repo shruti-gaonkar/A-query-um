@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
+import SignUpModal from './SignUpModal';
 
 function Nav(props) {
     return (
@@ -23,8 +24,8 @@ function Nav(props) {
             <NavItem href="/">
                 <LoginModal />
             </NavItem>
-            <NavItem href="/saved">
-                Sign Up
+            <NavItem href="/">
+                <SignUpModal />
             </NavItem>
         </Navbar>
     );
