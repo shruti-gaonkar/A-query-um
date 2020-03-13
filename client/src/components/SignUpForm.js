@@ -4,7 +4,7 @@ import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
-function LoginForm() {
+function SignUpForm() {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         API.signup();
@@ -55,4 +55,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default SignUpForm;
