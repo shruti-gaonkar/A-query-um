@@ -1,5 +1,6 @@
 {
     "name": "node_react_startup_structure",
+    "homepage": "https://github.com/shruti-gaonkar/A-query-um",
     "version": "1.0.0",
     "description": "The Node React Startup Structure",
     "main": "server/app.js",
@@ -21,6 +22,7 @@
         "concurrently": "^4.1.2"
     },
     "dependencies": {
+        "dotenv": "^8.2.0",
         "if-env": "^1.0.4"
     }
 }

@@ -4,6 +4,15 @@ import { Row, Col, Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
+const rowStyle = {
+    marginBottom: 5
+};
+const searchStyle = {
+    background: "rgba(255, 255, 225, 0.7)",
+    borderRadius: "25px",
+    paddingLeft: '15px'
+};
+
 function Search() {
     const [query, setQuery] = useState('');
     const { register, handleSubmit, watch, errors } = useForm()
@@ -20,25 +29,26 @@ function Search() {
 
     return (
         <>
-            <form>
-                <Row>
-                    <Col m={6} s={6}>
-                        <Input className="orange" label="Search" name="search" inputRef={register({
-                            required: true
-                        })} />
+            <Row style={rowStyle}>
+                <form className="valign-wrapper">
+                    <Col className="center-align s10 m5">
+                        <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
+                            register({ required: true })}
+                        />
                         {errors.search && <span className="error-msg">This field is required</span>}
 
                     </Col>
-                    <Col m={6} s={6}>
-                        <Button className="red" type="submit" onClick={handleSearch}>
-                            Search
-                    <Icon right>
+                    <Col className="center-align">
+                        <Button className="cyan darken-3 btn-floating" style={{ borderRadius: '25px' }} type="submit" onClick={handleSearch}>
+                            <Icon>
                                 search
-                    </Icon>
+                            </Icon>
                         </Button>
                     </Col>
-                </Row>
-            </form>
+                    <Col className="offset-m3 hide-on-small-only">
+                    </Col>
+                </form>
+            </Row>
         </>
     );
 }
