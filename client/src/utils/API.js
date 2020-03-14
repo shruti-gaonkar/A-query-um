@@ -15,5 +15,9 @@ export default {
 
     list: function () {
         return axios.get("/api/list");
+    },
+
+    searchById: function () {
+        return axios.get("/api/searchById/:id");
     }
 };

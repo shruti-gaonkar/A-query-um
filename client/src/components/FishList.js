@@ -19,7 +19,7 @@ function FishList(props) {
     return (
         <Card id={fish._id} key={fish._id} className="blue-grey darken-2 white-text"
             actions={[
-                <div><a key={fish._id} target="_blank" href="">{fish.aliases[0]}</a></div>
+                <div><a key={fish._id} href={`/fish/${fish.aliases[0]}`}>{fish.aliases[0]}</a></div>
             ]}
             header={<CardTitle image={fish.images[0].img === undefined
                 ? ""
