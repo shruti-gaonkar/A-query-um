@@ -28,10 +28,7 @@ function ParallaxContainer() {
         "./images/textures/aquarium06.jpg",
         "./images/textures/aquarium07.jpg",
         "./images/textures/aquarium08.jpg",
-        "./images/textures/aquarium09.jpg",
-        "./images/textures/aquarium10.jpg",
-        "./images/textures/aquarium11.jpg",
-        "./images/textures/aquarium12.png"
+        "./images/textures/aquarium09.jpg"
     ]
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
