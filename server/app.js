@@ -5,13 +5,14 @@ const express = require('express'),
     path = require('path'),
     router = require('./routes'),
     mongoose = require('mongoose'),
-    keys = require("../server/keys.js");
+    keys = require("./keys");
 
-const app = express();
-const PORT = process.env.PORT || 3001;
 
 const mlabUser = keys.mlab.username;
 const mlabPass = keys.mlab.password;
+
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 // Bodyparsing
@@ -22,7 +23,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // Provides great rout logging in our console for debugging
 app.use(morgan('dev'));
 
-const MONGODB_URI = process.env.MONGODB_URI || `"mongodb://${mlabUser}:${mlabPass}@ds245615.mlab.com:45615/heroku_0mhvm21t"`;
+const MONGODB_URI = process.env.MONGODB_URI || `mongodb://${mlabUser}:${mlabPass}@ds245615.mlab.com:45615/heroku_0mhvm21t`;
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
