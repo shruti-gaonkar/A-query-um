@@ -1,24 +1,34 @@
 import React from "react";
-import { Parallax } from 'react-parallax';
+import { Parallax, Row, Col } from 'react-parallax';
 import Search from "./Search";
 
-function ParallaxContainer() {
-    const insideStyles = {
-        background: "black",
-        opacity: "0.8",
-        padding: 20,
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        width: "40%",
-        transform: "translate(-50%,-50%)"
-    };
+const searchStyle = {
+    background: "rgba(225, 225, 225, 0.5)",
+    padding: 5,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    width: "100%",
+    height: "auto",
+    transform: "translate(-50%,-50%)"
+};
 
+const paraStyle = {
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+};
+
+function ParallaxContainer() {
     const parallaxImages = [
-        "./images/textures/aqua_orange_fish.png",
-        "./images/textures/aqua_orange_fish_3.png",
-        "./images/textures/aquarium_reef_tank.jpg",
-        "./images/textures/aquarium_reef_tank_3.jpg"
+        "./images/textures/aquarium01.jpg",
+        "./images/textures/aquarium02.jpg",
+        "./images/textures/aquarium03.jpg",
+        "./images/textures/aquarium04.jpg",
+        "./images/textures/aquarium05.jpg",
+        "./images/textures/aquarium06.jpg",
+        "./images/textures/aquarium07.jpg",
+        "./images/textures/aquarium08.jpg",
+        "./images/textures/aquarium09.jpg"
     ]
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
@@ -27,17 +37,13 @@ function ParallaxContainer() {
         <div id="index-banner" className="parallax-container">
             <Parallax
                 bgImage={randomImg}
-                bgImageAlt="the cat"
-                strength={600}
+                bgImageAlt="Aquarium fish swimming in a tank4"
+                style={paraStyle}
             >
                 <div style={{ height: 500 }}>
-                    <div style={insideStyles}><Search /></div>
+                    <div style={searchStyle}><Search /></div>
                 </div>
             </Parallax>
-            <p>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate consequatur reprehenderit perferendis hic non inventore error sint distinctio neque repudiandae. Aspernatur est accusantium quae possimus pariatur quasi delectus voluptatibus odit.</span>
-                <span>Voluptatem earum nemo omnis alias consequatur dignissimos autem laboriosam in, odio totam amet magnam ratione praesentium molestias non itaque error impedit debitis! Qui consequatur fuga quia neque mollitia eius aspernatur.</span>
-            </p>
         </div >
     );
 }

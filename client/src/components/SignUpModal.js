@@ -25,7 +25,7 @@ function SignUp(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<Button className="orange" node="button">Sign Up</Button>}
+            trigger={<Button className="teal" node="button">Sign Up</Button>}
         >
             <SignUpForm />
         </Modal>
