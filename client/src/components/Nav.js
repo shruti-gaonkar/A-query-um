@@ -5,7 +5,7 @@ import SignUpModal from './SignUpModal';
 
 function Nav(props) {
     return (
-        <Navbar className="light-blue accent-4"
+        <Navbar className="blue-grey darken-4"
             alignLinks="right"
             brand={<a className="brand-logo" href="#"><img src="./images/logo.png" /></a>}
             menuIcon={<Icon>menu</Icon>}

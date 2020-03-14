@@ -26,6 +26,9 @@ function ParallaxContainer() {
         "./images/textures/aquarium04.jpg",
         "./images/textures/aquarium05.jpg",
         "./images/textures/aquarium06.jpg",
+        "./images/textures/aquarium07.jpg",
+        "./images/textures/aquarium08.jpg",
+        "./images/textures/aquarium09.jpg",
         "./images/textures/aquarium10.jpg",
         "./images/textures/aquarium11.jpg",
         "./images/textures/aquarium12.png"
@@ -36,7 +39,7 @@ function ParallaxContainer() {
     return (
         <div id="index-banner" className="parallax-container">
             <Parallax
-                bgImage="./images/textures/aquarium04.jpg"
+                bgImage={randomImg}
                 bgImageAlt="Aquarium fish swimming in a tank4"
                 style={paraStyle}
             >
