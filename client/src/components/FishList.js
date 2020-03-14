@@ -13,16 +13,15 @@ function FishList(props) {
     }*/
 
     const { fish } = props;
+    console.log(fish);
 
     //const cardId = `card_${index}`;
     return (
-        <Card id={fish._id} key={fish.aliases[0]} className="blue-grey darken-2 white-text"
+        <Card id={fish._id} key={fish._id} className="blue-grey darken-2 white-text"
             actions={[
                 <div><a key={fish._id} target="_blank" href="">{fish.aliases[0]}</a></div>
             ]}
-            header={<CardTitle image={fish.image[0].img === undefined
-                ? ""
-                : `${fish.image[0].img} `} className="cardImg" />}
+            header={<CardTitle image={`${fish.image.img} `} className="cardImg" />}
             horizontal
         >
             {fish.description}
