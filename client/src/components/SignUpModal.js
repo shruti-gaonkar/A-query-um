@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-materialize';
 import SignUpForm from './SignUpForm';
 
-function Login(props) {
+function SignUp(props) {
     return (
         <Modal
             actions={[
@@ -32,4 +32,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default SignUp;

@@ -9,7 +9,11 @@ export default {
         return axios.post("/api/user", data);
     },
 
-    list: function (data) {
-        return axios.get("/api/list", data);
+    search: function (data) {
+        return axios.get("/api/search/" + data);
+    },
+
+    list: function () {
+        return axios.get("/api/list");
     }
 };

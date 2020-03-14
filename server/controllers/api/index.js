@@ -19,6 +19,7 @@ module.exports = {
     },
     findBy: (req, res) => {
         const searchQuery = req.params.query;
+        console.log("Controller=======" + searchQuery);
         db.Fish.find({ aliases: new RegExp(searchQuery, 'i') })
             .then(function (dbFish) {
                 res.json(dbFish);
