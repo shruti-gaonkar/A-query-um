@@ -13,11 +13,22 @@ const searchStyle = {
     transform: "translate(-50%,-50%)"
 };
 
+const paraStyle = {
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+};
+
 function ParallaxContainer() {
     const parallaxImages = [
-        "./images/textures/aqua_orange_fish.png",
-        "./images/textures/aquarium_reef_tank.jpg",
-        "./images/textures/aquarium_reef_tank_3.jpg"
+        "./images/textures/aquarium01.jpg",
+        "./images/textures/aquarium02.jpg",
+        "./images/textures/aquarium03.jpg",
+        "./images/textures/aquarium04.jpg",
+        "./images/textures/aquarium05.jpg",
+        "./images/textures/aquarium06.jpg",
+        "./images/textures/aquarium10.jpg",
+        "./images/textures/aquarium11.jpg",
+        "./images/textures/aquarium12.png"
     ]
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
@@ -25,9 +36,9 @@ function ParallaxContainer() {
     return (
         <div id="index-banner" className="parallax-container">
             <Parallax
-                bgImage={randomImg}
-                bgImageAlt="Aquarium fish swimming in a tank."
-                strength={600}
+                bgImage="./images/textures/aquarium04.jpg"
+                bgImageAlt="Aquarium fish swimming in a tank4"
+                style={paraStyle}
             >
                 <div style={{ height: 500 }}>
                     <div style={searchStyle}><Search /></div>

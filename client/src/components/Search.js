@@ -8,8 +8,9 @@ const rowStyle = {
     marginBottom: 5
 };
 const searchStyle = {
-    background: "rgba(0, 0, 225, 0.7)",
-    paddingLeft: '10px'
+    background: "rgba(255, 255, 225, 0.7)",
+    borderRadius: "25px",
+    paddingLeft: '15px'
 };
 
 function Search() {
@@ -31,14 +32,14 @@ function Search() {
             <Row style={rowStyle}>
                 <form className="valign-wrapper">
                     <Col className="center-align s10 m5">
-                        <Input className="white-text" name="search" style={searchStyle} inputRef={
+                        <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
                             register({ required: true })}
                         />
                         {errors.search && <span className="error-msg">This field is required</span>}
 
                     </Col>
                     <Col className="center-align">
-                        <Button className="indigo darken-2 btn-floating" style={{ borderRadius: '25px' }} type="submit" onClick={handleSearch}>
+                        <Button className="cyan darken-3 btn-floating" style={{ borderRadius: '25px' }} type="submit" onClick={handleSearch}>
                             <Icon>
                                 search
                             </Icon>
