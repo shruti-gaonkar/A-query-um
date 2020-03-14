@@ -8,8 +8,8 @@ function SearchContainer(props) {
     const [results, setResults] = useState([]);
 
     useLayoutEffect(() => {
-        return (!results.length) ? loadResults() : "";
-    });
+        loadResults();
+    }, [props.query]);
 
     const loadResults = () => {
         API.search(props.query)
