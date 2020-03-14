@@ -4,7 +4,7 @@ import { Footer } from "react-materialize";
 function PageFooter() {
     return (
         <Footer
-            className="blue-grey darken-4"
+            className="grey darken-4"
             copyrights="&copy; 2020 A-Query-Um"
             links={<ul><li><a className="grey-text text-lighten-3" href="https://github.com/shruti-gaonkar/A-query-um/">GitHub Repo</a></li></ul>}
         >
