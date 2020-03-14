@@ -8,8 +8,8 @@ function FishDetailContainer(props) {
     const [results, setResults] = useState();
 
     useLayoutEffect(() => {
-        return (!results) ? loadResults() : "";
-    });
+        loadResults();
+    }, [props.fish]);
 
     const loadResults = () => {
         API.searchById(props.query)
