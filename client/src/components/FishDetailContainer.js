@@ -8,11 +8,11 @@ function FishDetailContainer(props) {
     const [results, setResults] = useState([]);
 
     useLayoutEffect(() => {
-        return (!results.length) ? loadResults() : "";
+        return (!results) ? loadResults() : "";
     });
 
     const loadResults = () => {
-        API.search(props.query)
+        API.searchById(props.query)
             .then(res => {
                 //console.log(res.data);
                 setResults(res.data)
@@ -30,17 +30,13 @@ function FishDetailContainer(props) {
                     s={12}
                 >
                     {
-                        !results.length ? (
+                        !results ? (
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
-                                results.map((fish, i) => {
-                                    return (
-                                        <FishList
-                                            fish={fish}
-                                        />
-                                    );
-                                })
+
+                                <FishList fish={results} />
                             )
+
                     }
                 </Col>
             </Row>

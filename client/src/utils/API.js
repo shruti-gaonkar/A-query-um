@@ -17,7 +17,7 @@ export default {
         return axios.get("/api/list");
     },
 
-    searchById: function () {
-        return axios.get("/api/searchById/:id");
+    searchById: function (data) {
+        return axios.get("/api/searchById/" + data);
     }
 };
