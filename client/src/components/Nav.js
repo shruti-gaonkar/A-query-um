@@ -7,7 +7,7 @@ function Nav(props) {
     return (
         <Navbar className="grey darken-4"
             alignLinks="right"
-            brand={<a className="brand-logo" href="#"><img src="/images/logo3.png" /></a>}
+            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
             centerLogo
             menuIcon={<Icon>menu</Icon>}
             centerChildren="1"
