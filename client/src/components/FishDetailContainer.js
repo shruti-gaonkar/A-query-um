@@ -1,11 +1,11 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Container, Card, Icon, CardTitle, Row, Col } from 'react-materialize';
+import { Container, Row, Col } from 'react-materialize';
 import API from "../utils/API";
-import FishList from "../components/FishList";
+import FishDetail from "../components/FishDetail";
 
 function FishDetailContainer(props) {
     //const [hasError, setErrors] = useState(false);
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState();
 
     useLayoutEffect(() => {
         return (!results) ? loadResults() : "";
@@ -14,8 +14,7 @@ function FishDetailContainer(props) {
     const loadResults = () => {
         API.searchById(props.query)
             .then(res => {
-                //console.log(res.data);
-                setResults(res.data)
+                setResults(res.data);
             })
             .catch(err => console.log(err))
     }
@@ -34,7 +33,7 @@ function FishDetailContainer(props) {
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
 
-                                <FishList fish={results} />
+                                <FishDetail fish={results} />
                             )
 
                     }
