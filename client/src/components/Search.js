@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRoutes, navigate } from 'hookrouter';
 import { Row, Col, Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
@@ -16,21 +17,15 @@ const searchStyle = {
 function Search() {
     const [query, setQuery] = useState('');
     const { register, handleSubmit, watch, errors } = useForm()
-    /*const onSubmit = data => {
-        API.login();
-        console.log(data)
-    }*/
-
-    const handleSearch = () => {
-        //setQuery()
-        //hookrouter.setPath(`'/search/${query}'`);
-        //context.router.push(`'/search/${query}'`);
+    const onSubmit = data => {
+        const href = `/search/${data.search}`;
+        navigate(href, true);
     }
 
     return (
         <>
             <Row style={rowStyle}>
-                <form className="valign-wrapper">
+                <form className="valign-wrapper" onSubmit={handleSubmit(onSubmit)}>
                     <Col className="center-align s10 m5">
                         <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
                             register({ required: true })}
@@ -39,7 +34,7 @@ function Search() {
 
                     </Col>
                     <Col className="center-align">
-                        <Button className="cyan darken-3 btn-floating" style={{ borderRadius: '25px' }} type="submit" onClick={handleSearch}>
+                        <Button className="cyan darken-3 btn-floating" style={{ borderRadius: '25px' }} type="submit">
                             <Icon>
                                 search
                             </Icon>
