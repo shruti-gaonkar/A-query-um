@@ -2,11 +2,15 @@ import React from "react";
 import SearchContainer from "../components/SearchContainer";
 import HomepageContainer from '../components/HomepageContainer';
 import FishDetailContainer from '../components/FishDetailContainer';
+import FishAddFormContainer from '../components/FishAddFormContainer';
+import CreateAqueryumContainer from '../components/CreateAqueryumContainer';
 
 const routes = {
     "/": () => <HomepageContainer />,
     "/search/:query": ({ query }) => <SearchContainer query={query} />,
-    "/fish/:query": ({ query }) => <FishDetailContainer query={query} />
+    "/fish/create": () => <FishAddFormContainer />,
+    "/fish/:query": ({ query }) => <FishDetailContainer query={query} />,
+    "/aqueryum/create": () => <CreateAqueryumContainer />
 };
 
 export default routes;
