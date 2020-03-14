@@ -20,25 +20,29 @@ function Search() {
 
     return (
         <>
-            <form>
-                <Row>
-                    <Col m={6} s={6}>
-                        <Input className="orange" label="Search" name="search" inputRef={register({
-                            required: true
-                        })} />
-                        {errors.search && <span className="error-msg">This field is required</span>}
+            <Row className="valign-wrapper">
+                <form>
+                    <Col className="center-align s12">
+                        <Input className="blue" name="search" inputRef={
+                            register(
+                                {
+                                    required: true
+                                }
+                            )
+                        } />
+                        {/* {errors.search && <span className="error-msg">This field is required</span>} */}
 
                     </Col>
-                    <Col m={6} s={6}>
-                        <Button className="red" type="submit" onClick={handleSearch}>
+                    <Col className="center-align s12">
+                        <Button className="indigo darken-4" type="submit" onClick={handleSearch}>
                             Search
                     <Icon right>
                                 search
                     </Icon>
                         </Button>
                     </Col>
-                </Row>
-            </form>
+                </form>
+            </Row>
         </>
     );
 }

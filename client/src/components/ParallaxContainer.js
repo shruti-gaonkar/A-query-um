@@ -4,13 +4,13 @@ import Search from "./Search";
 
 function ParallaxContainer() {
     const insideStyles = {
-        background: "black",
+        background: "white",
         opacity: "0.8",
         padding: 20,
         position: "absolute",
         top: "50%",
         left: "50%",
-        width: "40%",
+        width: "90%",
         transform: "translate(-50%,-50%)"
     };
 
