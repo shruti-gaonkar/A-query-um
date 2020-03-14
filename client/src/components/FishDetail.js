@@ -1,9 +1,9 @@
 import React from "react";
-import { Card, CardTitle, Button } from 'react-materialize';
+import { Card, CardTitle } from 'react-materialize';
 
 function FishDetail(props) {
     const { fish } = props;
-    console.log(fish)
+    console.log("these are the fish details" + props)
     return (
         <Card id={fish._id} key={fish._id} className="blue-grey darken-2 white-text"
             actions={[

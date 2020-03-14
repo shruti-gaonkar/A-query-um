@@ -20,7 +20,9 @@ function FishList(props) {
                     textClassName="white-text"
                     title={fish.aliases[0]}
                 >
-                    {fish.description}
+                    <p className="truncate">
+                        {fish.description}
+                    </p>
                 </Card>
             </Col>
         </Row>
