@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Icon, Textarea, Checkbox, RadioGroup } from 'react-materialize';
+import { Button, Icon, Textarea, TextInput, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
@@ -14,6 +14,12 @@ function FishAddFormContainer() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
+
+        <TextInput
+          label="Add Image"
+          type="file"
+        />
+
         <Input label="Scientific Name" name="scientificName" inputRef={register({
           required: true
         })} />
@@ -33,11 +39,6 @@ function FishAddFormContainer() {
           required: true
         })} />
         {errors.description && <span className="error-msg">This field is required</span>}
-
-        <Input label="Fish Type" name="fishType" inputRef={register({
-          required: true
-        })} />
-        {errors.fishType && <span className="error-msg">This field is required</span>}
 
         <Input label="Max Size(cm)" name="maxSize" inputRef={register({
           required: true
@@ -66,16 +67,50 @@ function FishAddFormContainer() {
 
         <br />
 
-        <Checkbox
-          id="checkbox_1"
-          label="Community Fish?"
-          value="safe"
-          name="communityFish"
+        Fish Type? -
+        <RadioGroup
+          label="Reef Safe?"
+          name="reefSafe"
+          onChange={function noRefCheck() { }}
+          options={[
+            {
+              label: 'Freshwater',
+              value: 'fresh'
+            },
+            {
+              label: 'Saltwater',
+              value: 'true'
+            },
+            {
+              label: 'Brackish',
+              value: 'brackish'
+            }
+          ]}
         />
-        {errors.communityFish && <span className="error-msg">This field is required</span>}
 
         <br />
         <br />
+
+        Community Fish? -
+        <RadioGroup
+          label="Reef Safe?"
+          name="reefSafe"
+          onChange={function noRefCheck() { }}
+          options={[
+            {
+              label: 'True',
+              value: 'true'
+            },
+            {
+              label: 'False',
+              value: 'false'
+            }
+          ]}
+        />
+
+        <br />
+        <br />
+
         Reef Safe? -
         <RadioGroup
           label="Reef Safe?"
@@ -84,22 +119,47 @@ function FishAddFormContainer() {
           options={[
             {
               label: 'Safe',
-              value: 'xl'
+              value: 'safe'
             },
             {
               label: 'Not Safe',
-              value: 'xl'
+              value: 'not safe'
             },
             {
               label: 'Not Applicable',
-              value: 'l'
+              value: 'not applicable'
             }
           ]}
         />
-        {errors.reefSafe && <span className="error-msg">This field is required</span>}
 
         <br />
+        <br />
+
+        Aggro Level? -
+        <RadioGroup
+          label="Aggro Level?"
+          name="agroLevel"
+          onChange={function noRefCheck() { }}
+          options={[
+            {
+              label: 'Agressive',
+              value: 'agro'
+            },
+            {
+              label: 'Anti-Agressive',
+              value: 'antiAgro'
+            },
+            {
+              label: 'Peaceful',
+              value: 'peaceful'
+            }
+          ]}
+        />
+
+        <br />
+
         <Textarea />
+
         <Button className="teal" type="submit">
           Submit
                     <Icon right>

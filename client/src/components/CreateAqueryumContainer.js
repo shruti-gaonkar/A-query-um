@@ -4,8 +4,6 @@ import API from "../utils/API";
 
 function CreateAqueryumContainer(props) {
 
-
-
   return (
     <Container>
       <Row>
@@ -13,7 +11,12 @@ function CreateAqueryumContainer(props) {
           m={12}
           s={12}
         >
+
+          {/* ADD CODE HERE TO PAGE */}
+          
           Hello World
+
+
                 </Col>
       </Row>
     </Container>
