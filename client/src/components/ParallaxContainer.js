@@ -39,6 +39,7 @@ function ParallaxContainer() {
                 bgImage={randomImg}
                 bgImageAlt="Aquarium fish swimming in a tank4"
                 style={paraStyle}
+                strength={600}
             >
                 <div style={{ height: 500 }}>
                     <div style={searchStyle}><Search /></div>
