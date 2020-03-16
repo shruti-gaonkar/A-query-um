@@ -41,18 +41,22 @@ function ScrapeContainer() {
                             results.map((news, i) => {
                                 return (
                                     (i < 6) ?
-                                        <Col m={4} s={12}>
-                                            <Card
-                                                actions={[
-                                                    <a key={news.title} href={news.link}>{news.title}</a>
-                                                ]}
-                                                closeIcon={<Icon>close</Icon>}
-                                                header={<CardTitle image={news.image}>{news.title}</CardTitle>}
-                                                revealIcon={<Icon>more_vert</Icon>}
-                                            >
-                                                {news.desc}
-                                            </Card>
-                                        </Col> : ""
+
+                                        <>
+                                            <Col m={4} s={12}>
+                                                <Card
+                                                    actions={[
+                                                        <a key={news.title} href={news.link}>{news.title}</a>
+                                                    ]}
+                                                    closeIcon={<Icon>close</Icon>}
+                                                    header={<CardTitle image={news.image}>{news.title}</CardTitle>}
+                                                    revealIcon={<Icon>more_vert</Icon>}
+                                                >
+                                                    {news.desc}
+                                                </Card>
+                                            </Col>
+                                            {(i != 0 && i % 2 === 0 && i < 3) ? <Col m={12} s={12}><ParallaxContainer /></Col> : ""}
+                                        </> : ""
                                 );
                             })
                         )
