@@ -8,10 +8,12 @@ module.exports = {
             var results = [];
             $("article.elementor-post").each(function (i, element) {
                 var title = $(element).find(".elementor-post__title").text().trim();
+                var desc = $(element).find(".elementor-post__excerpt").text();
                 var link = $(element).find("a").attr("href");
                 var img = $(element).find("img").attr("src");
                 results.push({
                     title: title,
+                    desc: desc,
                     link: link,
                     image: img
                 });

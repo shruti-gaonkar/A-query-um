@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from 'react';
 import { Container, Row, Col, Card, CardTitle, Icon } from "react-materialize";
+import API from "../utils/API";
+import ParallaxContainer from './ParallaxContainer';
 
 function ScrapeContainer() {
+    //const [hasError, setErrors] = useState(false);
+    const [results, setResults] = useState([]);
+
+    useLayoutEffect(() => {
+        loadResults();
+    });
+
+    const loadResults = () => {
+        API.scrape()
+            .then(res => {
+                //console.log(res.data);
+                setResults(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
-        <Container>
+        <><Container>
             <Row>
                 <Col>
                     <p>
@@ -16,46 +34,32 @@ function ScrapeContainer() {
                 </Col>
             </Row>
             <Row>
-                <Col m={4} s={12}>
-                    <Card
-                        actions={[
-                            <a key="1" href="#">This is a Link</a>
-                        ]}
-                        closeIcon={<Icon>close</Icon>}
-                        header={<CardTitle image="https://materializecss.com/images/sample-1.jpg">Card Title</CardTitle>}
-                        revealIcon={<Icon>more_vert</Icon>}
-                    >
-                        Here is the standard card with an image thumbnail.
-                    </Card>
-                </Col>
-
-                <Col m={4} s={12}>
-                    <Card
-                        actions={[
-                            <a key="1" href="#">This is a Link</a>
-                        ]}
-                        closeIcon={<Icon>close</Icon>}
-                        header={<CardTitle image="https://materializecss.com/images/sample-1.jpg">Card Title</CardTitle>}
-                        revealIcon={<Icon>more_vert</Icon>}
-                    >
-                        Here is the standard card with an image thumbnail.
-                    </Card>
-                </Col>
-
-                <Col m={4} s={12}>
-                    <Card
-                        actions={[
-                            <a key="1" href="#">This is a Link</a>
-                        ]}
-                        closeIcon={<Icon>close</Icon>}
-                        header={<CardTitle image="https://materializecss.com/images/sample-1.jpg">Card Title</CardTitle>}
-                        revealIcon={<Icon>more_vert</Icon>}
-                    >
-                        Here is the standard card with an image thumbnail.
-                    </Card>
-                </Col>
+                {
+                    !results.length ? (
+                        <h1 className="text-center">No Results to Display</h1>
+                    ) : (
+                            results.map((news, i) => {
+                                return (
+                                    (i < 6) ?
+                                        <Col m={4} s={12}>
+                                            <Card
+                                                actions={[
+                                                    <a key={news.title} href={news.link}>{news.title}</a>
+                                                ]}
+                                                closeIcon={<Icon>close</Icon>}
+                                                header={<CardTitle image={news.image}>{news.title}</CardTitle>}
+                                                revealIcon={<Icon>more_vert</Icon>}
+                                            >
+                                                {news.desc}
+                                            </Card>
+                                        </Col> : ""
+                                );
+                            })
+                        )
+                }
             </Row>
         </Container>
+        </>
     );
 }
 
