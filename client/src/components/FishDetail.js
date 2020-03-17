@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Table, Card, CardTitle } from 'react-materialize';
 import CarouselContainer from './Carousel';
+import AliasModal from './AliasModal';
 
 const commFish = (communityFish) => {
     if (communityFish === true) {
@@ -32,12 +33,9 @@ function FishDetail(props) {
     });
     const joinFah = makeFah.join("-");
 
-    const joinAliases = fish.aliases.join(", ");
-    console.log(joinAliases);
-
     return (
         <>
-            <h4>{fish.aliases[0]}</h4>
+            <AliasModal aliases={fish.aliases} />
             <h5><em>{fish.scientificName}</em></h5>
 
             <CarouselContainer images={fish.images} />
@@ -78,7 +76,7 @@ function FishDetail(props) {
                                 <td>
                                     <strong>Minimum Tank Size:</strong></td>
                                 <td>
-                                    {fish.minTankSizeL} L ({findGallons} Gallons)</td>
+                                    {fish.minTankSizeL} Litres ({findGallons} Gallons)</td>
                             </tr>
                             <tr>
                                 <td>
@@ -112,10 +110,6 @@ function FishDetail(props) {
                             </tr>
                         </tbody>
                     </Table>
-                    <h6><strong>Known Aliases:</strong></h6>
-                    <p>
-                        {joinAliases}
-                    </p>
                 </Col>
             </Row>
         </>
