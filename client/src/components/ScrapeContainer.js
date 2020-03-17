@@ -46,7 +46,7 @@ function ScrapeContainer() {
                                             <Col m={4} s={12}>
                                                 <Card
                                                     actions={[
-                                                        <a key={news.title} href={news.link}>{news.title}</a>
+                                                        <a key={news.title} href={news.link} target="_blank">{news.title}</a>
                                                     ]}
                                                     closeIcon={<Icon>close</Icon>}
                                                     header={<CardTitle image={news.image}>{news.title}</CardTitle>}
