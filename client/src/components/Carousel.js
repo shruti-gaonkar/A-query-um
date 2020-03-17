@@ -4,12 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 
 function CarouselContainer(props) {
     const { images } = props;
-    console.log(images);
-
-    // let allImgs = fish.images;
-
-    // const makeCarousel = allImgs.map(({ img }) =>
-    //     `${img}`)
 
     const makeCarousel = images.map(({ img, alt }) =>
         <div>
@@ -18,7 +12,7 @@ function CarouselContainer(props) {
         </div>)
 
     return (
-        <Carousel width="600px" infiniteLoop emulateTouch>
+        <Carousel infiniteLoop emulateTouch showThumbs={false}>
             {makeCarousel}
         </Carousel>
     );
