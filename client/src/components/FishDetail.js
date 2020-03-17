@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Table, Card, CardTitle } from 'react-materialize';
+import { Row, Col, Table } from 'react-materialize';
 import CarouselContainer from './Carousel';
 import AliasModal from './AliasModal';
 
