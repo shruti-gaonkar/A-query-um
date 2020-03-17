@@ -32,6 +32,9 @@ function FishDetail(props) {
     });
     const joinFah = makeFah.join("-");
 
+    const joinAliases = fish.aliases.join(", ");
+    console.log(joinAliases);
+
     return (
         <>
             <h4>{fish.aliases[0]}</h4>
@@ -109,6 +112,10 @@ function FishDetail(props) {
                             </tr>
                         </tbody>
                     </Table>
+                    <h6><strong>Known Aliases:</strong></h6>
+                    <p>
+                        {joinAliases}
+                    </p>
                 </Col>
             </Row>
         </>

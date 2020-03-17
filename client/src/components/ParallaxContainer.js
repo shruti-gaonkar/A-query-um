@@ -37,7 +37,7 @@ function ParallaxContainer() {
         <div id="index-banner" className="parallax-container">
             <Parallax
                 bgImage={randomImg}
-                bgImageAlt="Aquarium fish swimming in a tank4"
+                bgImageAlt="Aquarium fish swimming in a tank."
                 style={paraStyle}
             >
                 <div style={{ height: 500 }}>
