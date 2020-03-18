@@ -22,6 +22,7 @@ module.exports = {
         const aliasId = `aliases.0`;
         let obj = {};
         obj[aliasId] = 1;
+
         db.Fish.find({ aliases: new RegExp(searchQuery, 'i') })
             .sort(obj)
             .then(function (dbFish) {

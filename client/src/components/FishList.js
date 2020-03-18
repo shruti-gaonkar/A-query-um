@@ -13,6 +13,9 @@ function FishList(props) {
             <td>
                 {fish.scientificName}
             </td>
+            <td>
+                {fish.type}
+            </td>
         </tr>
 
     );
