@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Nav />
-
+      <Container><Search /></Container>
       {routeResult}
 
       <PageFooter />
