@@ -19,5 +19,9 @@ export default {
 
     searchById: function (data) {
         return axios.get("/api/searchById/" + data);
+    },
+
+    scrape: function (data) {
+        return axios.get("/api/scrape");
     }
 };
