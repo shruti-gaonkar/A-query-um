@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import CarouselCSS from './css/styles.css';
+import CarouselOverrides from './css/styles.css';
 
 function CarouselContainer(props) {
     const { images } = props;
@@ -13,7 +13,7 @@ function CarouselContainer(props) {
         </div>)
 
     return (
-        <Carousel infiniteLoop emulateTouch showThumbs={false}>
+        <Carousel infiniteLoop emulateTouch showThumbs={false} width="auto">
             {makeCarousel}
         </Carousel>
     );

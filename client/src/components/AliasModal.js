@@ -2,7 +2,6 @@ import React from 'react';
 import { Modal, Button } from 'react-materialize';
 
 function AliasModal(props) {
-    const commonName = props.aliases[0];
     const sortAliases = props.aliases.sort();
     const joinAliases = sortAliases.join(", ");
 
@@ -28,7 +27,7 @@ function AliasModal(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<h4>{commonName}</h4>}
+            trigger={<p>View Aliases</p>}
         >
             <p>
                 {joinAliases}

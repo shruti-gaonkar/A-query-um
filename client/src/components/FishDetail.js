@@ -35,11 +35,20 @@ function FishDetail(props) {
 
     return (
         <>
-            <AliasModal aliases={fish.aliases} />
-            <h5><em>{fish.scientificName}</em></h5>
-
-            <CarouselContainer images={fish.images} />
-
+            <Row>
+                <Col>
+                    <h4>{fish.aliases[0]}</h4>
+                    <h5 style={{ marginTop: "10px" }}><em>{fish.scientificName}</em></h5>
+                    <AliasModal aliases={fish.aliases} />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <div style={{ maxWidth: "640px" }}>
+                        <CarouselContainer images={fish.images} />
+                    </div>
+                </Col>
+            </Row>
             <Row>
                 <Col>
                     <p>
