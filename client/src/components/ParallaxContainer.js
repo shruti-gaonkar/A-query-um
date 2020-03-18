@@ -18,7 +18,7 @@ const paraStyle = {
     backgroundPosition: "center"
 };
 
-function ParallaxContainer() {
+function ParallaxContainer({ showSearch }) {
     const parallaxImages = [
         "./images/textures/aquarium01.jpg",
         "./images/textures/aquarium02.jpg",
@@ -42,7 +42,11 @@ function ParallaxContainer() {
                 strength={600}
             >
                 <div style={{ height: 500 }}>
-                    <div className="searchBox"><Search /></div>
+                    {(showSearch) ?
+
+                        <div className="searchBox"><Search /></div>
+                        : ""
+                    }
                 </div>
             </Parallax>
         </div >
