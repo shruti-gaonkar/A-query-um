@@ -21,34 +21,35 @@ function ScrapeContainer() {
     }
 
     return (
-        <><Container>
-            <Row>
-                {
-                    !results.length ? (
-                        <h1 className="text-center">No Results to Display</h1>
-                    ) : (
-                            results.map((news, i) => {
-                                return (
-                                    (i < 6) ?
-                                        <Col m={4} s={12}>
-                                            <Card
-                                                actions={[
-                                                    <a className="truncate" key={news.title} href={news.link} target="_blank">{news.title}</a>
-                                                ]}
-                                                closeIcon={<Icon>close</Icon>}
-                                                header={<CardTitle image={news.image}>{news.title}</CardTitle>}
-                                                revealIcon={<Icon>more_vert</Icon>}
-                                            >
-                                                <p className="truncate">{news.desc}</p>
-                                            </Card>
-                                        </Col>
-                                        : ""
-                                );
-                            })
-                        )
-                }
-            </Row>
-        </Container>
+        <>
+            <Container>
+                <Row className="scrapeRow">
+                    {
+                        !results.length ? (
+                            <h1 className="text-center">No Results to Display</h1>
+                        ) : (
+                                results.map((news, i) => {
+                                    return (
+                                        (i < 6) ?
+                                            <Col m={4} s={12}>
+                                                <Card
+                                                    actions={[
+                                                        <a className="truncate" key={news.title} href={news.link} target="_blank">{news.title}</a>
+                                                    ]}
+                                                    closeIcon={<Icon>close</Icon>}
+                                                    header={<CardTitle image={news.image}>{news.title}</CardTitle>}
+                                                    revealIcon={<Icon>more_vert</Icon>}
+                                                >
+                                                    <p className="truncate">{news.desc}</p>
+                                                </Card>
+                                            </Col>
+                                            : ""
+                                    );
+                                })
+                            )
+                    }
+                </Row>
+            </Container>
         </>
     );
 }
