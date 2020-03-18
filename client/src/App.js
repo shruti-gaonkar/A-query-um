@@ -14,13 +14,10 @@ function App() {
     <>
       <Nav />
       {
-        (path != "/") ? <Container><div className="searchBox"><Search /></div></Container> : ""
+        (path != "/") ? <Container style={{ height: 100 }}><div className="searchBoxPages"><Search /></div></Container> : ""
       }
       {routeResult}
       <PageFooter />
-      {/*<Router>
-        <Route path="/search" component={SearchContainer} />
-      </Router>*/}
     </>
   );
 }
