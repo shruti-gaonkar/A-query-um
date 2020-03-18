@@ -29,7 +29,6 @@ function Search() {
                         <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
                             register({ required: true })}
                         />
-                        {errors.search && <span className="error-msg">This field is required</span>}
 
                     </Col>
                     <Col className="center-align">
