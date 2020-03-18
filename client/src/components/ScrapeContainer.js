@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Container, Row, Col, Card, CardTitle, Icon } from "react-materialize";
 import API from "../utils/API";
-import ParallaxContainer from './ParallaxContainer';
 
 function ScrapeContainer() {
     //const [hasError, setErrors] = useState(false);
@@ -41,22 +40,19 @@ function ScrapeContainer() {
                             results.map((news, i) => {
                                 return (
                                     (i < 6) ?
-
-                                        <>
-                                            <Col m={4} s={12}>
-                                                <Card
-                                                    actions={[
-                                                        <a key={news.title} href={news.link} target="_blank">{news.title}</a>
-                                                    ]}
-                                                    closeIcon={<Icon>close</Icon>}
-                                                    header={<CardTitle image={news.image}>{news.title}</CardTitle>}
-                                                    revealIcon={<Icon>more_vert</Icon>}
-                                                >
-                                                    {news.desc}
-                                                </Card>
-                                            </Col>
-                                            {(i != 0 && i % 2 === 0 && i < 3) ? <Col m={12} s={12}><ParallaxContainer /></Col> : ""}
-                                        </> : ""
+                                        <Col m={4} s={12}>
+                                            <Card
+                                                actions={[
+                                                    <a key={news.title} href={news.link} target="_blank">{news.title}</a>
+                                                ]}
+                                                closeIcon={<Icon>close</Icon>}
+                                                header={<CardTitle image={news.image}>{news.title}</CardTitle>}
+                                                revealIcon={<Icon>more_vert</Icon>}
+                                            >
+                                                {news.desc}
+                                            </Card>
+                                        </Col>
+                                        : ""
                                 );
                             })
                         )
