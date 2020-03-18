@@ -20,15 +20,10 @@ function SearchContainer(props) {
             .catch(err => console.log(err))
     }
 
-
-
     return (
         <Container>
             <Row>
-                <Col
-                    m={12}
-                    s={12}
-                >
+                <Col s={12}>
                     {
                         !results.length ? (
                             <h1 className="text-center">No Results to Display</h1>

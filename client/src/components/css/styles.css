@@ -1,18 +1,15 @@
 .carousel {
+    width: 640px;
     height: fit-content;
 }
 
-.carousel.carousel-slider {
-    width: 640px;
-}
-
 ul.slider {
+    width: 640px;
     height: fit-content;
 }
 
 @media only screen and (max-width: 768px) {
     .carousel {
-        
         height: 300px;
     }
     
