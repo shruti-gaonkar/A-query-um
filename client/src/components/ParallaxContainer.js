@@ -1,6 +1,7 @@
 import React from "react";
 import { Parallax } from 'react-parallax';
 import Search from "./Search";
+import ParallaxImages from '../data/parallax.json';
 
 const paraStyle = {
     backgroundSize: "cover",
@@ -8,17 +9,7 @@ const paraStyle = {
 };
 
 function ParallaxContainer({ showSearch }) {
-    const parallaxImages = [
-        "./images/textures/aquarium01.jpg",
-        "./images/textures/aquarium02.jpg",
-        "./images/textures/aquarium03.jpg",
-        "./images/textures/aquarium04.jpg",
-        "./images/textures/aquarium05.jpg",
-        "./images/textures/aquarium06.jpg",
-        "./images/textures/aquarium07.jpg",
-        "./images/textures/aquarium08.jpg",
-        "./images/textures/aquarium09.jpg"
-    ]
+    const parallaxImages = ParallaxImages;
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
@@ -27,8 +18,8 @@ function ParallaxContainer({ showSearch }) {
             <Parallax
                 bgImage={randomImg}
                 bgImageAlt="Aquarium fish swimming in a tank."
-                style={paraStyle}
-                strength={600}
+                bgStyle={paraStyle}
+                strength={100}
             >
                 <div style={{ height: 500 }}>
                     {(showSearch) ?
