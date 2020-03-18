@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Icon, Textarea, RadioGroup } from 'react-materialize';
+import { Button, Icon, Textarea, TextInput, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function FishAddFormContainer() {
-  const { register, handleSubmit, errors } = useForm()
+  const { register, handleSubmit, watch, errors } = useForm()
   const onSubmit = data => {
     //API.login();
     console.log(data)
@@ -15,7 +15,10 @@ function FishAddFormContainer() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <Input label="Add Image" />
+        <TextInput
+          label="Add Image"
+          type="file"
+        />
 
         <Input label="Scientific Name" name="scientificName" inputRef={register({
           required: true

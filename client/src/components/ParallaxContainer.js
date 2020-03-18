@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from 'react';
 import { Parallax } from 'react-parallax';
 import Search from "./Search";
 
@@ -8,6 +8,9 @@ const paraStyle = {
 };
 
 function ParallaxContainer({ showSearch }) {
+    const [screen, setScreen] = useState('');
+    const [strength, setStrength] = useState(600);
+
     const parallaxImages = [
         "./images/textures/aquarium01.jpg",
         "./images/textures/aquarium02.jpg",
@@ -22,13 +25,24 @@ function ParallaxContainer({ showSearch }) {
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
+    const checkScreenSize = () => {
+        setScreen(window.innerWidth);
+        if (window.innerWidth <= 768) {
+            setStrength(100);
+        }
+    }
+
+    useLayoutEffect(() => {
+        checkScreenSize();
+    }, [screen]);
+
     return (
         <div id="index-banner">
             <Parallax
                 bgImage={randomImg}
                 bgImageAlt="Aquarium fish swimming in a tank."
                 style={paraStyle}
-                strength={600}
+                strength={strength}
             >
                 <div style={{ height: 500 }}>
                     {(showSearch) ?
