@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import CarouselOverrides from './css/styles.css';
+import '../Carousel/styles.css';
 
 function CarouselContainer(props) {
     const { images } = props;
