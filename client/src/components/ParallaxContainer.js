@@ -42,7 +42,7 @@ function ParallaxContainer() {
                 strength={600}
             >
                 <div style={{ height: 500 }}>
-                    <div style={searchStyle}><Search /></div>
+                    <div className="searchBox"><Search /></div>
                 </div>
             </Parallax>
         </div >
