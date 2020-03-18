@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Container, Row, Col } from 'react-materialize';
 import API from "../utils/API";
-import FishDetail from "../components/FishDetail";
+import FishDetail from "./FishDetail";
 
 function FishDetailContainer(props) {
     const [results, setResults] = useState();

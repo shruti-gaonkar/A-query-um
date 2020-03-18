@@ -14,7 +14,6 @@ function SearchContainer(props) {
     const loadResults = () => {
         API.search(props.query)
             .then(res => {
-                //console.log(res.data);
                 setResults(res.data)
             })
             .catch(err => console.log(err))
@@ -59,19 +58,3 @@ function SearchContainer(props) {
 }
 
 export default SearchContainer;
-
-{/* <Table width="100%">
-<thead>
-    <tr>
-        <th data-field="commonName">
-            Common Name
-        </th>
-        <th data-field="scientificName">
-            Scientific Name
-        </th>
-    </tr>
-</thead>
-<tbody>
-    
-</tbody>
-</Table> */}

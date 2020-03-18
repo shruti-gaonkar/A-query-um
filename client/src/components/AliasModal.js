@@ -27,7 +27,7 @@ function AliasModal(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<p>View Aliases</p>}
+            trigger={<p className="blue-text"><strong>View Aliases</strong></p>}
         >
             <p>
                 {joinAliases}

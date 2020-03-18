@@ -1,7 +1,8 @@
 import React from "react";
 import { Row, Col, Table } from 'react-materialize';
-import CarouselContainer from './Carousel';
-import AliasModal from './AliasModal';
+import CarouselContainer from '../Carousel';
+import AliasModal from '../AliasModal';
+import '../FishDetail/styles.css';
 
 const commFish = (communityFish) => {
     if (communityFish === true) {
@@ -35,14 +36,14 @@ function FishDetail(props) {
 
     return (
         <>
-            <Row>
+            <Row className="fishRow">
                 <Col>
                     <h4>{fish.aliases[0]}</h4>
                     <h5 style={{ marginTop: "10px" }}><em>{fish.scientificName}</em></h5>
                     <AliasModal aliases={fish.aliases} />
                 </Col>
             </Row>
-            <Row>
+            <Row className="fishRow">
                 <Col>
                     <div style={{ maxWidth: "640px" }}>
                         <CarouselContainer images={fish.images} />
