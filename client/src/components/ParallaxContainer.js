@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Parallax } from 'react-parallax';
 import Search from "./Search";
+import ParallaxImages from '../data/parallax.json';
 
 const paraStyle = {
     backgroundSize: "cover",
@@ -11,17 +12,7 @@ function ParallaxContainer({ showSearch }) {
     const [screen, setScreen] = useState('');
     const [strength, setStrength] = useState(600);
 
-    const parallaxImages = [
-        "./images/textures/aquarium01.jpg",
-        "./images/textures/aquarium02.jpg",
-        "./images/textures/aquarium03.jpg",
-        "./images/textures/aquarium04.jpg",
-        "./images/textures/aquarium05.jpg",
-        "./images/textures/aquarium06.jpg",
-        "./images/textures/aquarium07.jpg",
-        "./images/textures/aquarium08.jpg",
-        "./images/textures/aquarium09.jpg"
-    ]
+    const parallaxImages = ParallaxImages;
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
