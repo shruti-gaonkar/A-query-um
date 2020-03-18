@@ -2,17 +2,6 @@ import React from "react";
 import { Parallax } from 'react-parallax';
 import Search from "./Search";
 
-const searchStyle = {
-    background: "rgba(225, 225, 225, 0.5)",
-    padding: 5,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: "100%",
-    height: "auto",
-    transform: "translate(-50%,-50%)"
-};
-
 const paraStyle = {
     backgroundSize: "cover",
     backgroundPosition: "center"
