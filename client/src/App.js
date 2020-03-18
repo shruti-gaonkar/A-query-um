@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-materialize';
 import { useRoutes, usePath } from 'hookrouter';
 import Routes from './router';
 import './App.css';
@@ -14,7 +13,11 @@ function App() {
     <>
       <Nav />
       {
-        (path != "/") ? <div className="searchBoxPages"><Search /></div> : ""
+        (path !== "/") ?
+          <div className="searchBoxPages">
+            <Search />
+          </div>
+          : ""
       }
       {routeResult}
       <PageFooter />

@@ -1,7 +1,13 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Container, Row, Col } from 'react-materialize';
+import { Container, Table, Row, Col } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
+
+// const fishResults = results.map((fish) => {
+//     return (
+//         <FishList fish={fish} />
+//     );
+// })
 
 function SearchContainer(props) {
     //const [hasError, setErrors] = useState(false);
@@ -20,24 +26,17 @@ function SearchContainer(props) {
             .catch(err => console.log(err))
     }
 
-
-
     return (
         <Container>
             <Row>
-                <Col
-                    m={12}
-                    s={12}
-                >
+                <Col s={12}>
                     {
                         !results.length ? (
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
-                                results.map((fish, i) => {
+                                results.map((fish) => {
                                     return (
-                                        <FishList
-                                            fish={fish}
-                                        />
+                                        <FishList fish={fish} />
                                     );
                                 })
                             )
@@ -49,3 +48,19 @@ function SearchContainer(props) {
 }
 
 export default SearchContainer;
+
+{/* <Table width="100%">
+<thead>
+    <tr>
+        <th data-field="commonName">
+            Common Name
+        </th>
+        <th data-field="scientificName">
+            Scientific Name
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <FishList fish={fish} />
+</tbody>
+</Table> */}

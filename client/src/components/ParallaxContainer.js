@@ -26,7 +26,7 @@ function ParallaxContainer({ showSearch }) {
         <div id="index-banner">
             <Parallax
                 bgImage={randomImg}
-                bgImageAlt="Aquarium fish swimming in a tank4"
+                bgImageAlt="Aquarium fish swimming in a tank."
                 style={paraStyle}
                 strength={600}
             >
