@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useRoutes, navigate } from 'hookrouter';
 import { Row, Col, Button, Icon } from 'react-materialize';
 import Input from "./Input";
-import API from "../utils/API";
 
 const rowStyle = {
     marginBottom: 5

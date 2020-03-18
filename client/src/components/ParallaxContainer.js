@@ -1,5 +1,5 @@
 import React from "react";
-import { Parallax, Row, Col } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 import Search from "./Search";
 
 const searchStyle = {
@@ -18,7 +18,7 @@ const paraStyle = {
     backgroundPosition: "center"
 };
 
-function ParallaxContainer() {
+function ParallaxContainer({ showSearch }) {
     const parallaxImages = [
         "./images/textures/aquarium01.jpg",
         "./images/textures/aquarium02.jpg",
@@ -34,14 +34,19 @@ function ParallaxContainer() {
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
     return (
-        <div id="index-banner" className="parallax-container">
+        <div id="index-banner">
             <Parallax
                 bgImage={randomImg}
                 bgImageAlt="Aquarium fish swimming in a tank4"
                 style={paraStyle}
+                strength={600}
             >
                 <div style={{ height: 500 }}>
-                    <div style={searchStyle}><Search /></div>
+                    {(showSearch) ?
+
+                        <div className="searchBox"><Search /></div>
+                        : ""
+                    }
                 </div>
             </Parallax>
         </div >
