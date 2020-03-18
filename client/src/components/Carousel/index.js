@@ -8,7 +8,7 @@ function CarouselContainer(props) {
 
     const makeCarousel = images.map(({ img, alt }) =>
         <div>
-            <img src={img} />
+            <img src={img} alt={alt} />
             <p className="legend">{alt}</p>
         </div>)
 

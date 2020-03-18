@@ -19,7 +19,12 @@ module.exports = {
     },
     findBy: (req, res) => {
         const searchQuery = req.params.query;
+        const aliasId = `aliases.0`;
+        let obj = {};
+        obj[aliasId] = 1;
+
         db.Fish.find({ aliases: new RegExp(searchQuery, 'i') })
+            .sort(obj)
             .then(function (dbFish) {
                 res.json(dbFish);
             })

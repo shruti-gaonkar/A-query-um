@@ -3,12 +3,6 @@ import { Container, Table, Row, Col } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
 
-// const fishResults = results.map((fish) => {
-//     return (
-//         <FishList fish={fish} />
-//     );
-// })
-
 function SearchContainer(props) {
     //const [hasError, setErrors] = useState(false);
     const [results, setResults] = useState([]);
@@ -20,11 +14,16 @@ function SearchContainer(props) {
     const loadResults = () => {
         API.search(props.query)
             .then(res => {
-                //console.log(res.data);
                 setResults(res.data)
             })
             .catch(err => console.log(err))
     }
+
+    const fishResults = results.map((fish) => {
+        return (
+            <FishList fish={fish} />
+        );
+    })
 
     return (
         <Container>
@@ -34,11 +33,22 @@ function SearchContainer(props) {
                         !results.length ? (
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
-                                results.map((fish) => {
-                                    return (
-                                        <FishList fish={fish} />
-                                    );
-                                })
+
+                                <Table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="commonName">
+                                                Common Name</th>
+                                            <th data-field="scientificName">
+                                                Scientific Name</th>
+                                            <th data-field="type">
+                                                Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {fishResults}
+                                    </tbody>
+                                </Table>
                             )
                     }
                 </Col>
@@ -48,19 +58,3 @@ function SearchContainer(props) {
 }
 
 export default SearchContainer;
-
-{/* <Table width="100%">
-<thead>
-    <tr>
-        <th data-field="commonName">
-            Common Name
-        </th>
-        <th data-field="scientificName">
-            Scientific Name
-        </th>
-    </tr>
-</thead>
-<tbody>
-    <FishList fish={fish} />
-</tbody>
-</Table> */}

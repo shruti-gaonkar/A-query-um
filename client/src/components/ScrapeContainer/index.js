@@ -31,7 +31,7 @@ function ScrapeContainer() {
                                 results.map((news, i) => {
                                     return (
                                         (i < 6) ?
-                                            <Col m={4} s={12}>
+                                            <Col l={4} m={6} s={12}>
                                                 <Card
                                                     actions={[
                                                         <a className="truncate" key={news.title} href={news.link} target="_blank">{news.title}</a>

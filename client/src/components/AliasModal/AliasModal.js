@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-materialize';
+import '../AliasModal/styles.css';
 
 function AliasModal(props) {
     const sortAliases = props.aliases.sort();
@@ -27,7 +28,7 @@ function AliasModal(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<p>View Aliases</p>}
+            trigger={<p className="blue-text aliases-hover"><strong>Display Aliases</strong></p>}
         >
             <p>
                 {joinAliases}
