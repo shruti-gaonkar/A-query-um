@@ -9,7 +9,7 @@ function ScrapeContainer() {
 
     useLayoutEffect(() => {
         loadResults();
-    });
+    }, [1]);
 
     const loadResults = () => {
         API.scrape()
