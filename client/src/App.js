@@ -14,7 +14,7 @@ function App() {
     <>
       <Nav />
       {
-        (path != "/") ? <Container style={{ height: 100 }}><div className="searchBoxPages"><Search /></div></Container> : ""
+        (path != "/") ? <div className="searchBoxPages"><Search /></div> : ""
       }
       {routeResult}
       <PageFooter />
