@@ -1,0 +1,22 @@
+.carousel {
+    height: fit-content;
+}
+
+.carousel.carousel-slider {
+    width: 640px;
+}
+
+ul.slider {
+    height: fit-content;
+}
+
+@media only screen and (max-width: 768px) {
+    .carousel {
+        
+        height: 300px;
+    }
+    
+    ul.slider {
+        height: 300px;
+    }
+}
