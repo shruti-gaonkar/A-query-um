@@ -10,14 +10,8 @@
 }
 
 .searchBoxPages {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  position: absolute;
-  top: 20%;
-  left: 50%;
+  background: rgba(184, 182, 182, 0.5);
   width: 100%;
-  height: auto;
-  transform: translate(-50%,-50%);
 }
 
 .input-field{

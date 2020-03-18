@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-materialize';
 import { useRoutes, usePath } from 'hookrouter';
 import Routes from './router';
 import './App.css';
@@ -14,11 +13,11 @@ function App() {
     <>
       <Nav />
       {
-        (path !== "/") ? <Container style={{ height: 100 }}>
+        (path !== "/") ?
           <div className="searchBoxPages">
             <Search />
           </div>
-        </Container> : ""
+          : ""
       }
       {routeResult}
       <PageFooter />
