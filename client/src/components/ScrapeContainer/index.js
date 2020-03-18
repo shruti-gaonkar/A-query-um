@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Container, Row, Col, Card, CardTitle, Icon } from "react-materialize";
-import API from "../utils/API";
+import API from "../../utils/API";
+import '../ScrapeContainer/styles.css';
 
 function ScrapeContainer() {
     //const [hasError, setErrors] = useState(false);
@@ -32,13 +33,13 @@ function ScrapeContainer() {
                                         <Col m={4} s={12}>
                                             <Card
                                                 actions={[
-                                                    <a key={news.title} href={news.link} target="_blank">{news.title}</a>
+                                                    <a className="truncate" key={news.title} href={news.link} target="_blank">{news.title}</a>
                                                 ]}
                                                 closeIcon={<Icon>close</Icon>}
                                                 header={<CardTitle image={news.image}>{news.title}</CardTitle>}
                                                 revealIcon={<Icon>more_vert</Icon>}
                                             >
-                                                {news.desc}
+                                                <p className="truncate">{news.desc}</p>
                                             </Card>
                                         </Col>
                                         : ""
