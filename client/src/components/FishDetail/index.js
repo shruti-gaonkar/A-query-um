@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Table } from 'react-materialize';
 import CarouselContainer from '../Carousel';
-import AliasModal from '../AliasModal';
+import AliasModal from '../AliasModal/AliasModal';
 import '../FishDetail/styles.css';
 
 const commFish = (communityFish) => {
