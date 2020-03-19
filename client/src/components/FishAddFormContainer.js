@@ -1,24 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Icon, Textarea, TextInput, RadioGroup } from 'react-materialize';
+import { Button, Icon, Textarea, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function FishAddFormContainer() {
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, errors } = useForm();
+  const [imageLinkArr, setImageLinkArr] = useState([]);
+  const [imageAltArr, setImageAltArr] = useState([]);
   const onSubmit = data => {
     //API.login();
     console.log(data)
   }
 
+  const handleAddImage = (e) => {
+    e.preventDefault();
+    setImageLinkArr([...imageLinkArr, '']);
+  }
+
+  const handleImageChange = (e, index) => {
+    //const imageLinkArr1 = imageLinkArr;
+    imageLinkArr[index] = e.target.value;
+    setImageLinkArr(imageLinkArr);
+  }
+
+  const handleImageAltChange = (e, index) => {
+    //const imageLinkArr1 = imageLinkArr;
+    imageAltArr[index] = e.target.value;
+    setImageAltArr(imageAltArr);
+  }
+
+  const handleRemoveImage = (e, index) => {
+    e.preventDefault();
+    imageAltArr.splice(index, 1);
+    setImageLinkArr(imageLinkArr.splice(index, 1));
+  }
+
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-
-        <TextInput
-          label="Add Image"
-          type="file"
-        />
+      <form>
+        {
+          !imageLinkArr.length ?
+            ""
+            : (
+              imageLinkArr.map((link, index) => {
+                return (
+                  <>
+                    <div key={index}>
+                      <Input label="Image Link" value={link} onChange={(e) => handleImageChange(e, index)} />
+                      <Input label="Image Alt Text" value={imageAltArr[index]} onChange={(e) => handleImageAltChange(e, index)} />
+                    </div>
+                    <Button onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
+                  </>
+                )
+              })
+            )
+        }
+        <Button onClick={(e) => handleAddImage(e)}>Add Image</Button>
 
         <Input label="Scientific Name" name="scientificName" inputRef={register({
           required: true
@@ -160,7 +198,7 @@ function FishAddFormContainer() {
 
         <Textarea />
 
-        <Button className="teal" type="submit">
+        <Button className="teal" type="submit" onClick={handleSubmit(onSubmit)}>
           Submit
                     <Icon right>
             send
