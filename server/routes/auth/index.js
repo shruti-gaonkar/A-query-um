@@ -1,15 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../db/models/User')
-const passport = require('../passport')
-
+const passport = require('../../passport');
+const db = require('../../models');
 
 router.post('/', (req, res) => {
     console.log('user signup');
 
     const { username, password, email, firstName } = req.body
 
-    User.findOne({ username: username }, (err, user) => {
+    db.User.findOne({ username: username }, (err, user) => {
         if (err) {
             console.log('User.js post error: ', err)
         } else if (user) {
@@ -32,10 +31,10 @@ router.post('/', (req, res) => {
 
 //Login function calls axios to api/login; router here will have to handle post request and execute here
 router.post('/api/login', function (req, res, next) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
-        next()
-    },
+    console.log('routes/user.js, login, req.body: ');
+    console.log(req.body)
+    next()
+},
     passport.authenticate('local'),
     (req, res) => {
         console.log('logged in', req.user);
