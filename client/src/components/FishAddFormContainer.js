@@ -6,7 +6,7 @@ import API from "../utils/API";
 
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
-  const [imageLinkArr, setImageLinkArr] = useState([]);
+  const [imageLinkArr, setImageLinkArr] = useState([{ value: null }]);
   const [imageAltArr, setImageAltArr] = useState([]);
   const onSubmit = data => {
     //API.login();
@@ -15,13 +15,19 @@ function FishAddFormContainer() {
 
   const handleAddImage = (e) => {
     e.preventDefault();
-    setImageLinkArr([...imageLinkArr, '']);
+    //setImageLinkArr([...imageLinkArr, '']);
+    const values = [...imageLinkArr];
+    values.push({ value: null });
+    setImageLinkArr(values);
   }
 
   const handleImageChange = (e, index) => {
     //const imageLinkArr1 = imageLinkArr;
-    imageLinkArr[index] = e.target.value;
-    setImageLinkArr(imageLinkArr);
+    //imageLinkArr[index] = e.target.value;
+    //setImageLinkArr(imageLinkArr);
+    const values = [...imageLinkArr];
+    values[index].value = e.target.value;
+    setImageLinkArr(values);
   }
 
   const handleImageAltChange = (e, index) => {
@@ -32,8 +38,12 @@ function FishAddFormContainer() {
 
   const handleRemoveImage = (e, index) => {
     e.preventDefault();
-    imageAltArr.splice(index, 1);
-    setImageLinkArr(imageLinkArr.splice(index, 1));
+    console.log(imageLinkArr);
+    const values = [...imageLinkArr];
+    console.log(values);
+    values.splice(index, 1);
+    console.log(values);
+    setImageLinkArr(values);
   }
 
   return (
@@ -47,7 +57,7 @@ function FishAddFormContainer() {
                 return (
                   <>
                     <div key={index}>
-                      <Input label="Image Link" value={link} onChange={(e) => handleImageChange(e, index)} />
+                      <Input label="Image Link" value={link.value} onChange={(e) => handleImageChange(e, index)} />
                       <Input label="Image Alt Text" value={imageAltArr[index]} onChange={(e) => handleImageAltChange(e, index)} />
                     </div>
                     <Button onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
