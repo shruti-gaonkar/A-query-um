@@ -13,8 +13,6 @@ const express = require('express'),
     mongoose = require('mongoose'),
     keys = require("./keys");
 
-mongoose.Promise = global.Promise;
-
 const mlabUser = keys.mlab.username;
 const mlabPass = keys.mlab.password;
 
