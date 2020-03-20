@@ -7,10 +7,12 @@ import API from "../utils/API";
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
-  //const [imageAltArr, setImageAltArr] = useState([{ value: null }]);
+  const [aliasesArr, setAliasesArr] = useState([]);
   const onSubmit = data => {
     //API.login();
-    console.log(data)
+    data.aliases = aliasesArr;
+    data.images = imageLinkArr;
+    console.log(data);
   }
 
   const handleAddImage = (e) => {
@@ -42,6 +44,25 @@ function FishAddFormContainer() {
     setImageLinkArr(values);
   }
 
+  const handleAddAliases = (e) => {
+    e.preventDefault();
+    const values = [...aliasesArr];
+    values.push(['']);
+    setAliasesArr(values);
+  }
+
+  const handleAliasesChange = (e, index) => {
+    const values = [...aliasesArr];
+    values[index].img = e.target.value;
+    setAliasesArr(values);
+  }
+
+  const handleRemoveAliases = (e, index) => {
+    e.preventDefault();
+    const values = [...aliasesArr];
+    values.splice(index, 1);
+    setAliasesArr(values);
+  }
   return (
     <>
       <form>
@@ -69,9 +90,26 @@ function FishAddFormContainer() {
         })} />
         {errors.scientificName && <span className="error-msg">This field is required</span>}
 
-        <Input label="Aliases" name="aliases" inputRef={register({
-          required: true
-        })} />
+        {
+          !aliasesArr.length ?
+            ""
+            : (
+              aliasesArr.map((name, index) => {
+                return (
+                  <>
+                    <div key={index}>
+                      <Input label="Aliases" value={name} onChange={(e) => handleAliasesChange(e, index)} inputRef={register({
+                        required: true
+                      })} />
+                    </div>
+                    <Button onClick={(e) => handleRemoveAliases(e, index)}>Remove</Button>
+                  </>
+                )
+              })
+            )
+        }
+        <Button onClick={(e) => handleAddAliases(e)}>Add Aliases</Button>
+
         {errors.aliases && <span className="error-msg">This field is required</span>}
 
         <Input label="Images" name="images" inputRef={register({
