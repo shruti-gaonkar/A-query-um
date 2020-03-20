@@ -43,8 +43,8 @@ const connection = mongoose.connection;
 // )
 
 //Passport Middleware 
-app.use(passport.initialize()) //Serialize user
-app.use(passport.session()) // Deserialize User
+// app.use(passport.initialize()) //Serialize user
+// app.use(passport.session()) // Deserialize User
 //--------------------------------
 //Passport user model route
 app.use('/user', route);
