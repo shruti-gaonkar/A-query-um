@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
             })
         }
         else {
-            const newUser = new User({
+            const newUser = new db.User({
                 username: username,
                 password: password
             })
@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
 })
 
 //Login function calls axios to api/login; router here will have to handle post request and execute here
-router.post('/api/login', function (req, res, next) {
+router.post('/login', function (req, res, next) {
     console.log('routes/user.js, login, req.body: ');
     console.log(req.body)
     next()

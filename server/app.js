@@ -5,7 +5,6 @@ const express = require('express'),
     path = require('path'),
     router = require('./routes'),
     //need to integrate user route into other routes
-    route = require('./routes/auth'),
     //Required for authentication 
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
@@ -33,22 +32,19 @@ const connection = mongoose.connection;
 
 //Passport ----------------------
 //Use Session and session storage
-// app.use(
-//     session({
-//         secret: 'secret-key',
-//         store: new MongoStore({ mongooseConnection: connection }),
-//         resave: false, //required
-//         saveUninitialized: false //required
-//     })
-// )
+app.use(
+    session({
+        secret: 'secret-key',
+        store: new MongoStore({ mongooseConnection: connection }),
+        resave: false, //required
+        saveUninitialized: false //required
+    })
+)
 
 //Passport Middleware 
-// app.use(passport.initialize()) //Serialize user
-// app.use(passport.session()) // Deserialize User
+app.use(passport.initialize()) //Serialize user
+app.use(passport.session()) // Deserialize User
 //--------------------------------
-//Passport user model route
-app.use('/user', route);
-
 // Import the routing setup from our Router 
 app.use('/', router);
 
