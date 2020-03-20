@@ -1,15 +1,14 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Container, Row, Col } from 'react-materialize';
 import API from "../utils/API";
-import FishDetail from "../components/FishDetail";
+import FishDetail from "./FishDetail";
 
 function FishDetailContainer(props) {
-    //const [hasError, setErrors] = useState(false);
     const [results, setResults] = useState();
 
     useLayoutEffect(() => {
-        return (!results) ? loadResults() : "";
-    });
+        loadResults();
+    }, [props.fish]);
 
     const loadResults = () => {
         API.searchById(props.query)
@@ -19,20 +18,14 @@ function FishDetailContainer(props) {
             .catch(err => console.log(err))
     }
 
-
-
     return (
         <Container>
             <Row>
-                <Col
-                    m={12}
-                    s={12}
-                >
+                <Col s={12}>
                     {
                         !results ? (
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
-
                                 <FishDetail fish={results} />
                             )
 

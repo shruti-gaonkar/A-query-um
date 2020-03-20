@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useRoutes, navigate } from 'hookrouter';
 import { Row, Col, Button, Icon } from 'react-materialize';
 import Input from "./Input";
-import API from "../utils/API";
 
 const rowStyle = {
-    marginBottom: 5
+    marginBottom: 0
 };
 const searchStyle = {
     background: "rgba(255, 255, 225, 0.7)",
@@ -30,7 +29,6 @@ function Search() {
                         <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
                             register({ required: true })}
                         />
-                        {errors.search && <span className="error-msg">This field is required</span>}
 
                     </Col>
                     <Col className="center-align">
