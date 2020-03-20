@@ -1,46 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Icon, CardTitle, Row, Col } from 'react-materialize';
+import React, { useState, useLayoutEffect } from 'react';
+import { Container, Table, Row, Col } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
 
 function SearchContainer(props) {
-    const [hasError, setErrors] = useState(false);
-    const [results, setResults] = useState({});
+    //const [hasError, setErrors] = useState(false);
+    const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        //alert(props.query);
+    useLayoutEffect(() => {
         loadResults();
-    });
+    }, [props.query]);
 
     const loadResults = () => {
-        API.list()
-            .then(res => { res.json(); console.log(res) })
-            .then(res => setResults(res))
-            .catch(err => setErrors(err));
+        API.search(props.query)
+            .then(res => {
+                setResults(res.data)
+            })
+            .catch(err => console.log(err))
     }
+
+    const fishResults = results.map((fish) => {
+        return (
+            <FishList fish={fish} />
+        );
+    })
 
     return (
         <Container>
             <Row>
-                <Col
-                    m={12}
-                    s={12}
-                >
+                <Col s={12}>
                     {
                         !results.length ? (
                             <h1 className="text-center">No Results to Display</h1>
                         ) : (
-                                results.map((fish, i) => {
-                                    return (
-                                        <FishList
-                                            index={(i + 1)}
-                                            title={fish.scientificName}
-                                            description={fish.description}
-                                            image={fish.images}
-                                            fish={fish}
-                                        />
-                                    );
-                                })
+
+                                <Table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="commonName">
+                                                Common Name</th>
+                                            <th data-field="scientificName">
+                                                Scientific Name</th>
+                                            <th data-field="type">
+                                                Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {fishResults}
+                                    </tbody>
+                                </Table>
                             )
                     }
                 </Col>

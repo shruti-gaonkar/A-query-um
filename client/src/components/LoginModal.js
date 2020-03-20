@@ -57,7 +57,7 @@ function Login(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<Button className="orange" node="button">Login</Button>}
+            trigger={<Button className="teal" node="button">Login</Button>}
         >
             
             {/* Login Form */}

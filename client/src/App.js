@@ -1,22 +1,26 @@
 import React from 'react';
-//import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useRoutes } from 'hookrouter';
+import { useRoutes, usePath } from 'hookrouter';
 import Routes from './router';
 import './App.css';
 import Nav from './components/Nav';
 import PageFooter from './components/PageFooter';
+import Search from "./components/Search";
 
 function App() {
-  const routeResult = useRoutes(Routes)
+  const routeResult = useRoutes(Routes);
+  const path = usePath();
   return (
     <>
       <Nav />
+      {
+        (path !== "/") ?
+          <div className="searchBoxPages">
+            <Search />
+          </div>
+          : ""
+      }
       {routeResult}
-
       <PageFooter />
-      {/*<Router>
-        <Route path="/search" component={SearchContainer} />
-      </Router>*/}
     </>
   );
 }

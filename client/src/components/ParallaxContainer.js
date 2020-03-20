@@ -1,43 +1,48 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from 'react';
 import { Parallax } from 'react-parallax';
 import Search from "./Search";
+import ParallaxImages from '../data/parallax.json';
 
-function ParallaxContainer() {
-    const insideStyles = {
-        background: "black",
-        opacity: "0.8",
-        padding: 20,
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        width: "40%",
-        transform: "translate(-50%,-50%)"
-    };
+const paraStyle = {
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+};
 
-    const parallaxImages = [
-        "./images/textures/aqua_orange_fish.png",
-        "./images/textures/aqua_orange_fish_3.png",
-        "./images/textures/aquarium_reef_tank.jpg",
-        "./images/textures/aquarium_reef_tank_3.jpg"
-    ]
+function ParallaxContainer({ showSearch }) {
+    const [screen, setScreen] = useState('');
+    const [strength, setStrength] = useState(600);
+
+    const parallaxImages = ParallaxImages;
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
+    const checkScreenSize = () => {
+        setScreen(window.innerWidth);
+        if (window.innerWidth <= 768) {
+            setStrength(100);
+        }
+    }
+
+    useLayoutEffect(() => {
+        checkScreenSize();
+    }, [screen]);
+
     return (
-        <div id="index-banner" className="parallax-container">
+        <div id="index-banner">
             <Parallax
                 bgImage={randomImg}
-                bgImageAlt="the cat"
-                strength={600}
+                bgImageAlt="Aquarium fish swimming in a tank."
+                style={paraStyle}
+                strength={strength}
             >
                 <div style={{ height: 500 }}>
-                    <div style={insideStyles}><Search /></div>
+                    {(showSearch) ?
+
+                        <div className="searchBox"><Search /></div>
+                        : ""
+                    }
                 </div>
             </Parallax>
-            <p>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate consequatur reprehenderit perferendis hic non inventore error sint distinctio neque repudiandae. Aspernatur est accusantium quae possimus pariatur quasi delectus voluptatibus odit.</span>
-                <span>Voluptatem earum nemo omnis alias consequatur dignissimos autem laboriosam in, odio totam amet magnam ratione praesentium molestias non itaque error impedit debitis! Qui consequatur fuga quia neque mollitia eius aspernatur.</span>
-            </p>
         </div >
     );
 }

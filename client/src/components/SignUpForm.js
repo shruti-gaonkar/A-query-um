@@ -60,7 +60,7 @@ function SignUpForm() {
                 <Input label="Password" name="password" type="password" inputRef={register({ required: true })} />
                 {errors.password && <span className="error-msg">This field is required</span>}
                 <br />
-                <Button className="orange" type="submit">
+                <Button className="teal" type="submit">
                     Submit
                     <Icon right>
                         send

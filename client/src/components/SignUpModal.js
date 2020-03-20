@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-materialize';
 import SignUpForm from './SignUpForm';
 
-function Login(props) {
+function SignUp(props) {
     return (
         <Modal
             actions={[
@@ -25,11 +25,11 @@ function Login(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<Button className="orange" node="button">Sign Up</Button>}
+            trigger={<Button className="teal" node="button">Sign Up</Button>}
         >
             <SignUpForm />
         </Modal>
     );
 }
 
-export default Login;
+export default SignUp;
