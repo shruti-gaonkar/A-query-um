@@ -51,6 +51,9 @@ app.use(passport.session()) // Deserialize User
 //Passport user model route
 app.use('/user', route);
 
+// Import the routing setup from our Router 
+app.use('/', router);
+
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -64,8 +67,7 @@ connection.once('open', function () {
     );
 })
 
-// Import the routing setup from our Router 
-app.use('/', router);
+
 
 //Serving react on routes unused by previous routing
 app.get('*', (req, res) => {
