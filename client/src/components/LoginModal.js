@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Icon } from 'react-materialize';
 import { useForm } from 'react-hook-form';
-import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
@@ -10,10 +9,10 @@ function Login(props) {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         const { username, password } = data;
-        API.login( {
-               username: username,
-               password: password
-            })
+        API.login({
+            username: username,
+            password: password
+        })
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
@@ -24,15 +23,15 @@ function Login(props) {
                         username: response.data.username
                     })
                     // Redirect to home page if Log-in is successful
-                     window.location.href='/';
-                   
+                    window.location.href = '/';
+
                 }
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
-                
+
             })
-        
+
         console.log(data)
     }
     return (
@@ -59,7 +58,7 @@ function Login(props) {
             }}
             trigger={<Button className="teal" node="button">Login</Button>}
         >
-            
+
             {/* Login Form */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
