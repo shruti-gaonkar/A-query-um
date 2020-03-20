@@ -5,20 +5,18 @@ const express = require('express'),
     path = require('path'),
     router = require('./routes'),
     //need to integrate user route into other routes
-    route = require('./routes/auth');
+    route = require('./routes/auth'),
     //Required for authentication 
     session = require('express-session'),
-    dbConnection = require('./db'), //if we put mongo connection in a separate file
     MongoStore = require('connect-mongo')(session),
-    passport = require('./passport');
-
+    passport = require('./passport'),
     mongoose = require('mongoose'),
     keys = require("./keys");
 
+mongoose.Promise = global.Promise;
 
 const mlabUser = keys.mlab.username;
 const mlabPass = keys.mlab.password;
-
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -33,13 +31,14 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(morgan('dev'));
 
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://${mlabUser}:${mlabPass}@ds245615.mlab.com:45615/heroku_0mhvm21t` || "mongodb://localhost/aqueryumDB";
+const connection = mongoose.connection;
 
 //Passport ----------------------
 //Use Session and session storage
 app.use(
     session({
         secret: 'secret-key',
-        store: new MongoStore({ mongooseConnection: dbConnection }),
+        store: new MongoStore({ mongooseConnection: connection }),
         resave: false, //required
         saveUninitialized: false //required
     })
@@ -54,7 +53,6 @@ app.use('/user', route);
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
 
 if (process.emitWarning.NODE_ENV === "production") {
     app.use(express.static("client/build"))
