@@ -9,10 +9,10 @@ function FishAddFormContainer() {
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
   const [aliasesArr, setAliasesArr] = useState([]);
   const onSubmit = data => {
-    //API.login();
     data.aliases = aliasesArr;
     data.images = imageLinkArr;
     console.log(data);
+    API.createFish(data);
   }
 
   const handleAddImage = (e) => {
@@ -101,6 +101,7 @@ function FishAddFormContainer() {
                       <Input label="Aliases" value={name} onChange={(e) => handleAliasesChange(e, index)} inputRef={register({
                         required: true
                       })} />
+                      {errors.images && <span className="error-msg">This field is required</span>}
                     </div>
                     <Button onClick={(e) => handleRemoveAliases(e, index)}>Remove</Button>
                   </>
@@ -112,10 +113,6 @@ function FishAddFormContainer() {
 
         {errors.aliases && <span className="error-msg">This field is required</span>}
 
-        <Input label="Images" name="images" inputRef={register({
-          required: true
-        })} />
-        {errors.images && <span className="error-msg">This field is required</span>}
 
         <Input label="Description" name="description" inputRef={register({
           required: true
