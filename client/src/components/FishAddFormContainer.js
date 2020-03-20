@@ -6,8 +6,8 @@ import API from "../utils/API";
 
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
-  const [imageLinkArr, setImageLinkArr] = useState([{ value: null }]);
-  const [imageAltArr, setImageAltArr] = useState([]);
+  const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
+  //const [imageAltArr, setImageAltArr] = useState([{ value: null }]);
   const onSubmit = data => {
     //API.login();
     console.log(data)
@@ -15,25 +15,21 @@ function FishAddFormContainer() {
 
   const handleAddImage = (e) => {
     e.preventDefault();
-    //setImageLinkArr([...imageLinkArr, '']);
     const values = [...imageLinkArr];
-    values.push({ value: null });
+    values.push({ img: null, alt: null });
     setImageLinkArr(values);
   }
 
   const handleImageChange = (e, index) => {
-    //const imageLinkArr1 = imageLinkArr;
-    //imageLinkArr[index] = e.target.value;
-    //setImageLinkArr(imageLinkArr);
     const values = [...imageLinkArr];
-    values[index].value = e.target.value;
+    values[index].img = e.target.value;
     setImageLinkArr(values);
   }
 
   const handleImageAltChange = (e, index) => {
-    //const imageLinkArr1 = imageLinkArr;
-    imageAltArr[index] = e.target.value;
-    setImageAltArr(imageAltArr);
+    const values = [...imageLinkArr];
+    values[index].alt = e.target.value;
+    setImageLinkArr(values);
   }
 
   const handleRemoveImage = (e, index) => {
@@ -57,8 +53,8 @@ function FishAddFormContainer() {
                 return (
                   <>
                     <div key={index}>
-                      <Input label="Image Link" value={link.value} onChange={(e) => handleImageChange(e, index)} />
-                      <Input label="Image Alt Text" value={imageAltArr[index]} onChange={(e) => handleImageAltChange(e, index)} />
+                      <Input label="Image Link" value={link.img} onChange={(e) => handleImageChange(e, index)} />
+                      <Input label="Image Alt Text" value={link.alt} onChange={(e) => handleImageAltChange(e, index)} />
                     </div>
                     <Button onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
                   </>
