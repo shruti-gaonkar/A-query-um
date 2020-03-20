@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react'
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
-import Signup from './components/Signup'
-import Login from './components/LoginModal'
-
 
 function Nav(props) {
 
@@ -15,8 +11,6 @@ function Nav(props) {
     useEffect(() => {
         getUser();
     })
-
-
 
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
@@ -62,7 +56,7 @@ function Nav(props) {
                 preventScrolling: true
             }}>
             <NavItem href="/">
-                <LoginModal updateUser={updateUser}/>
+                <LoginModal updateUser={updateUser} />
             </NavItem>
             <NavItem href="/">
                 <SignUpModal />
