@@ -1,6 +1,6 @@
 {
     "name": "node_react_startup_structure",
-    "homepage": "https://github.com/shruti-gaonkar/A-query-um",
+    "homepage": "https://aqueryum.herokuapp.com/",
     "version": "1.0.0",
     "description": "The Node React Startup Structure",
     "main": "server/app.js",
