@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Icon, Textarea, RadioGroup } from 'react-materialize';
+import { Container, Button, Icon, Textarea, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
-  const [aliasesArr, setAliasesArr] = useState([]);
+  const [aliasesArr, setAliasesArr] = useState(['']);
   const onSubmit = data => {
     data.aliases = aliasesArr;
     data.images = imageLinkArr;
@@ -36,11 +36,7 @@ function FishAddFormContainer() {
 
   const handleRemoveImage = (e, index) => {
     e.preventDefault();
-    console.log(imageLinkArr);
-    const values = [...imageLinkArr];
-    console.log(values);
-    values.splice(index, 1);
-    console.log(values);
+    const values = imageLinkArr.filter((item, i) => i !== index);
     setImageLinkArr(values);
   }
 
@@ -59,12 +55,11 @@ function FishAddFormContainer() {
 
   const handleRemoveAliases = (e, index) => {
     e.preventDefault();
-    const values = [...aliasesArr];
-    values.splice(index, 1);
+    const values = aliasesArr.filter((item, i) => i !== index);
     setAliasesArr(values);
   }
   return (
-    <>
+    <Container>
       <form>
         {
           !imageLinkArr.length ?
@@ -74,8 +69,12 @@ function FishAddFormContainer() {
                 return (
                   <>
                     <div key={index}>
-                      <Input label="Image Link" value={link.img} onChange={(e) => handleImageChange(e, index)} />
-                      <Input label="Image Alt Text" value={link.alt} onChange={(e) => handleImageAltChange(e, index)} />
+                      <Input label="Image Link" value={link.img} onChange={(e) => handleImageChange(e, index)} inputRef={register({
+                        required: true
+                      })} />
+                      <Input label="Image Alt Text" value={link.alt} onChange={(e) => handleImageAltChange(e, index)} inputRef={register({
+                        required: true
+                      })} />
                     </div>
                     <Button onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
                   </>
@@ -98,7 +97,7 @@ function FishAddFormContainer() {
                 return (
                   <>
                     <div key={index}>
-                      <Input label="Aliases" value={name} onChange={(e) => handleAliasesChange(e, index)} inputRef={register({
+                      <Input label="Aliases" name={`aliases_${index}`} key={`aliases_${index}`} value={name} onChange={(e) => handleAliasesChange(e, index)} inputRef={register({
                         required: true
                       })} />
                       {errors.images && <span className="error-msg">This field is required</span>}
@@ -246,7 +245,7 @@ function FishAddFormContainer() {
                     </Icon>
         </Button>
       </form>
-    </>
+    </Container>
   );
 }
 
