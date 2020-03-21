@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Container, Button, Icon, Textarea, RadioGroup } from 'react-materialize';
+import { Container, CardPanel, Button, Icon, Textarea, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
- 
+  const [message, setMessage] = useState("Add fish to the database using the form below");
 
   const onSubmit = data => {
     console.log(data.type);
     data.aliases = data.aliases.split(",");
     data.images = imageLinkArr;
     console.log(data);
-    API.createFish(data);
+    API.createFish(data).then(function () {
+      document.querySelector("#fish-form").reset();
+      setImageLinkArr([{ img: null, alt: null }]);
+      setMessage("Successfully added new fish record to database");
+      window.scrollTo(0, 0);
+    });
   }
 
   const handleAddImage = (e) => {
@@ -44,7 +49,24 @@ function FishAddFormContainer() {
 
   return (
     <Container>
-      <form>
+      <h4>Add Fish</h4>
+      <CardPanel className="teal">
+        <span className="white-text">
+          {message}
+        </span>
+      </CardPanel>
+
+      <form id="fish-form">
+        <Input label="Scientific Name" name="scientificName" inputRef={register({
+          required: true
+        })} />
+        {errors.scientificName && <span className="error-msg">This field is required</span>}
+
+        <Input label="Aliases" name="aliases" inputRef={register({
+          required: true
+        })} />
+        {errors.aliases && <span className="error-msg">This field is required</span>}
+
         {
           !imageLinkArr.length ?
             ""
@@ -72,16 +94,6 @@ function FishAddFormContainer() {
             )
         }
         <Button onClick={(e) => handleAddImage(e)}>Add Image</Button>
-
-        <Input label="Scientific Name" name="scientificName" inputRef={register({
-          required: true
-        })} />
-        {errors.scientificName && <span className="error-msg">This field is required</span>}
-
-        <Input label="Aliases" name="aliases" inputRef={register({
-          required: true
-        })} />
-        {errors.aliases && <span className="error-msg">This field is required</span>}
 
         <Input label="Description" name="description" inputRef={register({
           required: true
@@ -131,38 +143,38 @@ function FishAddFormContainer() {
 
         Community Fish? -
         <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" inputRef={register({
-          
+
         })} />
         <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" inputRef={register({
-          
+
         })} />
 
         <br />
         <br />
 
         Reef Safe? -
-        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" inputRef={register({
-          
+        <Input className="with-gap" name="reefSafe" type="radio" value="true" label="Safe" inputRef={register({
+
         })} />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" inputRef={register({
-          
+        <Input className="with-gap" name="reefSafe" type="radio" value="false" label="Not Safe" inputRef={register({
+
         })} />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" inputRef={register({
-          
-        })}/>
+        <Input className="with-gap" name="reefSafe" type="radio" value="null" label="Not Applicable" inputRef={register({
+
+        })} />
 
         <br />
         <br />
 
         Aggro Level? -
         <Input className="with-gap" name="aggroLevel" type="radio" value="Aggressive" label="Aggressive" inputRef={register({
-          
+
         })} />
         <Input className="with-gap" name="aggroLevel" type="radio" value="Semi-Aggressive" label="Semi Aggressive" inputRef={register({
-          
+
         })} />
         <Input className="with-gap" name="aggroLevel" type="radio" value="Peaceful" label="Peaceful" inputRef={register({
-          
+
         })} />
 
         <br />
