@@ -17,7 +17,8 @@ var auth = function (req, res, next) {
         req.logIn(user, function (loginErr) {
             console.log(loginErr);
             if (loginErr) { return res.json({ "err": loginErr }); }
-            return res.redirect('/');
+            res.json({ "user": user });
+            //return res.redirect('/');
         });
     });
 }

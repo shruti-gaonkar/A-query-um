@@ -13,11 +13,12 @@ function Login(props) {
             email: email,
             password: password
         }).then(function (response) {
+            console.log(response);
             props.updateUser({
                 loggedIn: true,
                 username: response.data.username
             })
-            window.location.href = '/';
+            //window.location.href = '/';
             // If there's an error, log the error
         })
             .catch(function (err) {

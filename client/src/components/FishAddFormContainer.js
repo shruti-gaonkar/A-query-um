@@ -119,9 +119,15 @@ function FishAddFormContainer() {
         <br />
 
         Fish Type? -
-        <Input className="with-gap" name="type" type="radio" value="Freshwater" label="Freshwater" checked={type === 'Freshwater'} onClick={() => setType("Freshwater")} />
-        <Input className="with-gap" name="type" type="radio" value="Saltwater" label="Saltwater" onChange={() => setType("Saltwater")} />
-        <Input className="with-gap" name="type" type="radio" value="Brackish" label="Brackish" onChange={() => setType("Brackish")} />
+        <Input className="with-gap" name="type" type="radio" value="Freshwater" label="Freshwater" inputRef={register({
+          required: true
+        })} />
+        <Input className="with-gap" name="type" type="radio" value="Saltwater" label="Saltwater" inputRef={register({
+          required: true
+        })} />
+        <Input className="with-gap" name="type" type="radio" value="Brackish" label="Brackish" inputRef={register({
+          required: true
+        })} />
 
         <br />
         <br />
