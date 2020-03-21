@@ -8,7 +8,7 @@ const express = require('express'),
     //Required for authentication 
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
-    passport = require('./passport'),
+    passport = require('./config/passport'),
     mongoose = require('mongoose'),
     keys = require("./keys");
 
@@ -32,14 +32,15 @@ const connection = mongoose.connection;
 
 //Passport ----------------------
 //Use Session and session storage
-app.use(
+/*app.use(
     session({
         secret: 'secret-key',
         store: new MongoStore({ mongooseConnection: connection }),
         resave: false, //required
         saveUninitialized: false //required
     })
-)
+)*/
+app.use(session({ secret: "secret-key", resave: true, saveUninitialized: true }));
 
 //Passport Middleware 
 app.use(passport.initialize()) //Serialize user

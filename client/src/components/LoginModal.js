@@ -8,31 +8,41 @@ import API from "../utils/API";
 function Login(props) {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
-        const { username, password } = data;
+        const { email, password } = data;
         API.login({
-            username: username,
+            email: email,
             password: password
-        })
-            .then(response => {
-                console.log('login response: ')
-                console.log(response)
-                if (response.status === 200) {
-                    // Pass down Prop function from App.js;
-                    props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
-                    // Redirect to home page if Log-in is successful
-                    window.location.href = '/';
-
-                }
-            }).catch(error => {
-                console.log('login error: ')
-                console.log(error);
-
+        }).then(function (response) {
+            props.updateUser({
+                loggedIn: true,
+                username: response.data.username
             })
+            window.location.href = '/';
+            // If there's an error, log the error
+        })
+            .catch(function (err) {
+                console.log(err.responseText);
+            });
+        /*.then(response => {
+            console.log('login response: ')
+            console.log(response)
+            if (response.status === 200) {
+                // Pass down Prop function from App.js;
+                props.updateUser({
+                    loggedIn: true,
+                    username: response.data.username
+                })
+                // Redirect to home page if Log-in is successful
+                window.location.href = '/';
 
-        console.log(data)
+            }
+        }).catch(error => {
+            console.log('login error: ')
+            console.log(error);
+
+        })*/
+
+        //console.log(data)
     }
     return (
         <Modal
@@ -62,14 +72,14 @@ function Login(props) {
             {/* Login Form */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input label="Email Address" name="email_address" inputRef={register({
+                <Input label="Email Address" name="email" inputRef={register({
                     required: true,
                     pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                         message: "Invalid email address"
                     }
                 })} />
-                {(errors.email_address && errors.email_address.message)
+                {(errors.email && errors.email.message)
                     ?
                     <span className="error-msg">
                         {errors.email_address.message}

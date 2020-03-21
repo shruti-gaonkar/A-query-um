@@ -8,9 +8,9 @@ function Nav(props) {
 
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
-    useEffect(() => {
+    /*useEffect(() => {
         getUser();
-    })
+    })*/
 
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
@@ -18,7 +18,7 @@ function Nav(props) {
         setUser(username);
     }
 
-    const getUser = function () {
+    /*const getUser = function () {
         axios.get('/api/user/').then(response => {
             console.log('Get user response: ')
             console.log(response.data)
@@ -35,7 +35,7 @@ function Nav(props) {
 
             }
         })
-    }
+    }*/
 
     return (
         <Navbar className="grey darken-4"

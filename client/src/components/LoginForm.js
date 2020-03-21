@@ -8,7 +8,6 @@ function LoginForm() {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         API.login();
-        console.log(data)
     }
 
     return (
