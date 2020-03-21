@@ -7,10 +7,7 @@ import API from "../utils/API";
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
-  const { type, setType } = useState('');
-  const { reefSafe, setReefSafe } = useState('');
-  const { communityFish, setCommunityFish } = useState('');
-  const { aggroLevel, setAggroLevel } = useState('');
+ 
 
   const onSubmit = data => {
     console.log(data.type);
@@ -133,24 +130,40 @@ function FishAddFormContainer() {
         <br />
 
         Community Fish? -
-        <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" onChange={() => setCommunityFish("True")} />
-        <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" onChange={() => setCommunityFish("False")} />
+        <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" inputRef={register({
+          
+        })} />
+        <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" inputRef={register({
+          
+        })} />
 
         <br />
         <br />
 
         Reef Safe? -
-        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" onChange={() => setReefSafe("Safe")} />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" onChange={() => setReefSafe("not safe")} />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" onChange={() => setReefSafe("not applicable")} />
+        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" inputRef={register({
+          
+        })} />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" inputRef={register({
+          
+        })} />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" inputRef={register({
+          
+        })}/>
 
         <br />
         <br />
 
         Aggro Level? -
-        <Input className="with-gap" name="aggroLevel" type="radio" value="Aggressive" label="Aggressive" onChange={() => setAggroLevel("Aggressive")} />
-        <Input className="with-gap" name="aggroLevel" type="radio" value="Semi-Aggressive" label="Semi Aggressive" onChange={() => setAggroLevel("Semi-Aggressive")} />
-        <Input className="with-gap" name="aggroLevel" type="radio" value="Peaceful" label="Peaceful" onChange={() => setAggroLevel("Peaceful")} />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Aggressive" label="Aggressive" inputRef={register({
+          
+        })} />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Semi-Aggressive" label="Semi Aggressive" inputRef={register({
+          
+        })} />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Peaceful" label="Peaceful" inputRef={register({
+          
+        })} />
 
         <br />
 
