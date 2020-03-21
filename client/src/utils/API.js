@@ -33,7 +33,7 @@ export default {
         return axios.post("/api/create", data);
     },
 
-    isAuthenticated: function (data) {
-        return axios.get("/api/isAuthenticated", data);
-    },
+    isAuthenticated: function () {
+        return axios.get("/api/user/isAuthenticated");
+    }
 };

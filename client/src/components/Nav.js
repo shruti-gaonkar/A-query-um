@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
@@ -18,14 +18,16 @@ function Nav(props) {
         setUser(username);
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             //return response.loggedIn;
+            //console.log(response);
             updateUser({
-                loggedIn: response.loggedIn,
+                loggedIn: response.data.loggedIn,
                 username: "test"
             });
         });
+        console.log(logged, "$$$$$$");
     })
 
     /*const getUser = function () {
