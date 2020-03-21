@@ -25,8 +25,8 @@ const reefSafe = (reef) => {
 function FishDetail(props) {
     const { fish } = props;
 
-    const findInches = (parseInt(fish.maxSizeCM) / 2.54).toFixed(2);
-    const findGallons = (parseInt(fish.minTankSizeL) / 3.785).toFixed(0);
+    const findInches = (parseFloat(fish.maxSizeCM) / 2.54).toFixed(2);
+    const findGallons = (parseFloat(fish.minTankSizeL) / 3.785).toFixed(0);
 
     const splitTemp = fish.tempRangeC.split("-");
     const makeFah = splitTemp.map((temp) => {
