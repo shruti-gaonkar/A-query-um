@@ -32,15 +32,15 @@ const connection = mongoose.connection;
 
 //Passport ----------------------
 //Use Session and session storage
-/*app.use(
+app.use(
     session({
         secret: 'secret-key',
         store: new MongoStore({ mongooseConnection: connection }),
         resave: false, //required
         saveUninitialized: false //required
     })
-)*/
-app.use(session({ secret: "secret-key", resave: true, saveUninitialized: true }));
+)
+//app.use(session({ secret: "secret-key", resave: true, saveUninitialized: true }));
 
 //Passport Middleware 
 app.use(passport.initialize()) //Serialize user

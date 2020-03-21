@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Navbar, Icon, NavItem } from 'react-materialize';
+import { Container, Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
+import Logout from './Logout';
+import API from "../utils/API";
 
 function Nav(props) {
 
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
-    /*useEffect(() => {
-        getUser();
-    })*/
+
 
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
         setLogged(loggedIn);
         setUser(username);
     }
+
+    useEffect(() => {
+        API.isAuthenticated().then(function (response) {
+            //return response.loggedIn;
+            updateUser({
+                loggedIn: response.loggedIn,
+                username: "test"
+            });
+        });
+    })
 
     /*const getUser = function () {
         axios.get('/api/user/').then(response => {
@@ -55,12 +65,21 @@ function Nav(props) {
                 outDuration: 200,
                 preventScrolling: true
             }}>
-            <NavItem href="/">
-                <LoginModal updateUser={updateUser} />
-            </NavItem>
-            <NavItem href="/">
-                <SignUpModal />
-            </NavItem>
+            {
+                logged ? <NavItem href="/">
+                    <NavItem href="/">
+                        <Logout updateUser={updateUser} />
+                    </NavItem>
+                </NavItem> :
+                    <Container>
+                        <NavItem href="/">
+                            <LoginModal updateUser={updateUser} />
+                        </NavItem>
+                        <NavItem href="/">
+                            <SignUpModal />
+                        </NavItem>
+                    </Container>
+            }
         </Navbar>
     );
 }
