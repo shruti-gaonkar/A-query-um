@@ -7,9 +7,14 @@ import API from "../utils/API";
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
-  const [aliasesArr, setAliasesArr] = useState(['']);
+  const { type, setType } = useState('');
+  const { reefSafe, setReefSafe } = useState('');
+  const { communityFish, setCommunityFish } = useState('');
+  const { aggroLevel, setAggroLevel } = useState('');
+
   const onSubmit = data => {
-    data.aliases = aliasesArr;
+    console.log(data.type);
+    data.aliases = data.aliases.split(",");
     data.images = imageLinkArr;
     console.log(data);
     API.createFish(data);
@@ -86,12 +91,12 @@ function FishAddFormContainer() {
         })} />
         {errors.description && <span className="error-msg">This field is required</span>}
 
-        <Input label="Max Size(cm)" name="maxSize" inputRef={register({
+        <Input type="number" label="Max Size(cm)" name="maxSizeCM" inputRef={register({
           required: true
         })} />
         {errors.maxSize && <span className="error-msg">This field is required</span>}
 
-        <Input label="Life Span" name="lifeSpan" inputRef={register({
+        <Input label="Life Span" name="lifespan" inputRef={register({
           required: true
         })} />
         {errors.lifeSpan && <span className="error-msg">This field is required</span>}
@@ -101,12 +106,12 @@ function FishAddFormContainer() {
         })} />
         {errors.diet && <span className="error-msg">This field is required</span>}
 
-        <Input label="Minimum Tank Size(L)" name="tankSize" inputRef={register({
+        <Input type="number" label="Minimum Tank Size(L)" name="minTankSizeL" inputRef={register({
           required: true
         })} />
         {errors.tankSize && <span className="error-msg">This field is required</span>}
 
-        <Input label="Temperature Range (C)" name="tempRange" inputRef={register({
+        <Input label="Temperature Range (C)" name="tempRangeC" inputRef={register({
           required: true
         })} />
         {errors.tempRange && <span className="error-msg">This field is required</span>}
@@ -114,32 +119,32 @@ function FishAddFormContainer() {
         <br />
 
         Fish Type? -
-        <Input className="with-gap" name="type" type="radio" value="fresh" label="Freshwater" />
-        <Input className="with-gap" name="type" type="radio" value="salt" label="Saltwater" />
-        <Input className="with-gap" name="type" type="radio" value="brackish" label="Brackish" />
+        <Input className="with-gap" name="type" type="radio" value="Freshwater" label="Freshwater" checked={type === 'Freshwater'} onClick={() => setType("Freshwater")} />
+        <Input className="with-gap" name="type" type="radio" value="Saltwater" label="Saltwater" onChange={() => setType("Saltwater")} />
+        <Input className="with-gap" name="type" type="radio" value="Brackish" label="Brackish" onChange={() => setType("Brackish")} />
 
         <br />
         <br />
 
         Community Fish? -
-        <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" />
-        <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" />
+        <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" onChange={() => setCommunityFish("True")} />
+        <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" onChange={() => setCommunityFish("False")} />
 
         <br />
         <br />
 
         Reef Safe? -
-        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" />
-        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" />
+        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" onChange={() => setReefSafe("Safe")} />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" onChange={() => setReefSafe("not safe")} />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" onChange={() => setReefSafe("not applicable")} />
 
         <br />
         <br />
 
         Aggro Level? -
-        <Input className="with-gap" name="agroLevel" type="radio" value="aggressive" label="Aggressive" />
-        <Input className="with-gap" name="agroLevel" type="radio" value="semi-aggressive" label="Semi Aggressive" />
-        <Input className="with-gap" name="agroLevel" type="radio" value="peaceful" label="Peaceful" />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Aggressive" label="Aggressive" onChange={() => setAggroLevel("Aggressive")} />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Semi-Aggressive" label="Semi Aggressive" onChange={() => setAggroLevel("Semi-Aggressive")} />
+        <Input className="with-gap" name="aggroLevel" type="radio" value="Peaceful" label="Peaceful" onChange={() => setAggroLevel("Peaceful")} />
 
         <br />
 

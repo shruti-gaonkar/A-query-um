@@ -11,7 +11,8 @@ const Input = props => {
                     ref={props.inputRef}
                     className={props.className}
                     style={props.style}
-                    onChange={props.onChange} />
+                    onChange={props.onChange}
+                    checked={props.checked} />
                 <span>{props.label}</span>
             </label>
             :
