@@ -114,94 +114,32 @@ function FishAddFormContainer() {
         <br />
 
         Fish Type? -
-        <RadioGroup
-          label="Reef Safe?"
-          name="reefSafe"
-          onChange={function noRefCheck() { }}
-          options={[
-            {
-              label: 'Freshwater',
-              value: 'fresh'
-            },
-            {
-              label: 'Saltwater',
-              value: 'true'
-            },
-            {
-              label: 'Brackish',
-              value: 'brackish'
-            }
-          ]}
-        />
-        <Input className="with-gap" name="reefSafe" type="radio" value="fresh" label="Freshwater" />
+        <Input className="with-gap" name="type" type="radio" value="fresh" label="Freshwater" />
+        <Input className="with-gap" name="type" type="radio" value="salt" label="Saltwater" />
+        <Input className="with-gap" name="type" type="radio" value="brackish" label="Brackish" />
 
         <br />
         <br />
 
         Community Fish? -
-        <RadioGroup
-          label="Reef Safe?"
-          name="reefSafe"
-          onChange={function noRefCheck() { }}
-          options={[
-            {
-              label: 'True',
-              value: 'true'
-            },
-            {
-              label: 'False',
-              value: 'false'
-            }
-          ]}
-        />
+        <Input className="with-gap" name="communityFish" type="radio" value="true" label="True" />
+        <Input className="with-gap" name="communityFish" type="radio" value="false" label="False" />
 
         <br />
         <br />
 
         Reef Safe? -
-        <RadioGroup
-          label="Reef Safe?"
-          name="reefSafe"
-          onChange={function noRefCheck() { }}
-          options={[
-            {
-              label: 'Safe',
-              value: 'safe'
-            },
-            {
-              label: 'Not Safe',
-              value: 'not safe'
-            },
-            {
-              label: 'Not Applicable',
-              value: 'not applicable'
-            }
-          ]}
-        />
+        <Input className="with-gap" name="reefSafe" type="radio" value="safe" label="Safe" />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not safe" label="Not Safe" />
+        <Input className="with-gap" name="reefSafe" type="radio" value="not applicable" label="Not Applicable" />
 
         <br />
         <br />
 
         Aggro Level? -
-        <RadioGroup
-          label="Aggro Level?"
-          name="agroLevel"
-          onChange={function noRefCheck() { }}
-          options={[
-            {
-              label: 'Agressive',
-              value: 'agro'
-            },
-            {
-              label: 'Anti-Agressive',
-              value: 'antiAgro'
-            },
-            {
-              label: 'Peaceful',
-              value: 'peaceful'
-            }
-          ]}
-        />
+        <Input className="with-gap" name="agroLevel" type="radio" value="aggressive" label="Aggressive" />
+        <Input className="with-gap" name="agroLevel" type="radio" value="semi-aggressive" label="Semi Aggressive" />
+        <Input className="with-gap" name="agroLevel" type="radio" value="peaceful" label="Peaceful" />
 
         <br />
 
