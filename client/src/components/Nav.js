@@ -24,10 +24,9 @@ function Nav(props) {
             //console.log(response);
             updateUser({
                 loggedIn: response.data.loggedIn,
-                username: "test"
+                username: (response.data.user) ? response.data.user.firstName : ""
             });
         });
-        console.log(logged, "$$$$$$");
     })
 
     /*const getUser = function () {
@@ -50,39 +49,57 @@ function Nav(props) {
     }*/
 
     return (
-        <Navbar className="grey darken-4"
-            alignLinks="right"
-            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
-            centerLogo
-            menuIcon={<Icon>menu</Icon>}
-            centerChildren="1"
-            options={{
-                draggable: true,
-                edge: 'left',
-                inDuration: 250,
-                onCloseEnd: null,
-                onCloseStart: null,
-                onOpenEnd: null,
-                onOpenStart: null,
-                outDuration: 200,
-                preventScrolling: true
-            }}>
-            {
-                logged ? <NavItem href="/">
+        logged ?
+            (<>
+                <Navbar className="grey darken-4"
+                    alignLinks="right"
+                    brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                    centerLogo
+                    menuIcon={<Icon>menu</Icon>}
+                    centerChildren="1"
+                    options={{
+                        draggable: true,
+                        edge: 'left',
+                        inDuration: 250,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 200,
+                        preventScrolling: true
+                    }}>
+
                     <NavItem href="/">
-                        <Logout updateUser={updateUser} />
+                        <Logout updateUser={updateUser} name={user} />
                     </NavItem>
-                </NavItem> :
-                    <Container>
-                        <NavItem href="/">
-                            <LoginModal updateUser={updateUser} />
-                        </NavItem>
-                        <NavItem href="/">
-                            <SignUpModal />
-                        </NavItem>
-                    </Container>
-            }
-        </Navbar>
+
+                </Navbar></>) :
+
+
+            (<Navbar className="grey darken-4"
+                alignLinks="right"
+                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                centerLogo
+                menuIcon={<Icon>menu</Icon>}
+                centerChildren="1"
+                options={{
+                    draggable: true,
+                    edge: 'left',
+                    inDuration: 250,
+                    onCloseEnd: null,
+                    onCloseStart: null,
+                    onOpenEnd: null,
+                    onOpenStart: null,
+                    outDuration: 200,
+                    preventScrolling: true
+                }}>
+                <NavItem href="/">
+                    <LoginModal updateUser={updateUser} />
+                </NavItem>
+                <NavItem href="/">
+                    <SignUpModal updateUser={updateUser} />
+                </NavItem>
+            </Navbar>)
     );
 }
 
