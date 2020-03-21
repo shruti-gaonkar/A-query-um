@@ -18,6 +18,7 @@ function FishAddFormContainer() {
       document.querySelector("#fish-form").reset();
       setImageLinkArr([{ img: null, alt: null }]);
       setMessage("Successfully added new fish record to database");
+      window.scrollTo(0, 0);
     });
   }
 
