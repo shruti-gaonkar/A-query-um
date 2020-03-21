@@ -23,5 +23,9 @@ export default {
 
     scrape: function (data) {
         return axios.get("/api/scrape");
+    },
+
+    createFish: function (data) {
+        return axios.post("/api/create", data);
     }
 };
