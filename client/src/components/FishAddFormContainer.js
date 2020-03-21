@@ -40,24 +40,6 @@ function FishAddFormContainer() {
     setImageLinkArr(values);
   }
 
-  const handleAddAliases = (e) => {
-    e.preventDefault();
-    const values = [...aliasesArr];
-    values.push(['']);
-    setAliasesArr(values);
-  }
-
-  const handleAliasesChange = (e, index) => {
-    const values = [...aliasesArr];
-    values[index].img = e.target.value;
-    setAliasesArr(values);
-  }
-
-  const handleRemoveAliases = (e, index) => {
-    e.preventDefault();
-    const values = aliasesArr.filter((item, i) => i !== index);
-    setAliasesArr(values);
-  }
   return (
     <Container>
       <form>
@@ -66,15 +48,20 @@ function FishAddFormContainer() {
             ""
             : (
               imageLinkArr.map((link, index) => {
+                const txtlabel = `image_${index}`;
                 return (
                   <>
                     <div key={index}>
-                      <Input label="Image Link" value={link.img} onChange={(e) => handleImageChange(e, index)} inputRef={register({
+                      <Input label="Image Link" name={`image_${index}`} value={link.img} onChange={(e) => handleImageChange(e, index)} inputRef={register({
                         required: true
                       })} />
-                      <Input label="Image Alt Text" value={link.alt} onChange={(e) => handleImageAltChange(e, index)} inputRef={register({
+                      {errors[txtlabel] && <span className="error-msg">This field is required</span>}
+
+                      <Input label="Image Alt Text" name={`imagealt_${index}`} value={link.alt} onChange={(e) => handleImageAltChange(e, index)} inputRef={register({
                         required: true
                       })} />
+                      {errors[txtlabel] && <span className="error-msg">This field is required</span>}
+
                     </div>
                     <Button onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
                   </>
@@ -89,29 +76,10 @@ function FishAddFormContainer() {
         })} />
         {errors.scientificName && <span className="error-msg">This field is required</span>}
 
-        {
-          !aliasesArr.length ?
-            ""
-            : (
-              aliasesArr.map((name, index) => {
-                return (
-                  <>
-                    <div key={index}>
-                      <Input label="Aliases" name={`aliases_${index}`} key={`aliases_${index}`} value={name} onChange={(e) => handleAliasesChange(e, index)} inputRef={register({
-                        required: true
-                      })} />
-                      {errors.images && <span className="error-msg">This field is required</span>}
-                    </div>
-                    <Button onClick={(e) => handleRemoveAliases(e, index)}>Remove</Button>
-                  </>
-                )
-              })
-            )
-        }
-        <Button onClick={(e) => handleAddAliases(e)}>Add Aliases</Button>
-
+        <Input label="Aliases" name="aliases" inputRef={register({
+          required: true
+        })} />
         {errors.aliases && <span className="error-msg">This field is required</span>}
-
 
         <Input label="Description" name="description" inputRef={register({
           required: true
