@@ -12,7 +12,7 @@ const Input = props => {
                     className={props.className}
                     style={props.style}
                     onChange={props.onChange}
-                    checked={props.checked} />
+                    defaultChecked={props.defaultChecked} />
                 <span>{props.label}</span>
             </label>
             :
