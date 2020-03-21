@@ -5,15 +5,12 @@ const express = require('express'),
     path = require('path'),
     router = require('./routes'),
     //need to integrate user route into other routes
-    route = require('./routes/auth'),
     //Required for authentication 
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
-    passport = require('./passport'),
+    passport = require('./config/passport'),
     mongoose = require('mongoose'),
     keys = require("./keys");
-
-mongoose.Promise = global.Promise;
 
 const mlabUser = keys.mlab.username;
 const mlabPass = keys.mlab.password;
@@ -35,21 +32,22 @@ const connection = mongoose.connection;
 
 //Passport ----------------------
 //Use Session and session storage
-app.use(
+/*app.use(
     session({
         secret: 'secret-key',
         store: new MongoStore({ mongooseConnection: connection }),
         resave: false, //required
         saveUninitialized: false //required
     })
-)
+)*/
+app.use(session({ secret: "secret-key", resave: true, saveUninitialized: true }));
 
 //Passport Middleware 
 app.use(passport.initialize()) //Serialize user
 app.use(passport.session()) // Deserialize User
 //--------------------------------
-//Passport user model route
-app.use('/user', route);
+// Import the routing setup from our Router 
+app.use('/', router);
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -64,8 +62,7 @@ connection.once('open', function () {
     );
 })
 
-// Import the routing setup from our Router 
-app.use('/', router);
+
 
 //Serving react on routes unused by previous routing
 app.get('*', (req, res) => {
