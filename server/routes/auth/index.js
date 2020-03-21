@@ -46,9 +46,9 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/isAuthenticated", function (req, res) {
-    console.log(req.user);
+    //console.log(req.user);
     if (req.user) {
-        res.json({ loggedIn: true });
+        res.json({ loggedIn: true, user: req.user });
     } else {
         res.json({ loggedIn: false });
     }

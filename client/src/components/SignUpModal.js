@@ -27,7 +27,7 @@ function SignUp(props) {
             }}
             trigger={<Button className="teal" node="button">Sign Up</Button>}
         >
-            <SignUpForm />
+            <SignUpForm updateUser={props.updateUser} />
         </Modal>
     );
 }
