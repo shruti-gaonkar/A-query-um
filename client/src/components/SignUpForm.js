@@ -4,7 +4,7 @@ import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
-function SignUpForm() {
+function SignUpForm(props) {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         const { fullname, username, email_address, password } = data;
@@ -18,7 +18,11 @@ function SignUpForm() {
                 console.log(data.error.errors[0].message);
             } else {
                 //$("form[name='signupfrm']").trigger("reset");
-                window.location.replace("/");
+                //window.location.replace("/");
+                props.updateUser({
+                    loggedIn: true,
+                    username: "sdsds"
+                })
             }
         });
         /*.then(response => {
