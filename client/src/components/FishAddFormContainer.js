@@ -133,6 +133,7 @@ function FishAddFormContainer() {
             }
           ]}
         />
+        <Input className="with-gap" name="reefSafe" type="radio" value="fresh" label="Freshwater" />
 
         <br />
         <br />
