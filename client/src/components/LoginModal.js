@@ -16,7 +16,7 @@ function Login(props) {
             console.log(response);
             props.updateUser({
                 loggedIn: true,
-                username: response.data.username
+                username: response.data.firstname
             })
             //window.location.href = '/';
             // If there's an error, log the error
