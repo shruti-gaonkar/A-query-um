@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Icon } from 'react-materialize';
 import { useForm } from 'react-hook-form';
 import LoginForm from './LoginForm';
-import API from "../utils/API";
-
 
 function Login(props) {
+    const [message, setMessage] = React.useState();
+
+    const handleOpen = () => {
+        setMessage();
+    }
+
     return (
         <Modal
             actions={[
@@ -22,7 +26,7 @@ function Login(props) {
                 onCloseEnd: null,
                 onCloseStart: null,
                 onOpenEnd: null,
-                onOpenStart: null,
+                onOpenStart: handleOpen,
                 opacity: 0.5,
                 outDuration: 250,
                 preventScrolling: true,
@@ -30,8 +34,10 @@ function Login(props) {
             }}
             trigger={<Button className="teal" node="button">Login</Button>}
         >
+            <div>
+                <LoginForm updateUser={props.updateUser} message={message} setMessage={setMessage} />
+            </div>
 
-            <LoginForm updateUser={props.updateUser} />
         </Modal>
     );
 }
