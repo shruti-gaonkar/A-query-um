@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import LoginForm from './LoginForm';
 
 function Login(props) {
-    const [message, setMessage] = React.useState();
+    const [message, setMessage] = useState();
 
     const handleOpen = () => {
         setMessage();
@@ -34,9 +34,7 @@ function Login(props) {
             }}
             trigger={<Button className="teal" node="button">Login</Button>}
         >
-            <div>
-                <LoginForm updateUser={props.updateUser} message={message} setMessage={setMessage} />
-            </div>
+            <LoginForm updateUser={props.updateUser} message={message} setMessage={setMessage} />
 
         </Modal>
     );

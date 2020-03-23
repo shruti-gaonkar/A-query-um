@@ -14,7 +14,6 @@ function SignUpForm(props) {
             email: email_address,
             firstName: fullname
         }).then(function (data) {
-            console.log(data);
             if (data.error) {
                 console.log(data.error.errors[0].message);
             } else {

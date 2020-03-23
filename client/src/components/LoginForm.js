@@ -1,11 +1,11 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Icon, CardPanel } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function LoginForm(props) {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
     useLayoutEffect(() => {
         document.querySelector("#login-frm").reset();
