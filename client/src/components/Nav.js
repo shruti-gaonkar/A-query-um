@@ -1,12 +1,11 @@
 import React, { useLayoutEffect, useState } from 'react';
-import axios from 'axios';
-import { Container, Navbar, Icon, NavItem } from 'react-materialize';
+import { Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
 import API from "../utils/API";
 
-function Nav(props) {
+function Nav() {
 
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
@@ -20,33 +19,12 @@ function Nav(props) {
 
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
-            //return response.loggedIn;
-            //console.log(response);
             updateUser({
                 loggedIn: response.data.loggedIn,
                 username: (response.data.user) ? response.data.user.firstName : ""
             });
         });
     })
-
-    /*const getUser = function () {
-        axios.get('/api/user/').then(response => {
-            console.log('Get user response: ')
-            console.log(response.data)
-            if (response.data.user) {
-                console.log('Get User: There is a user saved in the server session: ')
-
-                setLogged(true);
-                setUser(response.data.user.username)
-
-            } else {
-                console.log('Get user: no user');
-                setLogged(false);
-                setUser(null)
-
-            }
-        })
-    }*/
 
     return (
         logged ?
