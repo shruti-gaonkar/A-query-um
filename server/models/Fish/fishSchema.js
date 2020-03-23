@@ -54,7 +54,8 @@ const FishSchema = new Schema({
     },
     aggroLevel: String,
     communityFish: Boolean,
-    reefSafe: Boolean
+    reefSafe: String,
+    notes: String
 });
 
 const Fish = mongoose.model("Fish", FishSchema);

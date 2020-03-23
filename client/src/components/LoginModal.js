@@ -1,6 +1,9 @@
 import React from 'react';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Icon } from 'react-materialize';
+import { useForm } from 'react-hook-form';
 import LoginForm from './LoginForm';
+import API from "../utils/API";
+
 
 function Login(props) {
     return (
@@ -27,7 +30,8 @@ function Login(props) {
             }}
             trigger={<Button className="teal" node="button">Login</Button>}
         >
-            <LoginForm />
+
+            <LoginForm updateUser={props.updateUser} />
         </Modal>
     );
 }

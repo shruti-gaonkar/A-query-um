@@ -10,7 +10,7 @@ function SignUp(props) {
             ]}
             bottomSheet={false}
             fixedFooter={false}
-            header="Login"
+            header="Sign Up"
             id="modal-0"
             options={{
                 dismissible: true,
@@ -27,7 +27,7 @@ function SignUp(props) {
             }}
             trigger={<Button className="teal" node="button">Sign Up</Button>}
         >
-            <SignUpForm />
+            <SignUpForm updateUser={props.updateUser} />
         </Modal>
     );
 }

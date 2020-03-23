@@ -1,47 +1,46 @@
-import React from "react";
-import { Parallax, Row, Col } from 'react-parallax';
+import React, { useState, useLayoutEffect } from 'react';
+import { Parallax } from 'react-parallax';
 import Search from "./Search";
-
-const searchStyle = {
-    background: "rgba(225, 225, 225, 0.5)",
-    padding: 5,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: "100%",
-    height: "auto",
-    transform: "translate(-50%,-50%)"
-};
+import ParallaxImages from '../data/parallax.json';
 
 const paraStyle = {
     backgroundSize: "cover",
     backgroundPosition: "center"
 };
 
-function ParallaxContainer() {
-    const parallaxImages = [
-        "./images/textures/aquarium01.jpg",
-        "./images/textures/aquarium02.jpg",
-        "./images/textures/aquarium03.jpg",
-        "./images/textures/aquarium04.jpg",
-        "./images/textures/aquarium05.jpg",
-        "./images/textures/aquarium06.jpg",
-        "./images/textures/aquarium07.jpg",
-        "./images/textures/aquarium08.jpg",
-        "./images/textures/aquarium09.jpg"
-    ]
+function ParallaxContainer({ showSearch }) {
+    const [screen, setScreen] = useState('');
+    const [strength, setStrength] = useState(600);
+
+    const parallaxImages = ParallaxImages;
 
     const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
 
+    const checkScreenSize = () => {
+        setScreen(window.innerWidth);
+        if (window.innerWidth <= 768) {
+            setStrength(100);
+        }
+    }
+
+    useLayoutEffect(() => {
+        checkScreenSize();
+    }, [screen]);
+
     return (
-        <div id="index-banner" className="parallax-container">
+        <div id="index-banner">
             <Parallax
                 bgImage={randomImg}
-                bgImageAlt="Aquarium fish swimming in a tank4"
+                bgImageAlt="Aquarium fish swimming in a tank."
                 style={paraStyle}
+                strength={strength}
             >
                 <div style={{ height: 500 }}>
-                    <div style={searchStyle}><Search /></div>
+                    {(showSearch) ?
+
+                        <div className="searchBox"><Search /></div>
+                        : ""
+                    }
                 </div>
             </Parallax>
         </div >
