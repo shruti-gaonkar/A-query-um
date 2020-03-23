@@ -8,7 +8,7 @@ function LoginForm(props) {
     const { register, handleSubmit, errors } = useForm();
 
     useLayoutEffect(() => {
-        document.querySelector("#login-frm").reset();
+        //document.querySelector("#login-frm").reset();
     })
 
     const onSubmit = data => {
