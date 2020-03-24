@@ -4,27 +4,40 @@ import { Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
-function SignUpForm() {
+function SignUpForm(props) {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         const { fullname, username, email_address, password } = data;
         API.signup({
             username: username,
-            password: password
-        })
-            .then(response => {
-                console.log(response)
-                if (!response.data.errmsg) {
-                    console.log('successful signup')
-                    window.location.href('/')
-                } else {
-                    console.log('username already taken')
-                }
-            }).catch(error => {
-                console.log('signup error: ')
-                console.log(error)
+            password: password,
+            email: email_address,
+            firstName: fullname
+        }).then(function (data) {
+            if (data.error) {
+                console.log(data.error.errors[0].message);
+            } else {
+                //$("form[name='signupfrm']").trigger("reset");
+                //window.location.replace("/");
+                props.updateUser({
+                    loggedIn: true,
+                    username: "sdsds"
+                })
+            }
+        });
+        /*.then(response => {
+            console.log(response)
+            if (!response.data.errmsg) {
+                console.log('successful signup')
+                window.location.href('/')
+            } else {
+                console.log('username already taken')
+            }
+        }).catch(error => {
+            console.log('signup error: ')
+            console.log(error)
 
-            })
+        })*/
     }
 
     return (

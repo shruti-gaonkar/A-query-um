@@ -1,4 +1,5 @@
 const db = require('../../models');
+const fishData = require('../../data/fishObjects.json');
 
 module.exports = {
     getMain: (req, res) => {
@@ -34,10 +35,26 @@ module.exports = {
             });
     },
     createFishRecord: (req, res) => {
-
-        db.Fish.create(req)
+        //console.log(req.body);
+        db.Fish.create(req.body)
             .then(function (dbFish) {
+                console.log(dbFish);
                 res.json(dbFish);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                console.log(err);
+                res.json({ "Error": err });
+            });
+    },
+    insertFishRecord: (req, res) => {
+        const arrObj = fishData;
+
+        db.Fish.insertMany(arrObj, function (err) {
+            if (err) return handleError(err);
+        })
+            .then(function (dbFish) {
+                res.json(dbFish)
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client

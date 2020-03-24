@@ -1,0 +1,117 @@
+[
+    {
+        "aliases": [
+            "Blue Ring Angelfish",
+            "Annularis Angelfish",
+            "Blue King Angelfish",
+            "Ikan hias",
+            "Nga-leik-pyar",
+            "Angel fish",
+            "Blue-ringed angelfish",
+            "Bluering angelfish",
+            "Blueringed angelfish",
+            "Ringed angelfish",
+            "Ringvööt-ingelkala",
+            "Poisson-ange à anneau",
+            "Kulibangbang",
+            "Wanukeyakko",
+            "ワヌケヤッコ",
+            "Combo",
+            "Annularis",
+            "Ayam hutan",
+            "Bluestone annularis",
+            "Ikan babi",
+            "Ikan kambing",
+            "Ikan Koran",
+            "Ketang",
+            "Taring pelandok",
+            "Taring-pelanduk cincin biru",
+            "Lolla-terate",
+            "ലൊല്ല തെരെട്ട",
+            "ലോല തിരട്ട",
+            "环纹刺盖鱼",
+            "环纹盖刺鱼",
+            "環紋刺蓋魚",
+            "環紋蓋刺魚",
+            "蓝环神仙",
+            "Ustniczek pierscieniowaty",
+            "Lebre anelar",
+            "Cirkelkejsarfisk",
+            "Alibang-bang",
+            "Baro-baro",
+            "Paro-paro",
+            "Paru-parang dagat",
+            "Jatipyna",
+            "జటిప్యన",
+            "Boray boray",
+            "Tapay tapay"
+        ],
+        "images": [
+            {
+                "img": "https://res.cloudinary.com/aqueryum/image/upload/v1584069905/fish/PomacanthodesAnnularisJuvenile_r7yfd3.jpg",
+                "alt": "Juvenile Pomacanthodes annularis showing the blue coloration with horizontal strioing characteristic for their age."
+            },
+            {
+                "img": "https://res.cloudinary.com/aqueryum/image/upload/v1584069905/fish/PomacanthodesAnnularis01_sytpoc.jpg",
+                "alt": "Adult Pomacanthodes annularis swimming in a reef setting."
+            },
+            {
+                "img": "https://res.cloudinary.com/aqueryum/image/upload/v1584069905/fish/PomacanthodesAnnularis03_y6rflg.jpg",
+                "alt": "Adult Pomacanthodes annularis with greater degrees of yellow present through the body."
+            },
+            {
+                "img": "https://res.cloudinary.com/aqueryum/image/upload/v1584069905/fish/PomacanthodesAnnularis02_cdlxj6.jpg",
+                "alt": "Adult Pomacanthodes annularis swimming near rock."
+            }
+        ],
+        "scientificName": "Pomacanthodes annularis",
+        "description": "Adults of the blue ring angelfish exhibit a dark orange to brown or violet coloring with a blue ring near their head (hence the common name) and blue horizontal semicircular marks on the middle of the body. Two blue stripes cross the face.The caudal fin is white. Juveniles of the blue ring angelfishes are at first a dark blue, almost black, with broad turquoise and white vertical stripes.",
+        "type": "Saltwater",
+        "maxSizeCM": {
+            "$numberInt": "45"
+        },
+        "lifespan": "15-20 years",
+        "diet": "Omnivores",
+        "minTankSizeL": {
+            "$numberInt": "680"
+        },
+        "tempRangeC": "22-24",
+        "aggroLevel": "Semi-Aggressive",
+        "communityFish": true,
+        "reefSafe": false,
+        "notes": "Recommended for a larger fish only type set-up."
+    },
+    {
+        "aliases": [
+            "Arabian Angelfish",
+            "Asfur Angelfish",
+            "Arabisk kejserfisk",
+            "Araabia ingelkala",
+            "Poolkuu-ingelkala",
+            "Poisson-ange demi-lune",
+            "Arabischer Kaiserfisch"
+        ],
+        "images": [
+            {
+                "img": "",
+                "alt": ""
+            }
+        ],
+        "scientificName": "Pomacanthus asfur",
+        "description": "The adult is generally dark greyish-black with a broad, crescent-shaped sash of yellow and a yellow tail. The juveniles have a base colour of steely blue with a number of vertical, meandering stripes of white and pale blue.",
+        "type": "Saltwater",
+        "maxSizeCM": {
+            "$numberInt": "40"
+        },
+        "lifespan": "20 years",
+        "diet": "Omnivores",
+        "minTankSizeL": {
+            "$numberInt": "950"
+        },
+        "tempRangeC": "22-28",
+        "aggroLevel": "Semi-Aggressive",
+        "communityFish": true,
+        "reefSafe": false,
+        "notes": "Recommended for a larger, fish-only type set-up. May be successfully integrated with other Angelfish species in a sufficiently large aquarium."
+    }
+]

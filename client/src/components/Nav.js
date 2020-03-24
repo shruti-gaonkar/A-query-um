@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import axios from 'axios';
-import { Navbar, Icon, NavItem } from 'react-materialize';
+import { Container, Navbar, Icon, NavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
+import Logout from './Logout';
+import API from "../utils/API";
 
 function Nav(props) {
 
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
-    useEffect(() => {
-        getUser();
-    })
+
 
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
@@ -18,7 +18,18 @@ function Nav(props) {
         setUser(username);
     }
 
-    const getUser = function () {
+    useLayoutEffect(() => {
+        API.isAuthenticated().then(function (response) {
+            //return response.loggedIn;
+            //console.log(response);
+            updateUser({
+                loggedIn: response.data.loggedIn,
+                username: (response.data.user) ? response.data.user.firstName : ""
+            });
+        });
+    })
+
+    /*const getUser = function () {
         axios.get('/api/user/').then(response => {
             console.log('Get user response: ')
             console.log(response.data)
@@ -35,33 +46,60 @@ function Nav(props) {
 
             }
         })
-    }
+    }*/
 
     return (
-        <Navbar className="grey darken-4"
-            alignLinks="right"
-            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
-            centerLogo
-            menuIcon={<Icon>menu</Icon>}
-            centerChildren="1"
-            options={{
-                draggable: true,
-                edge: 'left',
-                inDuration: 250,
-                onCloseEnd: null,
-                onCloseStart: null,
-                onOpenEnd: null,
-                onOpenStart: null,
-                outDuration: 200,
-                preventScrolling: true
-            }}>
-            <NavItem href="/">
-                <LoginModal updateUser={updateUser} />
-            </NavItem>
-            <NavItem href="/">
-                <SignUpModal />
-            </NavItem>
-        </Navbar>
+        logged ?
+            (<>
+                <Navbar className="grey darken-4"
+                    alignLinks="right"
+                    brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                    centerLogo
+                    menuIcon={<Icon>menu</Icon>}
+                    centerChildren="1"
+                    options={{
+                        draggable: true,
+                        edge: 'left',
+                        inDuration: 250,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 200,
+                        preventScrolling: true
+                    }}>
+
+                    <NavItem href="/">
+                        <Logout updateUser={updateUser} name={user} />
+                    </NavItem>
+
+                </Navbar></>) :
+
+
+            (<Navbar className="grey darken-4"
+                alignLinks="right"
+                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                centerLogo
+                menuIcon={<Icon>menu</Icon>}
+                centerChildren="1"
+                options={{
+                    draggable: true,
+                    edge: 'left',
+                    inDuration: 250,
+                    onCloseEnd: null,
+                    onCloseStart: null,
+                    onOpenEnd: null,
+                    onOpenStart: null,
+                    outDuration: 200,
+                    preventScrolling: true
+                }}>
+                <NavItem href="/">
+                    <LoginModal updateUser={updateUser} />
+                </NavItem>
+                <NavItem href="/">
+                    <SignUpModal updateUser={updateUser} />
+                </NavItem>
+            </Navbar>)
     );
 }
 

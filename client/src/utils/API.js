@@ -2,7 +2,11 @@ import axios from "axios";
 
 export default {
     login: function (data) {
-        return axios.post("/api/login", data);
+        return axios.post("/api/user/login", data);
+    },
+
+    logout: function () {
+        return axios.get("/api/user/logout");
     },
 
     signup: function (data) {
@@ -23,5 +27,13 @@ export default {
 
     scrape: function (data) {
         return axios.get("/api/scrape");
+    },
+
+    createFish: function (data) {
+        return axios.post("/api/create", data);
+    },
+
+    isAuthenticated: function () {
+        return axios.get("/api/user/isAuthenticated");
     }
 };
