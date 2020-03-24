@@ -19,7 +19,15 @@ const userSchema = new Schema({
         trim: true,
         required: true
     },
-    username: String
+    username: String,
+    fishes: [
+        {
+            // Store ObjectIds in the array
+            type: Schema.Types.ObjectId,
+            // The ObjectIds will refer to the ids in the Fish model
+            ref: "Fish"
+        }
+    ]
 })
 // Define schema methods
 userSchema.methods = {
