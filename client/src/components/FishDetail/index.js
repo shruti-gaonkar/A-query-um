@@ -74,7 +74,7 @@ function FishDetail(props) {
                                 <td>
                                     <strong>Lifespan:</strong></td>
                                 <td>
-                                    {fish.lifespan}</td>
+                                    {fish.lifespan} years</td>
                             </tr>
                             <tr>
                                 <td>
