@@ -11,10 +11,8 @@ var auth = function (req, res, next) {
         if (info) { return next(info.message); }
         if (!user) { return res.redirect('/login'); }
         req.logIn(user, function (loginErr) {
-            //console.log(loginErr);
             if (loginErr) { return res.json({ "err": loginErr }); }
             res.json({ user: user });
-            //return res.redirect('/');
         });
     });
 }

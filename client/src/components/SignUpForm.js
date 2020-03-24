@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Icon } from 'react-materialize';
+import { Button, Icon, CardPanel } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 
 function SignUpForm(props) {
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, errors } = useForm();
+
+    useLayoutEffect(() => {
+        //document.querySelector("#sign-up-frm").reset();
+    })
+
     const onSubmit = data => {
         const { fullname, username, email_address, password } = data;
         API.signup({
@@ -14,35 +19,23 @@ function SignUpForm(props) {
             email: email_address,
             firstName: fullname
         }).then(function (data) {
-            if (data.error) {
-                console.log(data.error.errors[0].message);
+            if (data.data.error && data.data.error.errmsg) {
+                props.setMessage("Email address already exists");
             } else {
-                //$("form[name='signupfrm']").trigger("reset");
-                //window.location.replace("/");
                 props.updateUser({
                     loggedIn: true,
-                    username: "sdsds"
+                    username: data.data.firstname
                 })
             }
+        }).catch(function (err) {
+            //console.log(err);
+            props.setMessage("Sign Up Error");
         });
-        /*.then(response => {
-            console.log(response)
-            if (!response.data.errmsg) {
-                console.log('successful signup')
-                window.location.href('/')
-            } else {
-                console.log('username already taken')
-            }
-        }).catch(error => {
-            console.log('signup error: ')
-            console.log(error)
-
-        })*/
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form id="sign-up-frm" onSubmit={handleSubmit(onSubmit)}>
                 <Input label="Name" name="fullname" inputRef={register({
                     required: true
                 })} />
@@ -73,6 +66,14 @@ function SignUpForm(props) {
                 <Input label="Password" name="password" type="password" inputRef={register({ required: true })} />
                 {errors.password && <span className="error-msg">This field is required</span>}
                 <br />
+                {(props.message) ?
+                    <CardPanel className="teal">
+                        <span className="white-text">
+                            {props.message}
+                        </span>
+                    </CardPanel>
+                    : ""
+                }
                 <Button className="teal" type="submit">
                     Submit
                     <Icon right>
