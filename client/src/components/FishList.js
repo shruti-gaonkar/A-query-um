@@ -6,13 +6,13 @@ function FishList(props) {
     const { fish } = props;
 
     const handleAqFishSave = (fish_id) => {
-        /*API.saveAqueryum({
+        API.saveAqueryum({
             fish_id: fish_id,
         }).then(function (data) {
             window.location.replace("/aqueryum/create");
         }).catch(function (err) {
             console.log(err);
-        });*/
+        });
     }
 
     return (

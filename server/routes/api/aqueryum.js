@@ -4,6 +4,6 @@ const express = require('express'),
 const router = express.Router();
 
 router.route('/save')
-    .get(controller.save);
+    .post(controller.save);
 
 module.exports = router;    
