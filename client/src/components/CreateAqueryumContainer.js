@@ -4,6 +4,16 @@ import API from "../utils/API";
 import Search from "./Search";
 
 function CreateAqueryumContainer(props) {
+  const [results, setResults] = useState([]);
+
+  useLayoutEffect(() => {
+    API.listAqueryum()
+      .then(res => {
+        //console.log(res.data);
+        setResults(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [1]);
 
   return (
     <Container>

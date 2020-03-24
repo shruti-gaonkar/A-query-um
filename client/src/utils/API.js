@@ -39,5 +39,9 @@ export default {
 
     saveAqueryum: function (data) {
         return axios.post("/api/aqueryum/save", data);
+    },
+
+    listAqueryum: function () {
+        return axios.get("/api/aqueryum/list");
     }
 };
