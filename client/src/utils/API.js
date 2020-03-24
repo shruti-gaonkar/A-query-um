@@ -13,6 +13,10 @@ export default {
         return axios.post("/api/user", data);
     },
 
+    isAuthenticated: function () {
+        return axios.get("/api/user/isAuthenticated");
+    },
+
     search: function (data) {
         return axios.get("/api/search/" + data);
     },
@@ -33,7 +37,7 @@ export default {
         return axios.post("/api/create", data);
     },
 
-    isAuthenticated: function () {
-        return axios.get("/api/user/isAuthenticated");
+    saveAqueryum: function (data) {
+        return axios.post("/api/aqueryum/save", data);
     }
 };
