@@ -10,10 +10,9 @@ function FishAddFormContainer() {
   const [message, setMessage] = useState("Add fish to the database using the form below.");
 
   const onSubmit = data => {
-    console.log(data.type);
+    console.log("this is the data gathered", data);
     data.aliases = data.aliases.split(",");
     data.images = imageLinkArr;
-    console.log(data);
     API.createFish(data).then(function () {
       document.querySelector("#fish-form").reset();
       setImageLinkArr([{ img: null, alt: null }]);
@@ -87,7 +86,7 @@ function FishAddFormContainer() {
                       {errors[txtlabel] && <span className="error-msg">This field is required</span>}
 
                     </div>
-                    <Button floating className="red right" icon={<Icon>clear</Icon>} onClick={(e) => handleRemoveImage(e, index)}>Remove</Button> 
+                    <Button floating className="red right" icon={<Icon>clear</Icon>} onClick={(e) => handleRemoveImage(e, index)}>Remove</Button>
                   </>
                 )
               })
@@ -96,7 +95,7 @@ function FishAddFormContainer() {
         <Button floating className="cyan right" icon={<Icon>add</Icon>} onClick={(e) => handleAddImage(e)}>Add Image</Button>
         <br />
         <br />
-        
+
 
         <Input label="Description of Fish" name="description" inputRef={register({
           required: true
