@@ -13,9 +13,9 @@ const commFish = (communityFish) => {
 };
 
 const reefSafe = (reef) => {
-    if (reef === null) {
+    if (reef === "null") {
         return "N/A";
-    } else if (reef === true) {
+    } else if (reef === "true") {
         return "Yes";
     } else {
         return "No";
