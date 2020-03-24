@@ -20,6 +20,10 @@ const userSchema = new Schema({
         required: true
     },
     username: String,
+    adminType: {
+        type: Boolean,
+        default: false
+    },
     fishes: [
         {
             // Store ObjectIds in the array
