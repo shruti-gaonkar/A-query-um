@@ -43,5 +43,10 @@ export default {
 
     listAqueryum: function () {
         return axios.get("/api/aqueryum/list");
+    },
+
+
+    updateUser: function (data) {
+        return axios.post('/changeUser', data);
     }
 };

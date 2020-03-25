@@ -13,10 +13,13 @@ function Login(props) {
             });
         })
     }
+    const logout = () => {
+        window.location.href = '/';
+    }
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Button className="orange" type="submit">
+                <Button className="orange" type="submit" onClick={() => logout()}>
                     Logout
                 </Button>
             </form>
