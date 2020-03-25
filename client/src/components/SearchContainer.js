@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { Container, Table, Row, Col, Preloader, CardPanel } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
+import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
     //const [hasError, setErrors] = useState(false);
@@ -70,6 +71,7 @@ function SearchContainer(props) {
                     }
                 </Col>
             </Row>
+            <ScrollTop />
         </Container>
     );
 }

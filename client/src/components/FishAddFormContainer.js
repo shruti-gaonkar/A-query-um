@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { Container, CardPanel, Button, Icon, Textarea, RadioGroup } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
+import ScrollTop from './ScrollTop';
+
 
 function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
@@ -188,6 +190,7 @@ function FishAddFormContainer() {
                     </Icon>
         </Button>
       </form>
+      <ScrollTop />
     </Container>
   );
 }
