@@ -21,7 +21,7 @@ function FishList(props) {
                 <strong><a key={fish._id} href={`/fish/${fish._id}`}>{fish.aliases[0]}</a></strong>
             </td>
             <td>
-                {fish.scientificName}
+                {fish.maxSizeCM}
             </td>
             <td>
                 {fish.type}
