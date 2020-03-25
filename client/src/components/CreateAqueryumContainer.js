@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { Container, Card, Icon, CardTitle, Row, Col, Table, Button, CardPanel } from 'react-materialize';
 import API from "../utils/API";
 import Loader from "../components/Loader";
+import ScrollTop from './ScrollTop';
 
 function CreateAqueryumContainer(props) {
   const [message, setMessage] = useState("You currently have no fish saved to your aquarium. Search for fish now!");
@@ -109,7 +110,8 @@ function CreateAqueryumContainer(props) {
             }
           </Col>
         </Row>
-      </Container >
+        <ScrollTop />
+      </Container>
     </>
   );
 }

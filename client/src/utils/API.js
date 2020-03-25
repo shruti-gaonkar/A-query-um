@@ -47,5 +47,9 @@ export default {
 
     deleteAqueryum: function (data) {
         return axios.delete("/api/aqueryum/delete/" + data['id']);
+    },
+
+    updateUser: function (data) {
+        return axios.post('/changeUser', data);
     }
 };

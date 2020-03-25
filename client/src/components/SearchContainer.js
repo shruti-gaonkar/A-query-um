@@ -3,6 +3,7 @@ import { Container, Table, Row, Col, Preloader, CardPanel } from 'react-material
 import API from "../utils/API";
 import FishList from "../components/FishList";
 import Loader from "../components/Loader";
+import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
     //const [hasError, setErrors] = useState(false);
@@ -33,7 +34,7 @@ function SearchContainer(props) {
         return (
             <FishList fish={fish} />
         );
-    })
+    });
 
     return (
         <>
@@ -53,8 +54,12 @@ function SearchContainer(props) {
                                             Common Name</th>
                                         <th data-field="scientificName">
                                             Scientific Name</th>
-                                        <th data-field="type">
+                                        <th data-field="aliases">
+                                            Aliases</th>
+                                        <th data-field="type" className="hide-on-small-only">
                                             Type</th>
+                                        <th data-field="save">
+                                            Save</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +75,7 @@ function SearchContainer(props) {
                         }
                     </Col>
                 </Row>
+                <ScrollTop />
             </Container>
         </>
     );

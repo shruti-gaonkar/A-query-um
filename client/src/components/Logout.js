@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Icon } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { useForm } from 'react-hook-form';
 import API from "../utils/API";
 
@@ -13,15 +13,12 @@ function Login(props) {
             });
         })
     }
+    
     return (
         <>
-            {"Welcome" + props.name}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Button className="orange" type="submit">
                     Logout
-                    <Icon right>
-                        send
-                    </Icon>
                 </Button>
             </form>
         </>

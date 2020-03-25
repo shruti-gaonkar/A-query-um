@@ -1,8 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Navbar, Icon, NavItem } from 'react-materialize';
+import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
+import Profile from './Profile';
 import API from "../utils/API";
 
 function Nav() {
@@ -10,13 +11,13 @@ function Nav() {
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
 
-
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
         setLogged(loggedIn);
         setUser(username);
     }
 
+    
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             updateUser({
@@ -28,30 +29,41 @@ function Nav() {
 
     return (
         logged ?
-            (<>
-                <Navbar className="grey darken-4"
-                    alignLinks="right"
-                    brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
-                    centerLogo
-                    menuIcon={<Icon>menu</Icon>}
-                    centerChildren="1"
-                    options={{
-                        draggable: true,
-                        edge: 'left',
-                        inDuration: 250,
-                        onCloseEnd: null,
-                        onCloseStart: null,
-                        onOpenEnd: null,
-                        onOpenStart: null,
-                        outDuration: 200,
-                        preventScrolling: true
-                    }}>
+            (
+                <>
+                    {
+                        <Navbar className="grey darken-4"
+                            alignLinks="right"
+                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                            centerLogo
+                            menuIcon={<Icon>menu</Icon>}
+                            centerChildren="1"
+                            options={{
+                                draggable: true,
+                                edge: 'left',
+                                inDuration: 250,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 200,
+                                preventScrolling: true
+                            }}>
 
-                    <NavItem href="/">
-                        <Logout updateUser={updateUser} name={user} />
-                    </NavItem>
+                            <NavItem href="/">
+                                Welcome, {user}
+                            </NavItem>
+                            <NavItem>
+                                <Profile />
+                            </NavItem>
+                            <NavItem href="/">
+                                <Logout updateUser={updateUser} name={user} />
+                            </NavItem>
 
-                </Navbar></>) :
+                        </Navbar>
+                    }
+                </>
+            ) :
 
 
             (<Navbar className="grey darken-4"
