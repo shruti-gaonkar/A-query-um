@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Navbar, Icon, NavItem } from 'react-materialize';
+import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
@@ -27,33 +27,41 @@ function Nav() {
 
     return (
         logged ?
-            (<>
-                <Navbar className="grey darken-4"
-                    alignLinks="right"
-                    brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
-                    centerLogo
-                    menuIcon={<Icon>menu</Icon>}
-                    centerChildren="1"
-                    options={{
-                        draggable: true,
-                        edge: 'left',
-                        inDuration: 250,
-                        onCloseEnd: null,
-                        onCloseStart: null,
-                        onOpenEnd: null,
-                        onOpenStart: null,
-                        outDuration: 200,
-                        preventScrolling: true
-                    }}>
+            (
+                <>
+                    {
+                        <Navbar className="grey darken-4"
+                            alignLinks="right"
+                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                            centerLogo
+                            menuIcon={<Icon>menu</Icon>}
+                            centerChildren="1"
+                            options={{
+                                draggable: true,
+                                edge: 'left',
+                                inDuration: 250,
+                                onCloseEnd: null,
+                                onCloseStart: null,
+                                onOpenEnd: null,
+                                onOpenStart: null,
+                                outDuration: 200,
+                                preventScrolling: true
+                            }}>
 
-                    <NavItem href="/">
-                        Welcome, {user}
-                    </NavItem>
-                    <NavItem href="/">
-                        <Logout updateUser={updateUser} name={user} />
-                    </NavItem>
+                            <NavItem href="/">
+                                Welcome, {user}
+                            </NavItem>
+                            <NavItem>
+                                <Button>My Profile</Button>
+                            </NavItem>
+                            <NavItem href="/">
+                                <Logout updateUser={updateUser} name={user} />
+                            </NavItem>
 
-                </Navbar></>) :
+                        </Navbar>
+                    }
+                </>
+            ) :
 
 
             (<Navbar className="grey darken-4"
