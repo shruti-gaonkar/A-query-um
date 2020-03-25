@@ -20,9 +20,9 @@ function SearchContainer(props) {
         setResults([]);
         API.search(props.query)
             .then(res => {
+                setLoader(0);
                 if (res.data) {
                     setResults(res.data);
-                    setLoader(0);
                 }
             })
             .catch(err => console.log(err))
@@ -32,7 +32,7 @@ function SearchContainer(props) {
         return (
             <FishList fish={fish} />
         );
-    })
+    });
 
     return (
         <>
@@ -52,8 +52,12 @@ function SearchContainer(props) {
                                             Common Name</th>
                                         <th data-field="scientificName">
                                             Scientific Name</th>
-                                        <th data-field="type">
+                                        <th data-field="aliases">
+                                            Aliases</th>
+                                        <th data-field="type" className="hide-on-small-only">
                                             Type</th>
+                                        <th data-field="save">
+                                            Save</th>
                                     </tr>
                                 </thead>
                                 <tbody>
