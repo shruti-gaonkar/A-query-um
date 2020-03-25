@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Icon } from 'react-materialize';
 import API from "../utils/API";
+import AliasModal from '../components/AliasModal/AliasModal';
 
 function FishList(props) {
     const { fish } = props;
+    console.log("these fish are in FishList as results", fish.aliases[0])
 
     const handleAqFishSave = (fish_id) => {
         API.saveAqueryum({
@@ -24,12 +26,16 @@ function FishList(props) {
                 {fish.scientificName}
             </td>
             <td>
+                <AliasModal aliases={fish.aliases} />
+            </td>
+            <td className="hide-on-small-only">
                 {fish.type}
             </td>
             <td>
                 <Button
                     className="green"
                     floating
+                    small
                     icon={<Icon>save</Icon>}
                     node="button"
                     waves="light"
