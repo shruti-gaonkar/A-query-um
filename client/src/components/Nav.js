@@ -47,6 +47,9 @@ function Nav() {
                     }}>
 
                     <NavItem href="/">
+                        Welcome, {user}
+                    </NavItem>
+                    <NavItem href="/">
                         <Logout updateUser={updateUser} name={user} />
                     </NavItem>
 
