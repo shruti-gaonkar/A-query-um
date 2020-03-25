@@ -38,13 +38,11 @@ function Login(props) {
     }
     return (
         <>
-            {"Welcome" + props.name}
+
             <form onSubmit={handleSubmit(onSubmit)}>
+                {"Welcome " + props.name} &nbsp;
                 <Button className="orange" type="submit">
                     Logout
-                    <Icon right>
-                        send
-                    </Icon>
                 </Button>
             </form>
         </>

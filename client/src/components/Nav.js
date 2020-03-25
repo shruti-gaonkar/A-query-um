@@ -10,7 +10,6 @@ function Nav() {
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null)
 
-
     const updateUser = function (userObject) {
         const { loggedIn, username } = userObject;
         setLogged(loggedIn);
