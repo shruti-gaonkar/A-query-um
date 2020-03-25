@@ -9,14 +9,15 @@ function ProfilePage(props) {
     const { register, handleSubmit, watch, errors } = useForm()
     useEffect(() => {
         getUser();
-
     })
+
     const getUser = () => {
         API.isAuthenticated().then(function (response) {
             setUser(response.data.user.username);
             setName(response.data.user.firstName);
         })
     }
+
     const [user, setUser] = useState(user);
     const [name, setName] = useState(name);
     const [img, setImg] = useState("https://picsum.photos/id/446/90/90")

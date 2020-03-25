@@ -17,7 +17,7 @@ function Nav() {
         setUser(username);
     }
 
-    
+
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             updateUser({
@@ -48,11 +48,41 @@ function Nav() {
                                 onOpenStart: null,
                                 outDuration: 200,
                                 preventScrolling: true
-                            }}>
+                            }}
 
-                            <NavItem href="/">
-                                Welcome, {user}
-                            </NavItem>
+                            sidenav={
+                                <>
+                                    <SideNavItem
+                                        user={{
+                                            background: 'https://placeimg.com/640/480/tech',
+                                            email: "",
+                                            image: 'static/media/react-materialize-logo.824c6ea3.svg',
+                                            name: 'John Doe'
+                                        }}
+                                        userView
+                                    />
+                                    <SideNavItem
+                                        href="#!icon"
+                                        icon="cloud"
+                                    >
+                                        First Link With Icon
+    </SideNavItem>
+                                    <SideNavItem href="#!second">
+                                        Second Link
+    </SideNavItem>
+                                    <SideNavItem divider />
+                                    <SideNavItem subheader>
+                                        Subheader
+    </SideNavItem>
+                                    <SideNavItem
+                                        href="#!third"
+                                        waves
+                                    >
+                                        Third Link With Waves
+    </SideNavItem>
+                                </>
+                            }>
+
                             <NavItem>
                                 <Profile />
                             </NavItem>
@@ -64,7 +94,6 @@ function Nav() {
                     }
                 </>
             ) :
-
 
             (<Navbar className="grey darken-4"
                 alignLinks="right"
