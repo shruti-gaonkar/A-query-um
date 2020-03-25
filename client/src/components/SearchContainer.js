@@ -19,9 +19,11 @@ function SearchContainer(props) {
         setResults([]);
         API.search(props.query)
             .then(res => {
+                // set loader is initiated before load results to prevent
+                // the results from loading twice
+                setLoader(0);
                 if (res.data) {
                     setResults(res.data);
-                    setLoader(0);
                 }
             })
             .catch(err => console.log(err))

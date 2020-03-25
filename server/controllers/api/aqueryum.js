@@ -26,5 +26,16 @@ module.exports = {
                 // If an error occurs, send it back to the client
                 res.json(err);
             });
+    },
+
+    delete: (req, res) => {
+        db.User.updateOne(
+            { _id: req.user._id },
+            { $pullAll: { fishes: [req.params.id] } },
+            function (err, response) {
+                if (err) throw err;
+                res.json(response);
+            }
+        );
     }
 };

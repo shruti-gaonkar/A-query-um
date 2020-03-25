@@ -43,5 +43,9 @@ export default {
 
     listAqueryum: function () {
         return axios.get("/api/aqueryum/list");
+    },
+
+    deleteAqueryum: function (data) {
+        return axios.delete("/api/aqueryum/delete/" + data['id']);
     }
 };

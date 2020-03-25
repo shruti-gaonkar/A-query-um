@@ -12,6 +12,14 @@ function CreateAqueryumContainer(props) {
     return (parseFloat(size) / 2.54).toFixed(2);
   }
 
+  const handleDelete = (id) => {
+    API.deleteAqueryum({ id: id })
+      .then(res => {
+        console.log(res);
+        document.getElementById(id).remove();
+      })
+      .catch(err => console.log(err))
+  }
 
   useLayoutEffect(() => {
     setLoader(1);
@@ -67,7 +75,7 @@ function CreateAqueryumContainer(props) {
                 <tbody>
                   {
                     results.map((fish) => {
-                      return (<tr>
+                      return (<tr id={fish._id} key={fish._id}>
                         <td>
                           {fish.aliases[0]}
                         </td>
@@ -84,6 +92,7 @@ function CreateAqueryumContainer(props) {
                             icon={<Icon>delete</Icon>}
                             node="button"
                             waves="light"
+                            onClick={() => handleDelete(fish._id)}
                           />
                         </td>
                       </tr>)
