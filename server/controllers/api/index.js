@@ -35,7 +35,7 @@ module.exports = {
             });
     },
     createFishRecord: (req, res) => {
-        //console.log(req.body);
+        console.log(req.body);
         db.Fish.create(req.body)
             .then(function (dbFish) {
                 console.log(dbFish);
