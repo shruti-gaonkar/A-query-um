@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-materialize';
 import SignUpForm from './SignUpForm';
 
 function SignUp(props) {
+    const [message, setMessage] = useState();
+
+    const handleOpen = () => {
+        setMessage();
+    }
+
     return (
         <Modal
             actions={[
@@ -19,7 +25,7 @@ function SignUp(props) {
                 onCloseEnd: null,
                 onCloseStart: null,
                 onOpenEnd: null,
-                onOpenStart: null,
+                onOpenStart: handleOpen,
                 opacity: 0.5,
                 outDuration: 250,
                 preventScrolling: true,
@@ -27,7 +33,7 @@ function SignUp(props) {
             }}
             trigger={<Button className="teal" node="button">Sign Up</Button>}
         >
-            <SignUpForm updateUser={props.updateUser} />
+            <SignUpForm updateUser={props.updateUser} message={message} setMessage={setMessage} />
         </Modal>
     );
 }
