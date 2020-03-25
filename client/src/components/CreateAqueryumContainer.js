@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { Container, Card, Icon, CardTitle, Row, Col, Table, Button } from 'react-materialize';
 import API from "../utils/API";
 import Search from "./Search";
+import ScrollTop from './ScrollTop';
 
 function CreateAqueryumContainer(props) {
   const [results, setResults] = useState([]);
@@ -229,6 +230,7 @@ function CreateAqueryumContainer(props) {
           </Col>
         </Row>
       </Row>
+      <ScrollTop />
     </Container>
   );
 }

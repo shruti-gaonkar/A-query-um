@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-materialize';
 import API from "../utils/API";
 import FishDetail from "./FishDetail";
 import Loader from "../components/Loader";
+import ScrollTop from './ScrollTop';
 
 function FishDetailContainer(props) {
     const [results, setResults] = useState();
@@ -33,6 +34,7 @@ function FishDetailContainer(props) {
                     }
                 </Col>
             </Row>
+            <ScrollTop />
         </Container>
     );
 }

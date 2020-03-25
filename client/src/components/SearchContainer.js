@@ -3,6 +3,7 @@ import { Container, Table, Row, Col, Preloader, CardPanel } from 'react-material
 import API from "../utils/API";
 import FishList from "../components/FishList";
 import Loader from "../components/Loader";
+import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
     //const [hasError, setErrors] = useState(false);
@@ -68,6 +69,7 @@ function SearchContainer(props) {
                         }
                     </Col>
                 </Row>
+                <ScrollTop />
             </Container>
         </>
     );
