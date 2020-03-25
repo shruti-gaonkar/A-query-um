@@ -3,6 +3,7 @@ import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-mater
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
+import Profile from './Profile';
 import API from "../utils/API";
 
 function Nav() {
@@ -16,6 +17,7 @@ function Nav() {
         setUser(username);
     }
 
+    
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             updateUser({
@@ -52,7 +54,7 @@ function Nav() {
                                 Welcome, {user}
                             </NavItem>
                             <NavItem>
-                                <Button>My Profile</Button>
+                                <Profile />
                             </NavItem>
                             <NavItem href="/">
                                 <Logout updateUser={updateUser} name={user} />
