@@ -6,7 +6,15 @@ function PageFooter() {
         <Footer
             className="grey darken-4"
             copyrights="&copy; 2020 A-Query-Um"
-            links={<ul><li><a className="grey-text text-lighten-3" href="https://github.com/shruti-gaonkar/A-query-um/">GitHub Repo</a></li></ul>}
+            links={
+                <ul>
+                    <li>
+                        <a className="grey-text text-lighten-3" href="https://github.com/shruti-gaonkar/A-query-um/">GitHub Repo</a>
+                        <br />
+                        <br />
+                        <a className="grey-text text-lighten-3" href="#">Scroll To Top</a>
+                    </li>
+                </ul>}
         >
             <h5 className="white-text">
                 A-query-um
