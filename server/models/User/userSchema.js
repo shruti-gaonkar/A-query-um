@@ -1,14 +1,25 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs');
-//mongoose.promise = Promise
 
 // Define userSchema
 const userSchema = new Schema({
-    username: String,
-    password: String,
-    email: String,
-    firstName: String
+    firstName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    email: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    password: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    username: String
 })
 // Define schema methods
 userSchema.methods = {
@@ -22,12 +33,12 @@ userSchema.methods = {
 // Define hooks for pre-saving
 userSchema.pre('save', function (next) {
     if (!this.password) {
-        console.log('UserSchema js =======NO PASSWORD PROVIDED=======')
-        next()
+        //console.log('UserSchema js =======NO PASSWORD PROVIDED=======')
+        next();
     } else {
-        console.log('UserSchema js ======== hashPassword in pre save');
-        this.password = this.hashPassword(this.password)
-        next()
+        //console.log('UserSchema js ======== hashPassword in pre save');
+        this.password = this.hashPassword(this.password);
+        next();
     }
 })
 const User = mongoose.model('User', userSchema)
