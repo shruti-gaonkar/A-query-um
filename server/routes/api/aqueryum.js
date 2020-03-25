@@ -9,4 +9,7 @@ router.route('/save')
 router.route('/list')
     .get(controller.list);
 
+router.route('/delete/:id')
+    .delete(controller.delete);
+
 module.exports = router;    
