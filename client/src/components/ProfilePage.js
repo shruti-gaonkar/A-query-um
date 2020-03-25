@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Button, Dropdown, Icon, Divider } from 'react-materialize';
+import { Button, Dropdown, Container, Col, Row, Divider, Card } from 'react-materialize';
 import { useForm } from 'react-hook-form';
 import Input from './Input'
 import API from "../utils/API";
-
-
 
 function ProfilePage(props) {
     const { register, handleSubmit, watch, errors } = useForm()
@@ -33,108 +30,103 @@ function ProfilePage(props) {
         }).then(function (response) {
             console.log(response);
         })
-
-
     }
     const getimg = (e) => {
         setImg(e)
     }
     const aquariumPage = (e) => {
         e.preventDefault();
-        window.location.href='/aqueryum/create'
+        window.location.href = '/aqueryum/create'
     }
     return (
         <>
-            <div className='container'>
+            <Container>
+                <Row>
+                    <Col s={12}>
+                        <h2 className='center blue-text'> Welcome, {name}!</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="s4 offset-s4">
+                        <Card>
+                            <Row className="valign-wrapper">
+                                <Col s={4}>
+                                    <img src={img} className="circle" alt="Contact Person" />
+                                </Col>
+                                <Col s={8}>
+                                    <h4>{user}</h4>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col s={12} m={6}>
+                        <Card
+                            className="blue-grey darken-1"
+                            title="User Profile"
+                            textClassName="white-text">
 
-                <h2 className='center blue-text'> Welcome to your Profile Page, {user}!</h2>
-                <div class="chip">
-                    <img src={img} alt="Contact Person" />
-                    {name}
-                </div>
-                <div className="row">
-                    <div className="col s6 m6">
-                        <div className="card blue-grey darken-1">
-                            <div className="card-content white-text">
-                                <span className="card-title">User Profile</span>
+                            <p>
+                                Set Profile Image
+                                </p>
+                            <Dropdown
+                                options={{
+                                    alignment: 'left',
+                                    autoTrigger: true,
+                                    closeOnClick: true,
+                                    constrainWidth: true,
+                                    container: null,
+                                    coverTrigger: true,
+                                    hover: false,
+                                    inDuration: 150,
+                                    onCloseEnd: null,
+                                    onCloseStart: null,
+                                    onOpenEnd: null,
+                                    onOpenStart: null,
+                                    outDuration: 250
+                                }}
+                                trigger={<Button node="button">Pick here!</Button>}
+                            >
+                                <img onClick={() => getimg("https://picsum.photos/id/446/90/90")} className='responsive-img' src="https://picsum.photos/id/446/90/90" alt="Contact Person"></img>
+                                <Divider />
+                                <img onClick={() => getimg("https://picsum.photos/id/581/90/90")} className='responsive-img' src="https://picsum.photos/id/581/90/90" alt="Contact Person"></img>
+                                <Divider />
+                                <img onClick={() => getimg("https://picsum.photos/id/541/90/90")} className='responsive-img' src="https://picsum.photos/id/541/90/90" alt="Contact Person"></img>
+                                <Divider />
+                                <img onClick={() => getimg("https://picsum.photos/id/690/90/90")} className='responsive-img' src="https://picsum.photos/id/690/90/90" alt="Contact Person"></img>
+                                <Divider />
+                                <img onClick={() => getimg("https://picsum.photos/id/500/90/90")} className='responsive-img' src="https://picsum.photos/id/500/90/90" alt="Contact Person"></img>
+                            </Dropdown>
 
-                                <p>Choose a picture</p>
-                                <Dropdown
-                                    options={{
-                                        alignment: 'left',
-                                        autoTrigger: true,
-                                        closeOnClick: true,
-                                        constrainWidth: true,
-                                        container: null,
-                                        coverTrigger: true,
-                                        hover: false,
-                                        inDuration: 150,
-                                        onCloseEnd: null,
-                                        onCloseStart: null,
-                                        onOpenEnd: null,
-                                        onOpenStart: null,
-                                        outDuration: 250
-                                    }}
-                                    trigger={<Button node="button">Pick here!</Button>}
-                                >
-                                    
-                                   
-                                    <img onClick={() => getimg("https://picsum.photos/id/446/90/90")} className='responsive-img' src="https://picsum.photos/id/446/90/90" alt="Contact Person"></img>
-                                    
-                                   
-                                    <Divider />
-                                    <img onClick={() => getimg("https://picsum.photos/id/581/90/90")} className='responsive-img' src="https://picsum.photos/id/581/90/90" alt="Contact Person"></img>
-                                    <Divider />
-                                    <img onClick={() => getimg("https://picsum.photos/id/541/90/90")} className='responsive-img' src="https://picsum.photos/id/541/90/90" alt="Contact Person"></img>
-                                    <Divider />
-                                    <img onClick={() => getimg("https://picsum.photos/id/690/90/90")} className='responsive-img' src="https://picsum.photos/id/690/90/90" alt="Contact Person"></img>
-                                    <Divider />
-                                    <img onClick={() => getimg("https://picsum.photos/id/500/90/90")} className='responsive-img' src="https://picsum.photos/id/500/90/90" alt="Contact Person"></img>
-
-                                </Dropdown>
-                                <br>
-                                </br>
-                                <br>
-                                </br>
-                                <form onSubmit={handleSubmit(onSubmit)}>
-                                    <p>Current username: {user} </p>
-                                    <Input type='text' name='username' inputRef={register({
-                                        required: true
-                                    })} > </Input>
-                                    <Button className="orange" type="submit">
-                                        Change your username
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <p>
+                                    Your current Username is: {user}.
+                                </p>
+                                <p>
+                                    To change your username, input your new username into the textbox:
+                                </p>
+                                <Input type='text' name='username' inputRef={register({
+                                    required: true
+                                })} > </Input>
+                                <Button className="orange" type="submit">
+                                    Change your username
                                     </Button>
-                                </form>
-
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="col s6 m6">
-                        <div className="card blue-grey darken-1">
-                            <div className="card-content white-text">
-                                <span className="card-title">Your Aquarium</span>
-                               
-                                <br>
-                                </br>
-                                <br>
-                                </br>
-                                
-                                    
-                                    <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
-                                      Visit your aquarium! 
-                                    </Button>
-                                
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            </form>
+                        </Card>
+                    </Col>
+                    <Col s={12} m={6}>
+                        <Card
+                            className="blue-grey darken-1"
+                            title="Your Aquarium"
+                            textClassName="white-text">
+                            <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
+                                Visit your aquarium!
+                            </Button>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
 
         </>
     );

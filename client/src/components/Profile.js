@@ -1,9 +1,6 @@
-
 import React from 'react';
 import { Button } from 'react-materialize';
 import { useForm } from 'react-hook-form';
-import API from "../utils/API";
-
 
 function Profile(props) {
     const { register, handleSubmit, watch, errors } = useForm()
