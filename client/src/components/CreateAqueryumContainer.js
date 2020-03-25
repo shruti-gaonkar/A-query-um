@@ -8,10 +8,17 @@ function CreateAqueryumContainer(props) {
   const [results, setResults] = useState([]);
   const [loader, setLoader] = useState(0);
 
+  const findInches = (size) => {
+    return (parseFloat(size) / 2.54).toFixed(2);
+  }
+
+
   useLayoutEffect(() => {
+    setLoader(1);
     API.listAqueryum()
       .then(res => {
-        setResults(res.data[0].fishes)
+        setResults(res.data[0].fishes);
+        setLoader(0);
       })
       .catch(err => console.log(err))
   }, [1]);
@@ -65,7 +72,7 @@ function CreateAqueryumContainer(props) {
                           {fish.aliases[0]}
                         </td>
                         <td>
-                          {fish.type}
+                          {fish.maxSizeCM} cm ({findInches(fish.maxSizeCM)} in)
                         </td>
                         <td>
                           {fish.type}
