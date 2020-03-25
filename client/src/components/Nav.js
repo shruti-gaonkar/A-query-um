@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
