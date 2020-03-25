@@ -24,7 +24,7 @@ function LoginForm(props) {
             // If there's an error, log the error
         })
             .catch(function (err) {
-                props.setMessage("Incorrect Credentials");
+                props.setMessage("Email or password is incorrect");
             });
     }
     return (
