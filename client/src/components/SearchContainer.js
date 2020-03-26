@@ -43,7 +43,7 @@ function SearchContainer(props) {
 
     const fishResults = results.map((fish) => {
         return (
-            < FishList fish={fish} loggedIn={loggedIn} disableFlag={
+            <FishList key={fish._id} fish={fish} loggedIn={loggedIn} disableFlag={
                 (userFishes && userFishes.includes(fish._id)) ? true : false
             } />
         );
