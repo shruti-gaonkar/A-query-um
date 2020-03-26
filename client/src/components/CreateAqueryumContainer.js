@@ -79,7 +79,7 @@ function CreateAqueryumContainer(props) {
                     results.map((fish) => {
                       return (<tr id={fish._id} key={fish._id}>
                         <td>
-                          {fish.aliases[0]}
+                          <a key={fish._id} href={`/fish/${fish._id}`}><strong>{fish.aliases[0]}</strong></a>
                         </td>
                         <td>
                           {fish.maxSizeCM} cm ({findInches(fish.maxSizeCM)} in)
@@ -91,6 +91,7 @@ function CreateAqueryumContainer(props) {
                           <Button
                             className="red"
                             floating
+                            small
                             icon={<Icon>delete</Icon>}
                             node="button"
                             waves="light"
