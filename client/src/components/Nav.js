@@ -9,19 +9,27 @@ import API from "../utils/API";
 function Nav() {
 
     const [logged, setLogged] = useState(false);
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    console.log("this is user", user);
+    const [userpic, setUserpic] = useState(null);
+    console.log("userpic is this", userpic);
+    const [email, setEmail] = useState(null);
 
     const updateUser = function (userObject) {
-        const { loggedIn, username } = userObject;
+        const { loggedIn, username, userpic, email } = userObject;
         setLogged(loggedIn);
         setUser(username);
+        setUserpic(userpic);
+        setEmail(email);
     }
 
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             updateUser({
                 loggedIn: response.data.loggedIn,
-                username: (response.data.user) ? response.data.user.firstName : ""
+                username: (response.data.user) ? response.data.user.username : "",
+                userpic: (response.data.user) ? response.data.user.userpic : "",
+                email: (response.data.user) ? response.data.user.email : ""
             });
         });
     })
@@ -54,9 +62,9 @@ function Nav() {
                                     <SideNavItem
                                         user={{
                                             background: "../images/userbg01.jpg",
-                                            email: "iamemailaddress",
-                                            image: 'static/media/react-materialize-logo.824c6ea3.svg',
-                                            name: 'John Doe'
+                                            email: `${email}`,
+                                            image: `${userpic}`,
+                                            name: `${user}`
                                         }}
                                         userView
                                     />
