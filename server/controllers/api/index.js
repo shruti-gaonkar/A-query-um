@@ -2,12 +2,6 @@ const db = require('../../models');
 const fishData = require('../../data/fishObjects.json');
 
 module.exports = {
-    getMain: (req, res) => {
-        res.send('Welcome to API v1.');
-    },
-    getTest: (req, res) => {
-        res.send('This is a test!');
-    },
     findAll: (req, res) => {
         db.Fish.find()
             .then(function (dbFish) {

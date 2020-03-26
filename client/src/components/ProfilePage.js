@@ -6,21 +6,26 @@ import Input from './Input'
 import API from "../utils/API";
 
 function ProfilePage(props) {
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, watch, errors } = useForm();
+
     useEffect(() => {
         getUser();
     })
+
+    const [user, setUser] = useState();
+    const [name, setName] = useState();
+    const [userpic, setUserpic] = useState();
 
     const getUser = () => {
         API.isAuthenticated().then(function (response) {
             setUser(response.data.user.username);
             setName(response.data.user.firstName);
+            setUserpic(response.data.user.userpic);
         })
-    }
+    };
 
-    const [user, setUser] = useState(user);
-    const [name, setName] = useState(name);
-    const [img, setImg] = useState("https://picsum.photos/id/446/90/90")
+    const [img, setImg] = useState("https://picsum.photos/id/446/90/90");
+
     const onSubmit = (data) => {
         console.log(data);
         console.log(user);
@@ -31,49 +36,53 @@ function ProfilePage(props) {
         }).then(function (response) {
             console.log(response);
         })
-    }
+    };
+
     const getimg = (e) => {
         setImg(e)
-    }
+    };
+
     const aquariumPage = (e) => {
         e.preventDefault();
         window.location.href = '/aqueryum/create'
-    }
+    };
+
     return (
         <>
             <Container>
                 <Row>
-                    <Col s={12}>
-                        <h2 className='center blue-text'> Welcome, {name}!</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="s4 offset-s4">
+                    <Col s={12} className="l6 offset-l3">
                         <Card>
                             <Row className="valign-wrapper">
-                                <Col s={4}>
-                                    <img src={img} className="circle" alt="Contact Person" />
+                                <Col>
+                                    <img src={userpic} className="circle" alt="A fish." />
                                 </Col>
-                                <Col s={8}>
-                                    <h4>{user}</h4>
+                                <Col>
+                                    <h4>
+                                        Welcome,
+                                        <br />
+                                        {user}!
+                                        </h4>
+                                    <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
+                                        Visit Aquarium
+                                    </Button>
                                 </Col>
                             </Row>
                         </Card>
                     </Col>
                 </Row>
                 <Row>
-                    <Col s={12} m={6}>
+                    <Col s={12} className="l6 offset-l3">
                         <Card
                             className="blue-grey darken-1"
-                            title="User Profile"
+                            title="Profile Settings"
                             textClassName="white-text">
-
-                            <p>
-                                Set Profile Image
-                                </p>
+                            <hr />
+                            <h6>Set Profile Image:</h6>
+                            <br />
                             <Dropdown
                                 options={{
-                                    alignment: 'left',
+                                    alignment: 'center',
                                     autoTrigger: true,
                                     closeOnClick: true,
                                     constrainWidth: true,
@@ -87,7 +96,7 @@ function ProfilePage(props) {
                                     onOpenStart: null,
                                     outDuration: 250
                                 }}
-                                trigger={<Button node="button">Pick here!</Button>}
+                                trigger={<Button className="cyan" node="button">See Available Icons</Button>}
                             >
                                 <img onClick={() => getimg("https://picsum.photos/id/446/90/90")} className='responsive-img' src="https://picsum.photos/id/446/90/90" alt="Contact Person"></img>
                                 <Divider />
@@ -99,31 +108,18 @@ function ProfilePage(props) {
                                 <Divider />
                                 <img onClick={() => getimg("https://picsum.photos/id/500/90/90")} className='responsive-img' src="https://picsum.photos/id/500/90/90" alt="Contact Person"></img>
                             </Dropdown>
-
+                            <br />
+                            <br />
+                            <hr />
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <p>
-                                    Your current Username is: {user}.
-                                </p>
-                                <p>
-                                    To change your username, input your new username into the textbox:
-                                </p>
+                                <h6>Change Username:</h6>
                                 <Input type='text' name='username' inputRef={register({
                                     required: true
                                 })} > </Input>
-                                <Button className="orange" type="submit">
-                                    Change your username
+                                <Button className="cyan" type="submit">
+                                    Change Username
                                     </Button>
                             </form>
-                        </Card>
-                    </Col>
-                    <Col s={12} m={6}>
-                        <Card
-                            className="blue-grey darken-1"
-                            title="Your Aquarium"
-                            textClassName="white-text">
-                            <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
-                                Visit your aquarium!
-                            </Button>
                         </Card>
                     </Col>
                 </Row>

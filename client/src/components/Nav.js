@@ -1,11 +1,10 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-materialize';
+import { Navbar, Icon, NavItem, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
 import Profile from './Profile';
 import API from "../utils/API";
-import ParallaxImages from '../data/parallax.json';
 
 function Nav() {
 
@@ -17,9 +16,6 @@ function Nav() {
         setLogged(loggedIn);
         setUser(username);
     }
-
-    const randomImg = ParallaxImages[(Math.floor(Math.random() * ParallaxImages.length))];
-    console.log("this is randomImg in Nav", randomImg);
 
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
