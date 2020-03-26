@@ -4,7 +4,7 @@ import API from "../utils/API";
 import AliasModal from '../components/AliasModal/AliasModal';
 
 function FishList(props) {
-    const { fish } = props;
+    const { fish, loggedIn } = props;
     console.log("these fish are in FishList as results", fish.aliases[0])
 
     const handleAqFishSave = (fish_id) => {
@@ -33,13 +33,13 @@ function FishList(props) {
             </td>
             <td>
                 <Button
-                    className="green"
+                    className={(loggedIn) ? "green" : "grey"}
                     floating
                     small
                     icon={<Icon>save</Icon>}
                     node="button"
                     waves="light"
-                    onClick={() => handleAqFishSave(fish._id)}
+                    onClick={(loggedIn) ? () => handleAqFishSave(fish._id) : ""}
                 />
             </td>
         </tr>
