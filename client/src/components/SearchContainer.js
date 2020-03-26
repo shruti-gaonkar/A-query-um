@@ -42,9 +42,10 @@ function SearchContainer(props) {
     }
 
     const fishResults = results.map((fish) => {
-        const disableSave = (userFishes && userFishes.includes(fish._id)) ? true : false
         return (
-            < FishList fish={fish} loggedIn={loggedIn} disableSave={disableSave} />
+            < FishList fish={fish} loggedIn={loggedIn} disableFlag={
+                (userFishes && userFishes.includes(fish._id)) ? true : false
+            } />
         );
     });
 

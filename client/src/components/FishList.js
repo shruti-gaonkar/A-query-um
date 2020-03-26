@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Icon } from 'react-materialize';
 import API from "../utils/API";
 import AliasModal from '../components/AliasModal/AliasModal';
 
 function FishList(props) {
-    const { fish, loggedIn, disableSave } = props;
-    console.log("these fish are in FishList as results", fish.aliases[0])
+    const { fish, loggedIn, disableFlag } = props;
+
+    // state to check if the save button has to be disabled on load for the fish record
+    const [disableSave, setDisableSave] = useState(disableFlag);
 
     const handleAqFishSave = (fish_id) => {
         API.saveAqueryum({
             fish_id: fish_id,
         }).then(function (data) {
-            window.location.replace("/aqueryum/create");
+            setDisableSave(true);
         }).catch(function (err) {
             console.log(err);
         });
@@ -33,13 +35,14 @@ function FishList(props) {
             </td>
             <td>
                 <Button
-                    className={(loggedIn && !disableSave) ? "green" : "grey"}
+                    className="green"
                     floating
                     small
                     icon={<Icon>save</Icon>}
                     node="button"
                     waves="light"
-                    onClick={(loggedIn) ? () => handleAqFishSave(fish._id) : ""}
+                    disabled={(loggedIn && !disableSave) ? false : true}
+                    onClick={() => handleAqFishSave(fish._id)}
                 />
             </td>
         </tr>
