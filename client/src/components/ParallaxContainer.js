@@ -12,9 +12,7 @@ function ParallaxContainer({ showSearch }) {
     const [screen, setScreen] = useState('');
     const [strength, setStrength] = useState(600);
 
-    const parallaxImages = ParallaxImages;
-
-    const randomImg = parallaxImages[(Math.floor(Math.random() * parallaxImages.length))];
+    const randomImg = ParallaxImages[(Math.floor(Math.random() * ParallaxImages.length))];
 
     const checkScreenSize = () => {
         setScreen(window.innerWidth);

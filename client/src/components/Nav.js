@@ -5,6 +5,7 @@ import SignUpModal from './SignUpModal';
 import Logout from './Logout';
 import Profile from './Profile';
 import API from "../utils/API";
+import ParallaxImages from '../data/parallax.json';
 
 function Nav() {
 
@@ -17,6 +18,8 @@ function Nav() {
         setUser(username);
     }
 
+    const randomImg = ParallaxImages[(Math.floor(Math.random() * ParallaxImages.length))];
+    console.log("this is randomImg in Nav", randomImg);
 
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
@@ -54,32 +57,36 @@ function Nav() {
                                 <>
                                     <SideNavItem
                                         user={{
-                                            background: 'https://placeimg.com/640/480/tech',
-                                            email: "",
+                                            background: "../images/userbg01.jpg",
+                                            email: "iamemailaddress",
                                             image: 'static/media/react-materialize-logo.824c6ea3.svg',
                                             name: 'John Doe'
                                         }}
                                         userView
                                     />
                                     <SideNavItem
-                                        href="#!icon"
-                                        icon="cloud"
-                                    >
-                                        First Link With Icon
-    </SideNavItem>
-                                    <SideNavItem href="#!second">
-                                        Second Link
-    </SideNavItem>
-                                    <SideNavItem divider />
-                                    <SideNavItem subheader>
-                                        Subheader
-    </SideNavItem>
-                                    <SideNavItem
-                                        href="#!third"
+                                        href="/"
                                         waves
                                     >
-                                        Third Link With Waves
-    </SideNavItem>
+                                        Home
+                                    </SideNavItem>
+                                    <SideNavItem
+                                        href="/profile"
+                                        waves
+                                    >
+                                        My Profile
+                                    </SideNavItem>
+                                    <SideNavItem
+                                        href="/aqueryum/create"
+                                        waves
+                                    >
+                                        My Aquarium
+                                    </SideNavItem>
+                                    <SideNavItem divider />
+                                    <SideNavItem subheader>
+                                        <Logout />
+                                    </SideNavItem>
+
                                 </>
                             }>
 

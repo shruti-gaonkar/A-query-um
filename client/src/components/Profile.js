@@ -11,7 +11,7 @@ function Profile(props) {
     return (
         <>
 
-            <Button className="orange" onClick={(e) => profilePage(e)}>
+            <Button className="teal" onClick={(e) => profilePage(e)}>
                 My Profile
                 </Button>
 
