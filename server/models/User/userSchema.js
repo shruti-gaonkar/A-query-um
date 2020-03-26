@@ -24,6 +24,10 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
+    userpic: {
+        type: String,
+        default: "/images/user01.jpg"
+    },
     fishes: [
         {
             // Store ObjectIds in the array

@@ -17,6 +17,7 @@ function SignUpForm(props) {
             username: username,
             password: password,
             email: email_address,
+            userpic: "/images/user01.jpg",
             firstName: fullname
         }).then(function (data) {
             if (data.data.error && data.data.error.errmsg) {

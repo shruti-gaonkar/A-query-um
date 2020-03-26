@@ -15,9 +15,6 @@ router.route('/create')
 router.route('/search/:query')
     .get(controller.findBy);
 
-router.route('/test')
-    .get(controller.getTest);
-
 router.route("/searchById/:id")
     .get(controller.findFishById)
 // .put(controller.updateFishRecord)

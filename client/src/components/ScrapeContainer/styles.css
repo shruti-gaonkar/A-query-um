@@ -9,13 +9,13 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 920px) {
-    .card {
+    .cardScrape {
         height: 355px;
     }
 }
 
 @media only screen and (min-width: 920px) and (max-width: 990px) {
-    .card {
+    .cardScrape {
         height: 375px;
     }
 }

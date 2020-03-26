@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Navbar, Icon, NavItem, SideNav, Button, SideNavItem } from 'react-materialize';
+import { Navbar, Icon, NavItem, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import Logout from './Logout';
@@ -9,20 +9,27 @@ import API from "../utils/API";
 function Nav() {
 
     const [logged, setLogged] = useState(false);
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    console.log("this is user", user);
+    const [userpic, setUserpic] = useState(null);
+    console.log("userpic is this", userpic);
+    const [email, setEmail] = useState(null);
 
     const updateUser = function (userObject) {
-        const { loggedIn, username } = userObject;
+        const { loggedIn, username, userpic, email } = userObject;
         setLogged(loggedIn);
         setUser(username);
+        setUserpic(userpic);
+        setEmail(email);
     }
 
-    
     useLayoutEffect(() => {
         API.isAuthenticated().then(function (response) {
             updateUser({
                 loggedIn: response.data.loggedIn,
-                username: (response.data.user) ? response.data.user.firstName : ""
+                username: (response.data.user) ? response.data.user.username : "",
+                userpic: (response.data.user) ? response.data.user.userpic : "",
+                email: (response.data.user) ? response.data.user.email : ""
             });
         });
     })
@@ -48,11 +55,45 @@ function Nav() {
                                 onOpenStart: null,
                                 outDuration: 200,
                                 preventScrolling: true
-                            }}>
+                            }}
 
-                            <NavItem href="/">
-                                Welcome, {user}
-                            </NavItem>
+                            sidenav={
+                                <>
+                                    <SideNavItem
+                                        user={{
+                                            background: "../images/userbg01.jpg",
+                                            email: `${email}`,
+                                            image: `${userpic}`,
+                                            name: `${user}`
+                                        }}
+                                        userView
+                                    />
+                                    <SideNavItem
+                                        href="/"
+                                        waves
+                                    >
+                                        Home
+                                    </SideNavItem>
+                                    <SideNavItem
+                                        href="/profile"
+                                        waves
+                                    >
+                                        My Profile
+                                    </SideNavItem>
+                                    <SideNavItem
+                                        href="/aqueryum/create"
+                                        waves
+                                    >
+                                        My Aquarium
+                                    </SideNavItem>
+                                    <SideNavItem divider />
+                                    <SideNavItem subheader>
+                                        <Logout />
+                                    </SideNavItem>
+
+                                </>
+                            }>
+
                             <NavItem>
                                 <Profile />
                             </NavItem>
@@ -64,7 +105,6 @@ function Nav() {
                     }
                 </>
             ) :
-
 
             (<Navbar className="grey darken-4"
                 alignLinks="right"
