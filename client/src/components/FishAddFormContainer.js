@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Container, CardPanel, Button, Icon, Textarea, RadioGroup } from 'react-materialize';
+import { Container, CardPanel, Button, Icon } from 'react-materialize';
 import Input from "./Input";
 import API from "../utils/API";
 import ScrollTop from './ScrollTop';
@@ -215,7 +215,7 @@ function FishAddFormContainer() {
         </Button>
       </form>
       <br />
-      
+
       <ScrollTop />
     </Container>
 
