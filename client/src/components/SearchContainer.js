@@ -15,14 +15,9 @@ function SearchContainer(props) {
     useLayoutEffect(() => {
         // code to get all the aquarium fishes selected by the user
         API.isAuthenticated().then(function (response) {
-            setUserFishes([]);
-            setLoggedIn(0);
-            if (response.data.loggedIn) {
-                setLoggedIn(1);
-                setUserFishes(response.data.user.fishes);
-            }
+            if (response.data.loggedIn) setLoggedIn(1);
+            if (response.data.user.fishes) setUserFishes(response.data.user.fishes);
         });
-
         loadResults();
     }, [props.query]);
 
@@ -42,6 +37,7 @@ function SearchContainer(props) {
     }
 
     const fishResults = results.map((fish) => {
+        console.log("Inside fish results");
         return (
             <FishList key={fish._id} fish={fish} loggedIn={loggedIn} disableFlag={
                 (userFishes && userFishes.includes(fish._id)) ? true : false
