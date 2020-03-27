@@ -45,7 +45,7 @@ function Nav() {
                     {
                         <Navbar className="grey darken-4"
                             alignLinks="right"
-                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" alt="A-query-um logo with magnifying glass for the capital Q, the face of a fish visible inside the magnifying glass." /></a>}
                             centerLogo
                             menuIcon={<Icon>menu</Icon>}
                             centerChildren="1"
@@ -112,7 +112,7 @@ function Nav() {
 
             (<Navbar className="grey darken-4"
                 alignLinks="right"
-                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" alt="A-query-um logo with magnifying glass for the capital Q, the face of a fish visible inside the magnifying glass." /></a>}
                 centerLogo
                 menuIcon={<Icon>menu</Icon>}
                 centerChildren="1"
