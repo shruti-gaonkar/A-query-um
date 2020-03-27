@@ -7,12 +7,9 @@ import Profile from './Profile';
 import API from "../utils/API";
 
 function Nav() {
-
     const [logged, setLogged] = useState(false);
     const [user, setUser] = useState(null);
-    console.log("this is user", user);
     const [userpic, setUserpic] = useState(null);
-    console.log("userpic is this", userpic);
     const [email, setEmail] = useState(null);
 
     const updateUser = function (userObject) {
