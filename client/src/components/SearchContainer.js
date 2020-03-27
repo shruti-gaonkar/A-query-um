@@ -7,6 +7,7 @@ import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
     const msg = 'No fish by that name located in the database';
+    // defined multiple states as objects
     const [stateArr, setResults] = useState({
         results: [],
         loggedIn: 0,
@@ -14,11 +15,6 @@ function SearchContainer(props) {
         message: msg,
         loader: 1
     });
-    //const [results, setResults] = useState([]);
-    //const [message, setMessage] = useState("No fish by that name located in the database");
-    //const [loader, setLoader] = useState(0);
-    //const [userFishes, setUserFishes] = useState([]);
-    //const [loggedIn, setLoggedIn] = useState(0);
 
     useLayoutEffect(() => {
         setResults({
@@ -30,26 +26,18 @@ function SearchContainer(props) {
         });
         // code to get all the aquarium fishes selected by the user
         API.isAuthenticated().then(function (response) {
-            //if (response.data.loggedIn) { setResults({ loggedIn: response.data.loggedIn }); }
-            //if (response.data.user.fishes) setResults({ userFishes: response.data.user.fishes });
             loadResults(response);
         });
     }, [props.query]);
 
     const loadResults = (authResponse) => {
-        //setLoader(1);
-        //setResults({ loader: 1 });
-        //setResults({ results: [] });
         API.search(props.query)
             .then(res => {
-                // set loader is initiated before load results to prevent
-                // the results from loading twice
-                //setLoader(0);
                 if (res.data) {
                     setResults({
                         results: res.data,
                         loggedIn: authResponse.data.loggedIn,
-                        userFishes: authResponse.data.user.fishes,
+                        userFishes: (authResponse.data.user) ? authResponse.data.user.fishes : [],
                         loader: 0,
                         message: message
                     });
@@ -58,8 +46,9 @@ function SearchContainer(props) {
             .catch(err => console.log(err))
     }
 
+    // destructure state array for rendering
     const { results, loggedIn, userFishes, message, loader } = stateArr;
-    console.log(stateArr);
+
     const fishResults = results.map((fish) => {
         return (
             <FishList key={fish._id} fish={fish} loggedIn={loggedIn} disableFlag={
