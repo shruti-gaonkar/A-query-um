@@ -16,8 +16,8 @@ function CreateAqueryumContainer(props) {
   const handleDelete = (id) => {
     API.deleteAqueryum({ id: id })
       .then(res => {
-        console.log(res);
-        document.getElementById(id).remove();
+        const values = results.filter(fishObj => id !== fishObj._id);
+        setResults(values);
       })
       .catch(err => console.log(err))
   }
@@ -26,8 +26,10 @@ function CreateAqueryumContainer(props) {
     setLoader(1);
     API.listAqueryum()
       .then(res => {
-        setResults(res.data[0].fishes);
         setLoader(0);
+        if (res.data[0]) {
+          setResults(res.data[0].fishes);
+        }
       })
       .catch(err => console.log(err))
   }, [1]);
