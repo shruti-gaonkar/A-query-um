@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Icon } from 'react-materialize';
+import { Modal, Button } from 'react-materialize';
 import LoginForm from './LoginForm';
 
 function Login(props) {
