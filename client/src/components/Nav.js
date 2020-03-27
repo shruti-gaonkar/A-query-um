@@ -89,8 +89,8 @@ function Nav() {
                                         My Aquarium
                                     </SideNavItem>
                                     <SideNavItem divider />
-                                    <SideNavItem subheader>
-                                        <Logout />
+                                    <SideNavItem>
+                                        <Logout updateUser={updateUser} name={user} />
                                     </SideNavItem>
 
                                 </>
