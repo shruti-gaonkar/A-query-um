@@ -50,7 +50,15 @@ router.get("/isAuthenticated", function (req, res) {
 
 router.post("/changeUser", function (req, res) {
     console.log(req.body);
-    db.User.findOneAndUpdate({'username': req.body.olduser }, { 'username': req.body.username }, { upsert: true }, function (err, doc) {
+    db.User.findOneAndUpdate({ '_id': req.user._id }, { 'username': req.body.username }, { upsert: true }, function (err, doc) {
+        if (err) return res.send(500, { error: err })
+        return res.send('Successfully updated');
+    })
+})
+
+router.post('/changepic', function (req, res) {
+    console.log(req.body);
+    db.User.findOneAndUpdate({ '_id': req.user._id}, {'userpic': req.body.userpic}, {upsert: false}, function(err){
         if (err) return res.send(500, { error: err })
         return res.send('Successfully updated');
     })
