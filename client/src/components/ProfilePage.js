@@ -31,12 +31,10 @@ function ProfilePage(props) {
         console.log(data);
         console.log(user);
         API.updateUser({
-
             username: data.username
-
         }).then(function (response) {
-            console.log(response);
-            window.location.reload();
+            setUser(response.username);
+            //window.location.reload();
         })
     };
 
@@ -45,9 +43,8 @@ function ProfilePage(props) {
         API.updatepic({
             userpic: e
         }).then(function (res) {
-
             setUserpic(e);
-            window.location.reload();
+            //window.location.reload();
         })
     };
 
@@ -76,7 +73,7 @@ function ProfilePage(props) {
                                         <br />
                                         {user}!
                                         </h4>
-                                        
+
                                     <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
                                         Visit Aquarium
                                     </Button>
