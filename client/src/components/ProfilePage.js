@@ -15,37 +15,50 @@ function ProfilePage(props) {
     const [user, setUser] = useState();
     const [name, setName] = useState();
     const [userpic, setUserpic] = useState();
+    const [admin, setadmin] = useState();
 
     const getUser = () => {
         API.isAuthenticated().then(function (response) {
             setUser(response.data.user.username);
             setName(response.data.user.firstName);
             setUserpic(response.data.user.userpic);
+            setadmin(response.data.user.adminType);
         })
     };
 
-    const [img, setImg] = useState("https://picsum.photos/id/446/90/90");
 
     const onSubmit = (data) => {
         console.log(data);
         console.log(user);
         API.updateUser({
-            olduser: user,
+
             username: data.username
 
         }).then(function (response) {
             console.log(response);
+            window.location.reload();
         })
     };
 
     const getimg = (e) => {
-        setImg(e)
+        console.log('clicked');
+        API.updatepic({
+            userpic: e
+        }).then(function (res) {
+
+            setUserpic(e);
+            window.location.reload();
+        })
     };
 
     const aquariumPage = (e) => {
         e.preventDefault();
         window.location.href = '/aqueryum/create'
     };
+
+    const adminPage = (e) => {
+        window.location.href = '/fish/create';
+    }
 
     return (
         <>
@@ -63,9 +76,14 @@ function ProfilePage(props) {
                                         <br />
                                         {user}!
                                         </h4>
+                                        
                                     <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
                                         Visit Aquarium
                                     </Button>
+
+                                    {admin ? (<Button className="orange" type="submit" onClick={(e) => adminPage(e)}>
+                                        Add Fish (admin only)
+                                    </Button>) : (<> </>)}
                                 </Col>
                             </Row>
                         </Card>
@@ -98,22 +116,22 @@ function ProfilePage(props) {
                                 }}
                                 trigger={<Button className="cyan" node="button">See Available Icons</Button>}
                             >
-                                <img onClick={() => getimg("https://picsum.photos/id/446/90/90")} className='responsive-img' src="https://picsum.photos/id/446/90/90" alt="Contact Person"></img>
+                                <img onClick={() => getimg("/images/user01.jpg")} className='responsive-img' src='../../images/user01.jpg' alt="Contact Person"></img>
                                 <Divider />
-                                <img onClick={() => getimg("https://picsum.photos/id/581/90/90")} className='responsive-img' src="https://picsum.photos/id/581/90/90" alt="Contact Person"></img>
+                                <img onClick={() => getimg("/images/user02.jpg")} className='responsive-img' src="../../images/user02.jpg" alt="Contact Person"></img>
                                 <Divider />
-                                <img onClick={() => getimg("https://picsum.photos/id/541/90/90")} className='responsive-img' src="https://picsum.photos/id/541/90/90" alt="Contact Person"></img>
+                                <img onClick={() => getimg("/images/user03.jpg")} className='responsive-img' src="../../images/user03.jpg" alt="Contact Person"></img>
                                 <Divider />
-                                <img onClick={() => getimg("https://picsum.photos/id/690/90/90")} className='responsive-img' src="https://picsum.photos/id/690/90/90" alt="Contact Person"></img>
+                                <img onClick={() => getimg("/images/user04.jpg")} className='responsive-img' src="../../images/user04.jpg" alt="Contact Person"></img>
                                 <Divider />
-                                <img onClick={() => getimg("https://picsum.photos/id/500/90/90")} className='responsive-img' src="https://picsum.photos/id/500/90/90" alt="Contact Person"></img>
+                                <img onClick={() => getimg("/images/user05.jpg")} className='responsive-img' src="../../images/user05.jpg" alt="Contact Person"></img>
                             </Dropdown>
                             <br />
                             <br />
                             <hr />
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <h6>Change Username:</h6>
-                                <Input type='text' name='username' inputRef={register({
+                                <Input type='text' className='white-text' name='username' inputRef={register({
                                     required: true
                                 })} > </Input>
                                 <Button className="cyan" type="submit">

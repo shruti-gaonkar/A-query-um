@@ -21,6 +21,7 @@ function LoginForm(props) {
                 loggedIn: true,
                 username: response.data.firstname
             })
+            window.location.reload();
             // If there's an error, log the error
         })
             .catch(function (err) {
