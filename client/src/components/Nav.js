@@ -23,9 +23,7 @@ function Nav() {
     };
 
     useLayoutEffect(() => {
-        console.log("Is firing.");
         API.isAuthenticated().then(function (response) {
-            console.log("this is the response from useLayoutEffect", response.data);
             updateUser({
                 loggedIn: response.data.loggedIn,
                 username: (response.data.user) ? response.data.user.username : "",
