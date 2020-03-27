@@ -7,7 +7,6 @@ When initially running the application the user will be introduced to the homepa
 # Technologies
 This project is created with
 
-```
 ## Languages
 - JavaScript
 - HTML
@@ -46,7 +45,6 @@ This project is created with
 - @testing-library/jest-dom
 - @testing-library/react
 - @testing-library/user-event
-```
 
 # Goals
 - Add Admin access for users to add fish to the database

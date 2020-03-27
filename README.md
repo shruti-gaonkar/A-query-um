@@ -1,23 +1,52 @@
-# Node-React-Startup-Structure
-A file structure for developing a Node and React app.
+# A-Query-Um
+> A web app for locating basic information about aquarium fresh and saltwater fish.
 
-The [Client Folder](/client) contains a basic create-react-app starter file.
+# Functionality
+When initially running the application the user will be introduced to the homepage that gives the user the ability to use the search bar and search for aquarium fish and will be directed to a new page displaying all fish with the name searched and the user can click on the fish of their choice to be directed to a new page displaying an image and some basic information relating to the fish. The user can also scroll down to view some links to articles for Aquarium Fish Care Guides that were web-scraped from [theaquariumguide.com](https://www.theaquariumguide.com/aquarium-fish-care-guides) The user also has the ability to sign-up and create an account or sign-in to an existing account. Once the user creates an account or logs-in to an existing, they now have the ability to save fish that they have searched and add them to their own personal aquarium! 
 
-The [Server Folder](server) contains a basic MVC folder structure for creating an api using Node and Express.
+# Technologies
+This project is created with
 
-## Commands that can be run from this root folder:
+## Languages
+- JavaScript
+- HTML
+- CSS
 
-`npm install` - Installs all packages specified in the package.json file for both the client and server.
+## Libraries
+- React
+- React-Materialize
+- Materialize
 
-`npm run start` - checks if the environment variable 'NODE_ENV' is set to production, and runs either the development version or the production version of the project accordingly.
+## Dependencies
+- axios
+- hookrouter
+- react
+- react-dom
+- react-hook-form
+- react-materialize
+- react-parallax
+- react-responsive-carousel
+- react-router-dom
+- react-scripts
+- dotenv
+- if-env
+- bcryptjs
+- cheerio
+- connect-mongo
+- express
+- express-session
+- mongoose
+- morgan
+- passport
+- passport-local
+- path
+- @nzambello/react-scrolltop
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
 
-`npm run start:dev` - Runs the development version of the project.
+# Goals
+- Add Admin access for users to add fish to the database
 
-`npm run start:prod` - Runs the production version of the project.
-
-`npm run build` - Runs build in the client folder.
-
-`npm run client` - Runs the client side code.
-
-`npm run server` - Runs the server side code.
-
+# Demo
+This app is deployed on Heroku, you can find the [live app Here](https://aqueryum.herokuapp.com/) !
