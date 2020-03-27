@@ -3,7 +3,8 @@ import { Modal, Button } from 'react-materialize';
 import '../AliasModal/styles.css';
 
 function AliasModal(props) {
-    const sortAliases = props.aliases.sort();
+    const modifiedAliases = props.aliases;
+    const sortAliases = modifiedAliases.sort();
     const joinAliases = sortAliases.join(", ");
 
     return (

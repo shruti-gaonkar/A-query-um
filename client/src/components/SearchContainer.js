@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Container, Table, Row, Col, Preloader, CardPanel } from 'react-materialize';
+import { Container, Table, Row, Col, CardPanel } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
 import Loader from "../components/Loader";

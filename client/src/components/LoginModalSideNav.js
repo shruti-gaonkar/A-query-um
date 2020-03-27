@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Icon } from 'react-materialize';
 import LoginForm from './LoginForm';
 
-function Login(props) {
+function LoginSideNav(props) {
     const [message, setMessage] = useState();
 
     const handleOpen = () => {
@@ -31,7 +31,11 @@ function Login(props) {
                 preventScrolling: true,
                 startingTop: '4%'
             }}
-            trigger={<Button className="teal" node="button">Login</Button>}
+            trigger={<Button flat className="waves-effect waves-teal" style={{ textTransform: "none" }} node="button"><strong>Login</strong>
+                <Icon left>
+                    account_circle
+                    </Icon>
+            </Button>}
         >
             <LoginForm updateUser={props.updateUser} message={message} setMessage={setMessage} />
 
@@ -39,4 +43,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default LoginSideNav;

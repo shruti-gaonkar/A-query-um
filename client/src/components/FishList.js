@@ -6,6 +6,7 @@ import AliasModal from '../components/AliasModal/AliasModal';
 function FishList(props) {
     const { fish, loggedIn, disableFlag } = props;
 
+    const [commonName, setCommonName] = useState(fish.aliases[0]);
     // state to check if the save button has to be disabled on load for the fish record
     const [disableSave, setDisableSave] = useState(disableFlag);
 
@@ -22,7 +23,7 @@ function FishList(props) {
     return (
         <tr>
             <td>
-                <strong><a key={fish._id} href={`/fish/${fish._id}`}>{fish.aliases[0]}</a></strong>
+                <strong><a key={fish._id} href={`/fish/${fish._id}`}>{commonName}</a></strong>
             </td>
             <td>
                 {fish.scientificName}

@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# A-Query-Um
+> A web app for locating basic information about aquarium fresh and saltwater fish.
 
-## Available Scripts
+# Functionality
+When initially running the application the user will be introduced to the homepage that gives the user the ability to use the search bar and search for aquarium fish and will be directed to a new page displaying all fish with the name searched and the user can click on the fish of their choice to be directed to a new page displaying an image and some basic information relating to the fish. The user can also scroll down to view some links to articles for Aquarium Fish Care Guides that were web-scraped from [theaquariumguide.com](https://www.theaquariumguide.com/aquarium-fish-care-guides) The user also has the ability to sign-up and create an account or sign-in to an existing account. Once the user creates an account or logs-in to an existing, they now have the ability to save fish that they have searched and add them to their own personal aquarium! 
 
-In the project directory, you can run:
+# Technologies
+This project is created with
 
-### `npm start`
+```
+## Languages
+- JavaScript
+- HTML
+- CSS
+- 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Libraries
+- React
+- React-Materialize
+- Materialize
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Dependencies
+- axios
+- hookrouter
+- react
+- react-dom
+- react-hook-form
+- react-materialize
+- react-parallax
+- react-responsive-carousel
+- react-router-dom
+- react-scripts
+- dotenv
+- if-env
+- bcryptjs
+- cheerio
+- connect-mongo
+- express
+- express-session
+- mongoose
+- morgan
+- passport
+- passport-local
+- path
+- @nzambello/react-scrolltop
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
+```
 
-### `npm test`
+# Goals
+- Add Admin access for users to add fish to the database
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Demo
+This app is deployed on Heroku, you can find the [live app Here](https://aqueryum.herokuapp.com/) !

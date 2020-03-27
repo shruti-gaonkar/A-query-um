@@ -50,6 +50,11 @@ export default {
     },
 
     updateUser: function (data) {
-        return axios.post('/changeUser', data);
+        return axios.post('/api/user/changeUser', data);
+    },
+
+    updatepic: function (data) {
+        console.log(data);
+        return axios.post('/api/user/changepic', data);
     }
 };
