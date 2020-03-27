@@ -14,10 +14,10 @@ const searchStyle = {
 };
 
 function Search() {
-    const [query, setQuery] = useState('');
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => {
         const href = `/search/${data.search}`;
+        document.querySelector("#frmSearch").reset();
         navigate(href, true);
     }
 
@@ -26,7 +26,7 @@ function Search() {
             <Row>
                 <Col className="s12 m6 offset-m3">
                     <Row style={rowStyle}>
-                        <form className="valign-wrapper" onSubmit={handleSubmit(onSubmit)}>
+                        <form id="frmSearch" className="valign-wrapper" onSubmit={handleSubmit(onSubmit)}>
                             <Col s={12}>
                                 <Input className="darkgrey-text" name="search" style={searchStyle} inputRef={
                                     register({ required: true })}
@@ -36,11 +36,9 @@ function Search() {
                                 <Button className="cyan darken-3 btn-floating" style={{ borderRadius: '25px' }} type="submit">
                                     <Icon>
                                         search
-                            </Icon>
+                                    </Icon>
                                 </Button>
                             </Col>
-                            {/* <Col className="offset-m3 hide-on-small-only">
-                    </Col> */}
                         </form>
                     </Row>
                 </Col>

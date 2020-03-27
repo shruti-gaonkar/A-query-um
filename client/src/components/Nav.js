@@ -1,7 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Navbar, Icon, NavItem, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
+import LoginSideNav from './LoginModalSideNav';
 import SignUpModal from './SignUpModal';
+import SignUpSideNav from './SignUpModalSideNav';
 import Logout from './Logout';
 import Profile from './Profile';
 import API from "../utils/API";
@@ -21,10 +23,12 @@ function Nav() {
         setUser(username);
         setUserpic(userpic);
         setEmail(email);
-    }
+    };
 
     useLayoutEffect(() => {
+        console.log("Is firing.");
         API.isAuthenticated().then(function (response) {
+            console.log("this is the response from useLayoutEffect", response.data);
             updateUser({
                 loggedIn: response.data.loggedIn,
                 username: (response.data.user) ? response.data.user.username : "",
@@ -32,7 +36,7 @@ function Nav() {
                 email: (response.data.user) ? response.data.user.email : ""
             });
         });
-    })
+    }, [logged, user, userpic, email]);
 
     return (
         logged ?
@@ -41,7 +45,7 @@ function Nav() {
                     {
                         <Navbar className="grey darken-4"
                             alignLinks="right"
-                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                            brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" alt="A-query-um logo with magnifying glass for the capital Q, the face of a fish visible inside the magnifying glass." /></a>}
                             centerLogo
                             menuIcon={<Icon>menu</Icon>}
                             centerChildren="1"
@@ -87,8 +91,8 @@ function Nav() {
                                         My Aquarium
                                     </SideNavItem>
                                     <SideNavItem divider />
-                                    <SideNavItem subheader>
-                                        <Logout />
+                                    <SideNavItem>
+                                        <Logout updateUser={updateUser} name={user} />
                                     </SideNavItem>
 
                                 </>
@@ -108,7 +112,7 @@ function Nav() {
 
             (<Navbar className="grey darken-4"
                 alignLinks="right"
-                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" /></a>}
+                brand={<a className="brand-logo" href="/"><img src="/images/logo3.png" alt="A-query-um logo with magnifying glass for the capital Q, the face of a fish visible inside the magnifying glass." /></a>}
                 centerLogo
                 menuIcon={<Icon>menu</Icon>}
                 centerChildren="1"
@@ -122,12 +126,40 @@ function Nav() {
                     onOpenStart: null,
                     outDuration: 200,
                     preventScrolling: true
-                }}>
-                <NavItem href="/">
-                    <LoginModal updateUser={updateUser} />
-                </NavItem>
+                }}
+
+                sidenav={
+                    <>
+                        <SideNavItem
+                            user={{
+                                background: "../images/userbg01.jpg",
+                                email: `searchable aquarium life database`,
+                                image: ``,
+                                name: `Welcome to A-Query-Um`
+                            }}
+                            userView
+                        />
+                        <SideNavItem
+                            href="/"
+                            waves
+                        >
+                            Home
+                        </SideNavItem>
+                        <SideNavItem divider />
+                        <SideNavItem>
+                            <SignUpSideNav updateUser={updateUser} />
+                        </SideNavItem>
+                        <SideNavItem>
+                            <LoginSideNav updateUser={updateUser} />
+                        </SideNavItem>
+
+                    </>
+                }>
                 <NavItem href="/">
                     <SignUpModal updateUser={updateUser} />
+                </NavItem>
+                <NavItem href="/">
+                    <LoginModal updateUser={updateUser} />
                 </NavItem>
             </Navbar>)
     );
