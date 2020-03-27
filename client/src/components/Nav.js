@@ -1,7 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Navbar, Icon, NavItem, SideNavItem } from 'react-materialize';
 import LoginModal from './LoginModal';
+import LoginSideNav from './LoginModalSideNav';
 import SignUpModal from './SignUpModal';
+import SignUpSideNav from './SignUpModalSideNav';
 import Logout from './Logout';
 import Profile from './Profile';
 import API from "../utils/API";
@@ -87,8 +89,8 @@ function Nav() {
                                         My Aquarium
                                     </SideNavItem>
                                     <SideNavItem divider />
-                                    <SideNavItem subheader>
-                                        <Logout />
+                                    <SideNavItem>
+                                        <Logout updateUser={updateUser} name={user} />
                                     </SideNavItem>
 
                                 </>
@@ -122,12 +124,40 @@ function Nav() {
                     onOpenStart: null,
                     outDuration: 200,
                     preventScrolling: true
-                }}>
-                <NavItem href="/">
-                    <LoginModal updateUser={updateUser} />
-                </NavItem>
+                }}
+
+                sidenav={
+                    <>
+                        <SideNavItem
+                            user={{
+                                background: "../images/userbg01.jpg",
+                                email: `searchable aquarium life database`,
+                                image: ``,
+                                name: `Welcome to A-Query-Um`
+                            }}
+                            userView
+                        />
+                        <SideNavItem
+                            href="/"
+                            waves
+                        >
+                            Home
+                        </SideNavItem>
+                        <SideNavItem divider />
+                        <SideNavItem>
+                            <SignUpSideNav updateUser={updateUser} />
+                        </SideNavItem>
+                        <SideNavItem>
+                            <LoginSideNav updateUser={updateUser} />
+                        </SideNavItem>
+
+                    </>
+                }>
                 <NavItem href="/">
                     <SignUpModal updateUser={updateUser} />
+                </NavItem>
+                <NavItem href="/">
+                    <LoginModal updateUser={updateUser} />
                 </NavItem>
             </Navbar>)
     );
