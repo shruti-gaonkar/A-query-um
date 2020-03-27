@@ -11,6 +11,7 @@ function Login(props) {
             props.updateUser({
                 loggedIn: false
             });
+            window.location.href='/';
         })
     }
 

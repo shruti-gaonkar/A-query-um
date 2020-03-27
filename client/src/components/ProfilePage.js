@@ -56,6 +56,10 @@ function ProfilePage(props) {
         window.location.href = '/aqueryum/create'
     };
 
+    const adminPage = (e) => {
+        window.location.href = '/fish/create';
+    }
+
     return (
         <>
             <Container>
@@ -72,9 +76,14 @@ function ProfilePage(props) {
                                         <br />
                                         {user}!
                                         </h4>
+                                        
                                     <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
                                         Visit Aquarium
                                     </Button>
+
+                                    {admin ? (<Button className="orange" type="submit" onClick={(e) => adminPage(e)}>
+                                        Add Fish (admin only)
+                                    </Button>) : (<> </>)}
                                 </Col>
                             </Row>
                         </Card>
