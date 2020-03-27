@@ -35,7 +35,7 @@ function ScrapeContainer() {
                                                 <Card
                                                     className="cardScrape"
                                                     actions={[
-                                                        <a className="truncate" key={news.title} href={news.link} target="_blank">{news.title}</a>
+                                                        <a className="truncate" key={news.title} href={news.link} target="_blank" rel="noopener noreferrer">{news.title}</a>
                                                     ]}
                                                     closeIcon={<Icon>close</Icon>}
                                                     header={<CardTitle image={news.image}>{news.title}</CardTitle>}
