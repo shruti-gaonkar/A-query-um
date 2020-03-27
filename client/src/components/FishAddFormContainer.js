@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, CardPanel, Button, Icon } from 'react-materialize';
 import Input from "./Input";
@@ -10,17 +10,37 @@ function FishAddFormContainer() {
   const { register, handleSubmit, errors } = useForm();
   const [imageLinkArr, setImageLinkArr] = useState([{ img: null, alt: null }]);
   const [message, setMessage] = useState("Add fish to the database using the form below.");
+  const [admin, setadmin] = useState(false);
+  
+  useEffect(() => {
+    getUser();
+  })
+
+  const getUser = () => {
+    API.isAuthenticated().then(function (response) {
+           setadmin(response.data.user.adminType);
+    })
+};
 
   const onSubmit = data => {
-    console.log("this is the data gathered", data);
-    data.aliases = data.aliases.split(",");
-    data.images = imageLinkArr;
-    API.createFish(data).then(function () {
-      document.querySelector("#fish-form").reset();
-      setImageLinkArr([{ img: null, alt: null }]);
-      setMessage("Successfully added new fish record to database! Add another fish using the form below.");
-      window.scrollTo(0, 0);
-    });
+    if (!admin){
+      setMessage("You must be an admin to add fish into the database");
+      window.scrollTo(0,0);
+      
+      
+    }  else {
+
+      console.log("this is the data gathered", data);
+      data.aliases = data.aliases.split(",");
+      data.images = imageLinkArr;
+      API.createFish(data).then(function () {
+        document.querySelector("#fish-form").reset();
+        setImageLinkArr([{ img: null, alt: null }]);
+        setMessage("Successfully added new fish record to database! Add another fish using the form below.");
+        window.scrollTo(0, 0);
+      });
+    }
+      
   }
 
   const handleAddImage = (e) => {
@@ -126,12 +146,12 @@ function FishAddFormContainer() {
         <Input type="number" label="Max Size (in CM)" name="maxSizeCM" inputRef={register({
           required: true
         })} />
-        {errors.maxSize && <span className="error-msg">This field is required</span>}
+        {errors.maxSizeCM && <span className="error-msg">This field is required</span>}
 
         <Input label="Lifespan" name="lifespan" inputRef={register({
           required: true
         })} />
-        {errors.lifeSpan && <span className="error-msg">This field is required</span>}
+        {errors.lifespan && <span className="error-msg">This field is required</span>}
 
         <Input label="Diet" name="diet" inputRef={register({
           required: true
@@ -141,12 +161,12 @@ function FishAddFormContainer() {
         <Input type="number" label="Minimum Tank Size (in Litres)" name="minTankSizeL" inputRef={register({
           required: true
         })} />
-        {errors.tankSize && <span className="error-msg">This field is required</span>}
+        {errors.minTankSizeL && <span className="error-msg">This field is required</span>}
 
         <Input label="Temperature Range (C)" name="tempRangeC" inputRef={register({
           required: true
         })} />
-        {errors.tempRange && <span className="error-msg">This field is required</span>}
+        {errors.tempRangeC && <span className="error-msg">This field is required</span>}
 
         <p>
           <strong>Aggression Level:</strong>
@@ -204,7 +224,7 @@ function FishAddFormContainer() {
           <Input label="Notes" name="notes" inputRef={register({
             required: true
           })} />
-          {errors.description && <span className="error-msg">This field is required</span>}
+          {errors.notes && <span className="error-msg">This field is required</span>}
         </p>
 
         <Button className="cyan" type="submit" onClick={handleSubmit(onSubmit)}>
