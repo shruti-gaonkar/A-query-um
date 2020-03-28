@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Container, Table, Row, Col, CardPanel } from 'react-materialize';
+import { Container, Table, Row, Col, CardPanel, Button, Icon } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
 import Loader from "../components/Loader";
@@ -56,25 +56,38 @@ function SearchContainer(props) {
                                 : ""
                         }
                         {results.length > 0 ? (
-                            <Table width="100%">
-                                <thead>
-                                    <tr>
-                                        <th data-field="commonName">
-                                            Common Name</th>
-                                        <th data-field="scientificName">
-                                            Scientific Name</th>
-                                        <th data-field="aliases">
-                                            Aliases</th>
-                                        <th data-field="type" className="hide-on-small-only">
-                                            Type</th>
-                                        <th data-field="save">
-                                            Save</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {fishResults}
-                                </tbody>
-                            </Table>
+                            <>
+                                <p className="center-align">
+                                    Select the Save Icon <Button
+                                        className="green"
+                                        floating
+                                        small
+                                        icon={<Icon>save</Icon>}
+                                        node="button"
+                                        waves="light"
+                                    /> when logged in to save a fish to your aquarium list.
+                            </p>
+                                <hr />
+                                <Table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="commonName">
+                                                Common Name</th>
+                                            <th data-field="scientificName">
+                                                Scientific Name</th>
+                                            <th data-field="aliases">
+                                                Aliases</th>
+                                            <th data-field="type" className="hide-on-small-only">
+                                                Type</th>
+                                            <th data-field="save">
+                                                Save</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {fishResults}
+                                    </tbody>
+                                </Table>
+                            </>
                         ) : (!loader) ?
                                 <CardPanel className="teal">
                                     <span className="white-text">
