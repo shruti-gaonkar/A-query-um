@@ -38,10 +38,10 @@ function CreateAqueryumContainer(props) {
     <>
       <Container>
         <Row className="valign-wrapper">
-          <Col className="s12 m6 offset-m3">
+          <Col className="s12 m8 offset-m2">
             <div className="valign-wrapper center-align">
               <Card
-                header={<CardTitle image="https://i.gifer.com/Ufuc.gif"></CardTitle>}
+                header={<CardTitle image="/images/aquarium.gif"></CardTitle>}
               >
                 <p>
                   Keep an ongoing list of fish you'd like to add to your aquarium by saving them from the search page by selecting the green icon on the far right.

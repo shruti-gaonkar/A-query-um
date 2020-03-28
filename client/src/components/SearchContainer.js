@@ -1,12 +1,12 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Container, Table, Row, Col, CardPanel } from 'react-materialize';
+import { Container, Table, Row, Col, CardPanel, Button, Icon } from 'react-materialize';
 import API from "../utils/API";
 import FishList from "../components/FishList";
 import Loader from "../components/Loader";
 import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
-    const msg = 'No fish by that name located in the database';
+    const msg = 'No fish or invertebrate by that name located in the database at this time.';
     // defined multiple states as objects
     const [stateArr, setResults] = useState({
         results: [],
@@ -68,31 +68,50 @@ function SearchContainer(props) {
                                 : ""
                         }
                         {results.length > 0 ? (
-                            <Table width="100%">
-                                <thead>
-                                    <tr>
-                                        <th data-field="commonName">
-                                            Common Name</th>
-                                        <th data-field="scientificName">
-                                            Scientific Name</th>
-                                        <th data-field="aliases">
-                                            Aliases</th>
-                                        <th data-field="type" className="hide-on-small-only">
-                                            Type</th>
-                                        <th data-field="save">
-                                            Save</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {fishResults}
-                                </tbody>
-                            </Table>
+                            <>
+                                <h4 className="center-align"><strong>Searched for:</strong> {props.query}</h4>
+                                <p className="center-align">
+                                    Select the Save Icon <Button
+                                        className="green"
+                                        floating
+                                        small
+                                        icon={<Icon>save</Icon>}
+                                        node="button"
+                                        waves="light"
+                                    /> when logged in to save a fish to your aquarium list.
+                            </p>
+                                <hr />
+                                <Table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="commonName">
+                                                Common Name</th>
+                                            <th data-field="scientificName">
+                                                Scientific Name</th>
+                                            <th data-field="aliases">
+                                                Aliases</th>
+                                            <th data-field="type" className="hide-on-small-only">
+                                                Type</th>
+                                            <th data-field="save">
+                                                Save</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {fishResults}
+                                    </tbody>
+                                </Table>
+                            </>
                         ) : (!loader) ?
-                                <CardPanel className="teal">
-                                    <span className="white-text">
-                                        {message}
-                                    </span>
-                                </CardPanel> : ""
+                                <>
+                                    <h4 className="center-align"><strong>Searched for:</strong> {props.query}</h4>
+                                    <CardPanel className="teal">
+                                        <span className="white-text ">
+                                            <p className="center-align">
+                                                {message}
+                                            </p>
+                                        </span>
+                                    </CardPanel>
+                                </> : ""
                         }
                     </Col>
                 </Row>
