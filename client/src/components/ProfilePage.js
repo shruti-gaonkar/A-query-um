@@ -30,11 +30,9 @@ function ProfilePage(props) {
         console.log(data);
         console.log(user);
         API.updateUser({
-
             username: data.username
-
         }).then(function (response) {
-            console.log(response);
+            setUser(response.username);
             window.location.reload();
         })
     };
@@ -44,7 +42,6 @@ function ProfilePage(props) {
         API.updatepic({
             userpic: e
         }).then(function (res) {
-
             setUserpic(e);
             window.location.reload();
         })
