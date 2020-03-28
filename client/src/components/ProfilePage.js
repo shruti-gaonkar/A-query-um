@@ -66,26 +66,34 @@ function ProfilePage(props) {
                     <Col s={12} className="l10 offset-l1">
                         <Card>
                             <Row className="valign-wrapper">
-                                <Col>
-                                    <img src={userpic} className="circle" alt="A fish." />
+                                <Col s={12} m={6}>
+                                    <p className="center-align">
+                                        <img src={userpic} className="circle" alt="A fish." />
+                                    </p>
                                 </Col>
-                                <Col>
-                                    <h4>
-                                        Welcome,
-                                        <br />
-                                        {user}!
+                                <Col s={12}>
+                                    <h4 className="center-align">
+                                        Welcome, {user}!
                                         </h4>
-
-                                    <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
-                                        Visit Aquarium
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col s={12} m={6} style={{ paddingTop: "10px" }}>
+                                    <p className="center-align">
+                                        <Button className="orange" type="submit" onClick={(e) => aquariumPage(e)}>
+                                            Visit Aquarium
                                     </Button>
-
-                                    {admin ? (<>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <Button className="orange" type="submit" onClick={(e) => adminPage(e)}>
-                                            Add Fish (admin only)
-                                    </Button>
-                                    </>) : (<> </>)}
+                                    </p>
+                                </Col>
+                                <Col s={12} m={6} style={{ paddingTop: "10px" }}>
+                                    {admin ? (
+                                        <>
+                                            <p className="center-align">
+                                                <Button className="orange" type="submit" onClick={(e) => adminPage(e)}>
+                                                    Add Fish (admin only)
+                                            </Button>
+                                            </p>
+                                        </>) : (<> </>)}
                                 </Col>
                             </Row>
                         </Card>
