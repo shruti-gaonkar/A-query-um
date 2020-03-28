@@ -19,6 +19,7 @@ module.exports = {
         obj[aliasId] = 1;
 
         db.Fish.find()
+            // find by alias with a partial match and OR scientificName by a partial match
             .or([
                 { aliases: new RegExp(searchQuery, 'i') },
                 { scientificName: new RegExp(searchQuery, 'i') }
