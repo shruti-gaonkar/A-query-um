@@ -18,7 +18,12 @@ module.exports = {
         let obj = {};
         obj[aliasId] = 1;
 
-        db.Fish.find({ aliases: new RegExp(searchQuery, 'i') })
+        db.Fish.find()
+            // find by alias with a partial match and OR scientificName by a partial match
+            .or([
+                { aliases: new RegExp(searchQuery, 'i') },
+                { scientificName: new RegExp(searchQuery, 'i') }
+            ])
             .sort(obj)
             .then(function (dbFish) {
                 res.json(dbFish);
