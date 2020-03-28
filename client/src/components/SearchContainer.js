@@ -102,11 +102,14 @@ function SearchContainer(props) {
                                 </Table>
                             </>
                         ) : (!loader) ?
-                                <CardPanel className="teal">
-                                    <span className="white-text">
-                                        {message}
-                                    </span>
-                                </CardPanel> : ""
+                                <>
+                                    <h4 className="center-align"><strong>Searched for:</strong> {props.query}</h4>
+                                    <CardPanel className="teal">
+                                        <span className="white-text">
+                                            {message}
+                                        </span>
+                                    </CardPanel>
+                                </> : ""
                         }
                     </Col>
                 </Row>
