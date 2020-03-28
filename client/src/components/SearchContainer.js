@@ -57,6 +57,7 @@ function SearchContainer(props) {
                         }
                         {results.length > 0 ? (
                             <>
+                                <h4 className="center-align"><strong>Searched for:</strong> {props.query}</h4>
                                 <p className="center-align">
                                     Select the Save Icon <Button
                                         className="green"
