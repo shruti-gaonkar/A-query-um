@@ -34,7 +34,7 @@ function ProfilePage(props) {
             username: data.username
         }).then(function (response) {
             setUser(response.username);
-            //window.location.reload();
+            window.location.reload();
         })
     };
 
@@ -44,7 +44,7 @@ function ProfilePage(props) {
             userpic: e
         }).then(function (res) {
             setUserpic(e);
-            //window.location.reload();
+            window.location.reload();
         })
     };
 
