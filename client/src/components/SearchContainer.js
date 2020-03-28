@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import ScrollTop from './ScrollTop';
 
 function SearchContainer(props) {
-    const msg = 'No fish by that name located in the database';
+    const msg = 'No fish or invertebrate by that name located in the database at this time.';
     // defined multiple states as objects
     const [stateArr, setResults] = useState({
         results: [],
@@ -105,8 +105,10 @@ function SearchContainer(props) {
                                 <>
                                     <h4 className="center-align"><strong>Searched for:</strong> {props.query}</h4>
                                     <CardPanel className="teal">
-                                        <span className="white-text">
-                                            {message}
+                                        <span className="white-text ">
+                                            <p className="center-align">
+                                                {message}
+                                            </p>
                                         </span>
                                     </CardPanel>
                                 </> : ""
