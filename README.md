@@ -38,6 +38,15 @@ The Add Fish Form allows for an Admin level user to add fish to the A-Query-Um d
 
 Of note, all Aliases should be submitted with comma separation, no spaces, for best performance. All images should be URLs only, and every iamge requires alt text describing that image, for the sake of the carousels on each fish's information page. Additional images can be provided by selecting the "+" button. Images can be removed by selecting the "x" button. Of note, this only relates to images a user is selecting to have be placed into an initial fish document, not to what already exists or does not exist in the database.
 
+# Challenges
+
+* While using react hooks, we encountered that page was sending n number of requests after all components were mounted. After lot of struggle we figured out that it was the way useState() was used in the code. Instead of calling multiple useState() for multiple states, we passed an object containing all states in the useState(). This not only stopped the n number of requests but also reduced the number of lines in the code.
+
+* For passport, we had issues with the deserialize function. It had to be changed in a way to be more compatible with mongoose. 
+
+* react-hook-form was quite straightforward. One issue we faced here were the radio buttons. The radios were not submitting any data. For this, the form builder for react-hook-forms came in handy.
+
+
 # Technologies
 This project is created with ReactJS, utilizes functional components, and is designed with Materialize and React-Materialize. User Authentication was done with passport, based on user email address. Data handling is done with MongoDB, using Mongoose. 
 
